@@ -1,0 +1,204 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{block page_js}}
+    <!-- OWL CAROUSEL JAVASCRIPTS -->
+    <script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
+    <script src="{{=URL('static','js/owl.carousel.js')}}"></script>
+    <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
+    <script src="{{=URL('static','js/carousel.js')}}"></script>
+    <script src="{{=URL('static','js/nav.js')}}"></script>
+{{end}}
+
+{{block body}}
+        <div class="product-outer-wrapper">
+            <div class="product-container">
+                <div class="product-image-carousel">
+                    <img src="{{=URL('static', 'images/macbook-pro.jpg')}}" alt="Owl Image">
+                </div>
+
+                <div class="product-item-description-container">
+                    <div class="product-item-description-title"><h3>15-inch MacBook Pro</h3></div>
+                    <div class="item-number">#123456</div>
+                    <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                    <div class="in-stock"><img alt="approve, approved, check, good, ok, tick, yes icon" class="tiled-icon" style="max-width: 15px; max-height: 15px;" src="https://cdn0.iconfinder.com/data/icons/free-misc-icon-set-1/512/check-128.png"> In Stock</div>
+                    <div class="product-price"><strong> $2,399.00</strong></div>
+                    <div onclick="alert_add_cart()" class="add-to-cart" style="width: 175px;"><strong>Add to Cart</strong></div>
+                </div>
+
+            </div>
+            <div class="product-description">
+                <div class="product-item-description-title">
+                        <h3>Item Description</h3>
+                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </div>
+
+        <div class="outer" style="width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 30px 0px; ">
+            <div class="category-title"><h3>Items You May Like</h3></div>
+            <div class="inner" style="width: 100%; max-width: 900px;">
+                <div class="owl-carousel" id="product-carousel4">
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5069/5069100_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$312.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div id="1001" class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4801/4801704_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Sony | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$649.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4988/4988400_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>VIZIO | 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$379.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5112/5112802_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$1,099.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4973/4973347_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>LG | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$449.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5069/5069100_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$312.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4801/4801704_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Sony | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$649.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4988/4988400_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>VIZIO | 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$379.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5112/5112802_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$1,099.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div id="product-image-you-like"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4973/4973347_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
+                <div class="item-text" style="margin: 0; padding: 5px;">
+                    <h5>LG | Smart 4K Ultra HD TV</h5>
+                    <div class="item-price-cart">
+                        <div class="item-price"><strong>$449.99</strong></div>
+                        <div class="learn-more"><i>Learn More</i></div>
+                    </div>
+                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
+                </div>
+            </div>
+
+        </div>
+
+            </div>
+
+            <div class="category-title"><h3 style="margin: 0; padding: 0px; margin-top: 40px;">Customer Reviews</h3></div>
+            <div class="inner" style="width: 100%; max-width: 900px; padding: 15px;">
+                <div class="reviewer-name"><h4>Jane Doe</h4></div>
+                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+            </div>
+
+            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; background: #f9f9f9; padding: 15px;">
+                <div class="reviewer-name"><h4>Jane Doe</h4></div>
+                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+            </div>
+
+            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; padding: 15px;">
+                <div class="reviewer-name"><h4>Jane Doe</h4></div>
+                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+            </div>
+
+            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; background: #f9f9f9; padding: 15px;">
+                <div class="reviewer-name"><h4>Jane Doe</h4></div>
+                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+            </div>
+        </div>
+
+
+
+
+
+{{end}}

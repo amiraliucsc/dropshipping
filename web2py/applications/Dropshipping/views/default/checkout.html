@@ -1,0 +1,77 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+
+{{block body}}
+    <div id="product_in_cart">
+        {{for item in items:}}
+        <div class="product" id="1001">
+            <h3>{{=item['title']}}</h3>
+            <h3>{{=item['price']}}</h3>
+        </div>
+
+        {{pass}}
+    </div>
+    <div id="checkout_container">
+        <div id="cart_items"></div>
+        <div id="payment_container">
+            <div id="check_product_payment">
+        <div class="checkout_title half">Shipment</div>
+        <div class="checkout_title half">Payment</div>
+        <div class="checkout_title_min">Shipping &amp; Payment</div>
+        <div class="check_shipping">
+            <span class="data_entry">
+                <input type="text" id="full_name" placeholder="Full Name *" class="required">
+                <span class="show_error" id="err_full_name"></span>
+            </span>
+            <span class="data_entry">
+                <input type="text" id="address1" placeholder="Address *" class="required">
+                <span class="show_error" id="err_address2"></span>
+            </span>
+
+            <span class="data_entry">
+                <input type="text" id="address2" placeholder="Address 2">
+                <span class="show_error" id="err_address2"></span>
+            </span>
+
+            <span class="data_entry">
+                <input type="text" id="city" placeholder="City *" class="required">
+                <span class="show_error" id="err_city"></span>
+            </span>
+
+            <span class="data_entry">
+                <input type="text" id="zip" placeholder="ZIP Code *" class="required">
+                <span class="show_error" id="err_zip"></span>
+            </span>
+        </div>
+        <div class="check_payment">
+            <span class="data_entry">
+                <input type="text" id="cc_name" placeholder="Name on the card *" class="required">
+                <span class="show_error" id="err_cc_name"></span>
+            </span>
+
+            <span class="data_entry">
+                <input type="text" id="cc_number" placeholder="Card Number *" class="required_card_num">
+                <span class="show_error" id="err_cc_number"></span>
+            </span>
+
+            <span class="data_entry">
+                <select id="cc_exp_month" class="lefty" style="margin-right: 7px">
+                    <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>                </select>
+                <select id="cc_exp_year" class="lefty" style="margin-right: 7px">
+                    <option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option>                </select>
+                <input class="lefty required" id="cvv" style="width: 75px;margin-right: 7px;margin-top: 0px" type="text" placeholder="CVV*">
+<!--                <img class="lefty" src="/assets/img/icon/128/help_icon_128x128.png">-->
+                <span class="show_error" id="err_cvv"></span>
+            </span>
+
+            <span class="data_entry">
+                <input type="text" id="email" placeholder="Email *" class="required">
+                <span class="show_error" id="err_email"></span>
+            </span>
+            <span class="data_entry"><input type="button" id="checkout_btn" value="Checkout"> </span>
+        </div>
+    </div>
+        </div>
+    </div>
+{{end}}
