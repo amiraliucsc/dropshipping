@@ -111,8 +111,7 @@
 				<ul>
 					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
-						<div onclick="location.href='product'" style="padding: 0 20px;">Products</div>
-
+						<div style="padding-right:20px;" onclick="location.href='product'">Products</div>
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
                             <span class="left-images">
@@ -144,7 +143,7 @@
 					<li><div onclick="location.href='contact'" style="padding: 0 20px;">Contact</div></li>
                     <li style="float:right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
                         <div id="cart_icon">
-                            <span id="cart_number">0</span>
+                            <span id="cart_number">{{=total}}</span>
                         </div>
                     </li>
                     <li onclick="enable_search_input()" style="float:right;">
