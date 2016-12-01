@@ -51,11 +51,8 @@ def create_cart(user_id):
 
 
 def get_user_id():
-    if auth.user_id:
-        user_id = str(auth.user_id)
-    else:
-        user_id = session.custome_session
-
+    
+    user_id = session.custome_session
     return user_id
 
 def product():
