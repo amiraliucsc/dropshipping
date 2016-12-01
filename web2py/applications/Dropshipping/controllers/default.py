@@ -15,21 +15,25 @@ def index():
     session.customer_session = response.session_id
     title = "Dropshipping"
     response.flash = T("Welcome to " + title)
-    return dict(message=T("Welcome to web2py!" + title))
+    num_items_in_cart = get_number_of_items_in_cart_no_json()
+    total = get_number_of_items_in_cart_no_json()
+    return dict(message=T("Welcome to web2py!" + title),total=total)
 
 def add_to_cart():
     product_id = str(request.vars.product_id)
     qty = str(request.vars.qty)
 
     cart_id = get_cart_id()
-
+    print product_id
     if order_item_exists_in_cart(product_id):
-        query = "select qty from order_item where cart id = %s and product_id = %s", cart_id, product_id
+        query = "select qty from order_item where cart_id = %s and product_id = %s"% (str(cart_id), str(product_id))
         result = db.executesql(query)
-        new_qty = result[0][0]
-
-    query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
-    db.executesql(query)
+        qty = result[0][0] + int(qty)
+        query = "update order_item set qty = %s where product_id = %s and cart_id = %s"% (qty, product_id, cart_id)
+        db.executesql(query)
+    else:
+        query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
+        db.executesql(query)
 
 def get_cart_id():
     user_id = get_user_id()
@@ -45,7 +49,19 @@ def get_number_of_items_in_cart():
     cart_id = get_cart_id()
     query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
     result = db.executesql(query)
-    return json.dumps({'total': int(result[0][0])})
+    if result:
+        return json.dumps({'total': int(result[0][0])})
+    else:
+        return json.dumps(dict(total=0))
+
+def get_number_of_items_in_cart_no_json():
+    cart_id = get_cart_id()
+    query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
+    result = db.executesql(query)
+    if result[0][0]:
+        return int(result[0][0])
+    else:
+        return 0
 
 def create_cart(user_id):
     query = "insert into cart (user_id) values('" + user_id + "')"
@@ -57,7 +73,9 @@ def create_cart(user_id):
 
 def order_item_exists_in_cart(product_id):
     cart_id = get_cart_id()
-    query = "select * from order_item where product_id = " + str(product_id) + " and cart_id = " + str(cart_id)
+    print cart_id
+    query = "select * from order_item where product_id = '"+str(product_id)+"' and cart_id = '"+str(cart_id)+"'"
+    print query
     result = db.executesql(query)
     if result:
         response = True
@@ -88,14 +106,15 @@ def get_user_id():
     return user_id
 
 def product():
-    return dict()
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
 
 def checkout():
     cart_id = get_cart_id()
     query = "select * from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
-
-    return dict(location=T('Dropshiping - Checkout'),items=result)
+    total = get_number_of_items_in_cart_no_json()
+    return dict(location=T('Dropshiping - Checkout'),items=result,total=total)
 
 
 def contact():

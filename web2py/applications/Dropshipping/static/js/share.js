@@ -1,8 +1,5 @@
 
-$('document').ready(function () {
-	load_cart_number();
-	$("#cart_alert").hide();
-});
+
 
 jQuery(function(){
 	var script_source = jQuery('script[src*="share.js"]').attr('src');
