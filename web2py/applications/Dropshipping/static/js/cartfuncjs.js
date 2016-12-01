@@ -9,3 +9,15 @@ function alert_add_cart(){
 function close_add_cart(){
     $("#cart_alert").fadeOut(0);
 }
+
+var search_on=false;
+function enable_search_input(){
+    if(search_on){
+        $("#search_box").css({'display':'none'});
+        search_on = false;
+    }else{
+        $("#search_box").css({'display':'inline'});
+        $("#search_input").focus();
+        search_on = true;
+    }
+}
