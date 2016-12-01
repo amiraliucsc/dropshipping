@@ -8,9 +8,6 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 import json
-
-
-
 #/////////////////////
 #INDEX PAGE
 #/////////////////////
@@ -36,9 +33,7 @@ def get_cart_id(user_id):
         cart_id = create_cart(user_id)
     else:
         cart_id = str(result[0][0])
-
     return cart_id
-
 
 def get_number_of_items_in_cart():
     user_id = get_user_id()
@@ -46,7 +41,6 @@ def get_number_of_items_in_cart():
     query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
     result = db.executesql(query)
     return json.dumps({'total': int(result[0][0])})
-
 
 def create_cart(user_id):
     query = "insert into cart (user_id) values('" + user_id + "')"

@@ -1,4 +1,9 @@
 
+$('document').ready(function () {
+	load_cart_number();
+	$("#cart_alert").hide();
+});
+
 jQuery(function(){
 	var script_source = jQuery('script[src*="share.js"]').attr('src');
 	var params = function(name,default_value) {
@@ -33,11 +38,6 @@ jQuery(function(){
 	});
 });
 
-
-$('document').ready(function () {
-	load_cart_number();
-});
-
 $('.add-to-cart').on('click',function (e) {
 	var product_id = e.target.id;
 	var qty = 1  // Change it later
@@ -60,9 +60,7 @@ function load_cart_number() {
 	 }).done(function (e) {
 		 respond =  JSON.parse(e);
 		 $('#cart_number').html(respond['total'])
-	})
-
-
+	});
 }
 
 $('#check_product_payment input.required_card_num').on('keyup',function (e) {
@@ -215,7 +213,6 @@ $('input#checkout_btn').on('click',function (e) {
 		show_validation()
 	}
 });
-
 
 function show_validation() {
 	var fields = ['full_name','address1','city','zip','cc_name','cc_number','cvv','email'];

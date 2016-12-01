@@ -17,13 +17,10 @@ body { padding: 0; margin: 0;}
 }
 
 .side-categories {
-
-
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
 	margin:10px;
-
 }
 
 .category-drop-down {
