@@ -49,12 +49,13 @@ def create_cart(user_id):
     cart_id = db.executesql(query)
     return str(cart_id[0][0])
 
-
 def get_user_id():
-    
     user_id = session.custome_session
     return user_id
 
+#/////////////////////
+#PRODUCT PAGE
+#/////////////////////
 def product():
     return dict()
 
@@ -66,36 +67,52 @@ def checkout():
 
     return dict(location=T('Dropshiping - Checkout'),items=result)
 
-
+#/////////////////////
+#CONTACT PAGE
+#/////////////////////
 def contact():
     return dict()
 
+#/////////////////////
+#DEFAULT PY FUNCTIONS  ////////////////////////////////////////////////////////////////
+#/////////////////////
+@cache.action()
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
 
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/bulk_register
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
+    """
+    return dict(form=auth())
 
 
 """
-
-
 def checkout():
     return dict()
 
@@ -185,40 +202,3 @@ def remove_from_cart():
     return dict(response)
 
 """
-#/////////////////////
-#DEFAULT PY FUNCTIONS
-#/////////////////////
-@cache.action()
-def download():
-    """
-    allows downloading of uploaded files
-    http://..../[app]/default/download/[filename]
-    """
-    return response.download(request, db)
-
-def call():
-    """
-    exposes services. for example:
-    http://..../[app]/default/call/jsonrpc
-    decorate with @services.jsonrpc the functions to expose
-    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
-    """
-    return service()
-
-def user():
-    """
-    exposes:
-    http://..../[app]/default/user/login
-    http://..../[app]/default/user/logout
-    http://..../[app]/default/user/register
-    http://..../[app]/default/user/profile
-    http://..../[app]/default/user/retrieve_password
-    http://..../[app]/default/user/change_password
-    http://..../[app]/default/user/bulk_register
-    use @auth.requires_login()
-        @auth.requires_membership('group name')
-        @auth.requires_permission('read','table name',record_id)
-    to decorate functions that need access control
-    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
-    """
-    return dict(form=auth())

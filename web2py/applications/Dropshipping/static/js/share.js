@@ -39,6 +39,7 @@ jQuery(function(){
 });
 
 $('.add-to-cart').on('click',function (e) {
+	alert_add_cart('hello!'); //linked from cartfuncjs.js
 	var product_id = e.target.id;
 	var qty = 1  // Change it later
 	 $.ajax({

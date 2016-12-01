@@ -1,8 +1,9 @@
 /**
  * Created by RedBox on 11/27/2016.
  */
-function alert_add_cart(){
-    $("#cart_alert").css({'z-index':'10'});
+function alert_add_cart(message){
+    $("#inner_cart_alert").html(message);
+    $("#cart_alert").css({'z-index':'10','display':'inline'});
     $("#cart_alert").fadeIn(1000);
 }
 

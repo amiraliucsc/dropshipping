@@ -73,6 +73,7 @@
 		<!-- fixed add to cart alert -->
             <div id="cart_alert">
                 <div onclick='close_add_cart()' id="close_cart_alert">X</div>
+                <div id="inner_cart_alert" style="font-size:32px;"></div>
             </div>
 
             <div class="header-area" style="width: 100%; height: 125px; background:url('http://localhost:8000/Dropshipping/static/images/top-background.jpg') no-repeat center; background-color:#ffffff;" ></div>
@@ -109,9 +110,11 @@
 
 			<nav class="menu" style="">
 				<ul>
-					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
+					<li class="active">
+                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='index'">Home</div>
+                    </li>
 					<li class="drop-down">
-						<div style="padding-right:20px;" onclick="location.href='product'">Products</div>
+						<div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='product'">Products</div>
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -143,7 +146,9 @@
 					</div>
 
 					</li>
-					<li><div onclick="location.href='contact'">Contact</div></li>
+					<li>
+                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='contact'">Contact</div>
+                    </li>
                     <li style="float:right;">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
