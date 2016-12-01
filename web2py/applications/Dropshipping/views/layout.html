@@ -111,21 +111,23 @@
 				<ul>
 					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
+<<<<<<< Updated upstream
 						<div style="padding-right:20px;" onclick="location.href='product'">Products</div>
+=======
+						<div onclick="location.href='product'" style="padding: 0 20px;">Products</div>
+>>>>>>> Stashed changes
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/tv_drop_down.jpg')}}" alt="Owl Image" >
-                                <div class="view-category" style="width: 175px;"><a href="http://www.google.com/"><strong>View Category</strong></a></div>
-                                <div onclick="" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
                             </span>
-                            <a href="http://www.google.com/">NEW</a>
                         </div>
                         <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/computer_drop_down.jpg')}}" alt="Owl Image" >
-                                <div onclick="alert_add_cart()" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
                             </span>
                         </div>
                         <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
@@ -137,13 +139,13 @@
                         <div class="mm-4column" style="margin-left: 25px;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/gaming_drop_down.jpg')}}" alt="Owl Image" >
-                                <div onclick="alert_add_cart()" class="view-category"><strong>View Category</strong></div>
+                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
                             </span>
                         </div>
 					</div>
 
 					</li>
-					<li><div onclick="location.href='contact'">Contact</div></li>
+					<li><div onclick="location.href='contact'" style="padding: 0 20px;">Contact</div></li>
                     <li style="float:right;">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
@@ -222,7 +224,11 @@
     <script src="{{=URL('static','js/carousel.js')}}"></script>
 	<script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
     <script src="{{=URL('static','js/nav.js')}}"></script>
+<<<<<<< Updated upstream
     <script src="{{=URL('static','js/cartfuncjs.js')}}"></script>
+=======
+  
+>>>>>>> Stashed changes
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
     <!-- Analytics ==================================== -->
