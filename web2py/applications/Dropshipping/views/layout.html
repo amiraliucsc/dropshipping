@@ -78,7 +78,7 @@
             <div class="header-area" style="width: 100%; height: 125px; background:url('http://localhost:8000/Dropshipping/static/images/top-background.jpg') no-repeat center; background-color:#ffffff;" ></div>
 
 			<div class="xs-menu-cont">
-			<a id="menutoggle"><i class="fa fa-align-justify">Toggle</i> </a>
+			<a id="menutoggle"><i>Toggle</i> </a>
 				<nav class="xs-menu displaynone">
 					<ul>
 						<li class="active">
@@ -111,11 +111,7 @@
 				<ul>
 					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
-<<<<<<< Updated upstream
-						<div style="padding-right:20px;" onclick="location.href='product'">Products</div>
-=======
 						<div onclick="location.href='product'" style="padding: 0 20px;">Products</div>
->>>>>>> Stashed changes
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -146,7 +142,7 @@
 
 					</li>
 					<li><div onclick="location.href='contact'" style="padding: 0 20px;">Contact</div></li>
-                    <li style="float:right;">
+                    <li style="float:right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
                         </div>
@@ -165,7 +161,22 @@
                         </div>
                     </li>
 				</ul>
+
+</div>
 			</nav>
+            <div id="div1" style="width: 100%; display: none; z-index: 5000; position: absolute; float: right;">
+                <div class="mycart" style="background: #ffffff; float: right; padding: 10px; color: #333333; margin-right: 10px; -webkit-border-radius: ;-moz-border-radius: ;border-radius: 5px; margin-top: 10px;">
+                    <div class="category-title" style="padding: 10px; border-bottom: 1px solid #ededed;"><h4><strong>Cart</strong></h4></div>
+                    <ul>
+                        <li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" src="https://static.bhphoto.com/images/images500x500/apple_mf839ll_a_13_3_macbook_pro_notebook_1425938838000_1128836.jpg"/>
+ 15" Macbook Pro | Qty: 1</li>
+                        <li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" src="https://static.bhphoto.com/images/images500x500/apple_mf839ll_a_13_3_macbook_pro_notebook_1425938838000_1128836.jpg"/>
+ 15" Macbook Pro | Qty: 1</li>
+                        <li style="padding: 10px;"><img width="30px" height="30px" src="https://static.bhphoto.com/images/images500x500/apple_mf839ll_a_13_3_macbook_pro_notebook_1425938838000_1128836.jpg"/>
+ 15" Macbook Pro | Qty: 1</li>
+                    </ul>
+                </div>
+            </div>
 		</div>
     {{end}}
     <!-- Main ========================================= -->
@@ -224,11 +235,9 @@
     <script src="{{=URL('static','js/carousel.js')}}"></script>
 	<script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
     <script src="{{=URL('static','js/nav.js')}}"></script>
-<<<<<<< Updated upstream
     <script src="{{=URL('static','js/cartfuncjs.js')}}"></script>
-=======
-  
->>>>>>> Stashed changes
+
+
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
     <!-- Analytics ==================================== -->
