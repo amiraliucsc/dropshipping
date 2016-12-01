@@ -368,15 +368,6 @@ body { padding: 0; margin: 0;}
 	border-radius:5px;
 }
 
-#contact_name_error{
-	display:none;
-}
-#contact_email_error{
-	dispay:none;
-}
-#contact_message_error{
-	display:none;
-}
 #contact_form_container textarea{
 	margin:5px;
 	padding:5px;
@@ -391,8 +382,66 @@ body { padding: 0; margin: 0;}
 	border-radius: 5px;
 }
 
-.product-image-carousel {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#contact_name_error{
+	display:none;
+}
+
+#contact_email_error{
+	dispay:none;
+}
+
+#contact_message_error{
+	display:none;
+}
+
+/***********************SEARCH*********************/
+#search_icon{
+ 	text-align:center;
+	width:40px;
+	color:black;
+}
+
+#search_icon:hover{
+	background: red;
+	cursor: pointer;
+}
+
+#search_box input[type="text"]{
+	height:30px;
+	color:white;
+	background:black;
+	border:none;
+	border-bottom:solid 1px white;
+}
+
+#search_box input[type="text"]:focus{
+	outline:none;
+}
+
+#search_box{
+	display:none;
+}
+
+#search_box form:hover{
+	background:black;
+}
+
+#search_submit_button{
+	padding:0px;
+	width:40px;
+	height:30px;
+	background:#595959;
+	border-radius:5px;
+}
+
+#search_submit_button:hover{
+	box-shadow: none;
+	color:red;
+}
+
+/********override bootcrap***********/
+.dropdown{
+	padding:0px;
+	height:auto;
+	background:#222;
 }

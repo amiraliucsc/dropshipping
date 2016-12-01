@@ -52,20 +52,13 @@
   </head>
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
-    <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
     <!-- Navbar ======================================= -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          {{=response.logo or ''}}
+    <nav style="background:transparent">
+      <div style="background:transparent">
+        <div style="background:transparent">
+
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div style="background:transparent">
           <ul class="nav navbar-nav navbar-right">
             {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
           </ul>
@@ -82,8 +75,7 @@
                 <div onclick='close_add_cart()' id="close_cart_alert">X</div>
             </div>
 
-            <div class="header-area" style="width: 100%; height: 125px; background:url('../static/images/top-background.jpg') no-repeat center; background-color:#ffffff;" ></div>
-            <input style="position:absolute; margin-left:80%; top: 135px; z-index:10;" placeholder="Search"/>
+            <div class="header-area" style="width: 100%; height: 125px; background:url('http://localhost:8000/Dropshipping/static/images/top-background.jpg') no-repeat center; background-color:#ffffff;" ></div>
 
 			<div class="xs-menu-cont">
 			<a id="menutoggle"><i class="fa fa-align-justify">Toggle</i> </a>
@@ -119,7 +111,7 @@
 				<ul>
 					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
-						<div onclick="location.href='product'">Products</div>
+						<div style="padding-right:20px;" onclick="location.href='product'">Products</div>
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -155,6 +147,19 @@
                     <li style="float:right;">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
+                        </div>
+                    </li>
+                    <li onclick="enable_search_input()" style="float:right;">
+                        <div id="search_icon">
+                            <img style="margin:0 auto; width:auto;" width="30px" height="30px" src="http://127.0.0.1:8000/Dropshipping/static/images/search_icon.png"/>
+                        </div>
+                    </li>
+                    <li style="float:right;">
+                        <div id="search_box">
+                            <form>
+                                <input id="search_input" type="text" name="search_input" placeholder="search"/>
+                                <button id="search_submit_button">send</button>
+                            </form>
                         </div>
                     </li>
 				</ul>
