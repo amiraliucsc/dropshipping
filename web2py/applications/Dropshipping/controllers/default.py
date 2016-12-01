@@ -39,7 +39,7 @@ def get_cart_id():
         cart_id = create_cart(user_id)
     else:
         cart_id = str(result[0][0])
-    return cart_id
+    return str(cart_id)
 
 def get_number_of_items_in_cart():
     cart_id = get_cart_id()
@@ -70,13 +70,15 @@ def remove_from_cart():
     product_id = str(request.vars.product_id)
 
     cart_id = get_cart_id()
-    
+
     if order_item_exists_in_cart(product_id):
         query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
+        db.executesql(query)
+        print query
         response = 1
     else:
         response =0
-    return json.dumps(dict(response))
+
 
 
 
