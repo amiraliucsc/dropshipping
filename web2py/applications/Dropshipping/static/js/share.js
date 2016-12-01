@@ -63,6 +63,18 @@ function load_cart_number() {
 	});
 }
 
+
+function remove_from_cart(pid){
+    $.ajax({
+		 type: "POST",
+		 url: "/Dropshipping/default/remove_from_cart?product_id="+pid
+	 })
+//	 .done(function (e) {
+//		 respond =  JSON.parse(e);
+//		 $('#cart_number').html(respond['total'])
+//	});
+}
+
 $('#check_product_payment input.required_card_num').on('keyup',function (e) {
 	if(e.which == 37 || e.which == 39) return
 	var raw_card_num = $('#'+e.target.id).val();
@@ -110,6 +122,8 @@ $('#check_product_payment input.required_card_num').on('keyup',function (e) {
 		$('#'+e.target.id).val( valid );
 	}
 });
+
+
 
 $('#check_product_payment input.required').focusout(function (e) {
 	$id = e.target.id;
