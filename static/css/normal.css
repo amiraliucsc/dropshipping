@@ -1764,7 +1764,7 @@ xpopup
 
 .checkout_remove{
     float: right;
-    background: url(/assets/img/icon/32/trash_icon_32x32.png);
+    background: url(./../images/icon/trash_icon_32x32.png);
     background-size: 32px;
     background-repeat: no-repeat;
     display: block;
@@ -1775,7 +1775,7 @@ xpopup
 }
 
 .checkout_remove:hover{
-    background: url(/assets/img/icon/32/trash_icon_open_32x32.png);
+    background: url(./../images/icon/trash_icon_open_32x32.png);
     background-size: 32px;
     background-repeat: no-repeat;
 }
