@@ -18,18 +18,7 @@
                     <input type="button" onclick="remove_from_cart({{=item['product_id']}},{{=item['qty']}})" value="remove">
                 </div>
         {{pass}}
-        {{pass}}
-
-    </div>
-
-
-
-
-
-
-
-
-    <div id="check_product_review">
+                   <div id="check_product_review">
         <div class="checkout_title">Review Cart</div>
             <input type="text" id="cart_id" class="hidden" value="{{=items[0]['cart_id']}}">
                 {{for item in items:}}
@@ -65,6 +54,10 @@
         </div>
     </div>
 
+
+        {{pass}}
+
+    </div>
 
 
 
@@ -135,3 +128,10 @@
         </div>
     </div>
 {{end}}
+
+
+
+
+
+
+
