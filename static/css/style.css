@@ -428,6 +428,64 @@ body{
 	display:none;
 }
 
+/***********************Product Order*********************/
+h1.po_title{
+	color: #9d1e15;
+}
+.po_title{
+	text-align:center
+}
+
+.po_detail{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.po_order{
+	margin: 0 auto;
+	width: 50%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+
+}
+
+
+
+.po_order_detail{
+}
+
+.po_item_order{
+	width: 1000px;
+	padding-bottom: 5px;
+}
+
+.po_item_price{
+	padding-bottom: 5px;
+}
+
+.po_item_order_detail{
+}
+
+.po_item_price{
+
+}
+
+.po_order_misc{
+	margin-top: 50px;
+	padding-bottom:10px;
+}
+
+
+
+ul.po_order_shipping{
+	display: inline-block;
+	float: left;
+}
+ul.po_order_total{
+	display: inline-block;
+	float: right;
+}
+
 /***********************SEARCH*********************/
 #search_icon{
  	text-align:center;
