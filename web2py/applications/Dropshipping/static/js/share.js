@@ -67,6 +67,9 @@ function remove_from_cart(pid,qty){
     var current_num = $('#cart_number').html();
 	current_num = parseInt(current_num) - parseInt(qty);
 	$('#cart_number').html(current_num);
+	if(current_num == 0){
+		$('#product_in_cart').html('Your shopping cart is empty');
+	}
 	$('#product_'+pid).fadeOut('slow');
 	$.ajax({
 		 type: "POST",

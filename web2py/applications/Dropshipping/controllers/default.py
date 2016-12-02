@@ -64,6 +64,11 @@ def get_number_of_items_in_cart_no_json():
     else:
         return 0
 
+def po_history():
+    total = get_number_of_items_in_cart_no_json()
+    return dict(message=T("Welcome to web2py!" + title), total=total)
+
+
 def create_cart(user_id):
     query = "insert into cart (user_id) values('" + user_id + "')"
     db.executesql(query)
