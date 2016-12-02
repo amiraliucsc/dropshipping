@@ -162,6 +162,9 @@ def download():
     """
     return response.download(request, db)
 
+def po_page():
+    return dict()
+
 def call():
     """
     exposes services. for example:
