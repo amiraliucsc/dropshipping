@@ -301,10 +301,10 @@ body{
 	margin-left: auto;
 	margin-top:auto;
 	margin-bottom:auto;
-	top:50%;
-	width:90%;
-	width:400px;
-	height:100px;
+	top:5%;
+	width:50%;
+
+	height:90%;
 	background:white;
 	position:fixed;
 	border-radius:5px;
@@ -369,7 +369,7 @@ body{
 
 #contact_form_container form{
 	margin:0 auto;
-	width:400px;
+	width:60%;
 }
 
 #contact_form_container input[type='text']{
