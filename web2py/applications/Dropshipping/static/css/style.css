@@ -369,10 +369,12 @@ body{
 
 #contact_form_container form{
 	margin:0 auto;
+	margin-top:20px;
 	width:60%;
 }
 
 #contact_form_container input[type='text']{
+	width:100%;
 	padding:5px;
 	margin:5px;
 	box-shadow:inset 0 0 0px 0px #000;
@@ -400,6 +402,7 @@ body{
 }
 
 #contact_form_container textarea{
+	width:100%;
 	margin:5px;
 	padding:5px;
 	box-shadow:inset 0 0 2px 0px #000;
