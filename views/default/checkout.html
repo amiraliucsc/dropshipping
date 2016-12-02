@@ -4,7 +4,7 @@
 
 {{block body}}
 
-        {{if len(items) == 0:}}Your Shopping cart is empty
+        {{if total == 0:}}Your Shopping cart is empty
         {{else:}}
         <div id="product_in_cart" class="{{=items[0]['cart_id']}}">
             {{for item in items:}}
