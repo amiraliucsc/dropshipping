@@ -3,20 +3,23 @@
 
 
 {{block body}}
-    <div id="product_in_cart">
+
         {{if len(items) == 0:}}Your Shopping cart is empty
+        {{else:}}
+        <div id="product_in_cart" class="{{=items[0]['cart_id']}}">
+            {{for item in items:}}
+                <div class="product" id="product_{{=item['product_id']}}">
+                    <h3>product title{{=item['title']}}</h3>
+                    <h3>price:{{=item['price']}}</h3>
+                    <h3>image path:{{=item['image_path']}}</h3>
+                    <h3>cart id:{{=item['cart_id']}}</h3>
+                    <h3>product id:{{=item['product_id']}}</h3>
+                    <h3>qty:{{=item['qty']}}</h3>
+                    <input type="button" onclick="remove_from_cart({{=item['product_id']}},{{=item['qty']}})" value="remove">
+                </div>
         {{pass}}
-        {{for item in items:}}
-        <div class="product" id="cart_{{=item['cart_id']}}">
-            <h3>product title{{=item['title']}}</h3>
-            <h3>price:{{=item['price']}}</h3>
-            <h3>image path:{{=item['image_path']}}</h3>
-            <h3>cart id:{{=item['cart_id']}}</h3>
-            <h3>product id:{{=item['product_id']}}</h3>
-            <h3>qty:{{=item['qty']}}</h3>
-            <input type="button" onclick="remove_from_cart({{=item['product_id']}})" value="remove">
-        </div>
         {{pass}}
+
     </div>
     <div id="checkout_container">
         <div id="cart_items"></div>

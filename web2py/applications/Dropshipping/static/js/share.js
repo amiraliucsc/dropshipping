@@ -62,8 +62,12 @@ function load_cart_number() {
 }
 
 
-function remove_from_cart(pid){
-    $.ajax({
+function remove_from_cart(pid,qty){
+    var current_num = $('#cart_number').html();
+	current_num = parseInt(current_num) - parseInt(qty);
+	$('#cart_number').html(current_num);
+	$('#product_'+pid).fadeOut('slow');
+	$.ajax({
 		 type: "POST",
 		 url: "/Dropshipping/default/remove_from_cart?product_id="+pid
 	 })
@@ -194,7 +198,7 @@ $('input#checkout_btn').on('click',function (e) {
 			'full_name': $('#full_name').val(),
 			'address1': $('#address1').val(),
 			'address2' : $('#address2').val(),
-			'city': $('#city').val(),
+			// 'city': $('#city').val(),
 			'zip': $('#zip').val(),
 			'card_number': $('#cc_number').val(),
 			'month' : $('#cc_exp_month').has(':selected').val(),
@@ -202,13 +206,13 @@ $('input#checkout_btn').on('click',function (e) {
 			'name_on_card' : $('#cc_name').val(),
 			'cvv' : $('#cvv').val(),
 			'email' : $('#email').val(),
-			'cart_id' : cart_id
+			// 'cart_id' : cart_id
 
 		};
 		var jsonString = JSON.stringify($customer_info);
 		$.ajax({
 			method: 'POST',
-			url: '/purchasing/submit_order',
+			url: '/Dropshipping/default/create_purchase_order',
 			async: true,
 			data: {
 				data : jsonString
