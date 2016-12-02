@@ -113,37 +113,41 @@ def create_purchase_order():
     exp_year = data['cc_exp_year']
     cvv = data['cvv']
 
+    customer_id = get_customer_id(name, address1, address2, city, state, zip, email)
+    user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
+
+
+
+
 
 def check_saved_user_data(name, address1, address2, zip, email):
     user_data = (name, address1, address2, zip, email)
     user_data_changed = False
-    query = "select full_name, address_1, address_2, zip_code, email from user_info where user_id = %s"% auth.user_id
 
-    result = db.executesql(query)
-    if result:
-        for i in range(len(user_data)):
-            if user_data[i] != result[0][i]:
-                user_data_changed = True
-    else:
-        user_data_changed = True
+    if auth.user_id:
+        query = "select full_name, address_1, address_2, zip_code, email from user_info where user_id = %s"% auth.user_id
+
+        result = db.executesql(query)
+        if result:
+            for i in range(len(user_data)):
+                if user_data[i] != result[0][i]:
+                    user_data_changed = True
+        else:
+            user_data_changed = True
         
     return user_data_changed
 
 
 
 def get_customer_id(name, address1, address2, city, state, zip, email):
-    if auth.user_id:
-        query = "select * from"
 
-    if result:
-        customer_id = result[0]['email']
-        print(customer_id)
-    else:
-        query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s, %s)" % (
-        name, address1, address2, city, state, zip, email)
-        db.executesql(query)
+    query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s, %s) OUTPUT inserted.customer_id" % (
+    name, address1, address2, city, state, zip, email)
+    customer_id = db.executesql(query)
+    print customer_id, "HIYA"
+    return customer_id
 
-
+def create_purchase_order(name, address_1, address_2, )
 
 
 def get_user_id():
