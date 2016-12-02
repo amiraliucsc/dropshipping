@@ -67,7 +67,7 @@ function remove_from_cart(pid,qty){
     var current_num = $('#cart_number').html();
 	current_num = parseInt(current_num) - parseInt(qty);
 	$('#cart_number').html(current_num);
-	$('#product_'+pid).fadeOut('slow');
+	$('#product_in_cart_'+pid).fadeOut('slow');
 	$.ajax({
 		 type: "POST",
 		 url: "/Dropshipping/default/remove_from_cart?product_id="+pid
@@ -222,19 +222,10 @@ $('input#checkout_btn').on('click',function (e) {
 			var jsonString = JSON.stringify($customer_info);
 			$.ajax({
 				method: 'POST',
-				url: '/Dropshipping/default/create_purchase_order',
+				url: '/Dropshipping/default/create_purchase_order?full_name='+$customer_info['full_name']+'&address1='+$customer_info['address1']+'&address2='+$customer_info['address2']+'&city='+$customer_info['city']+'&state='+$customer_info['state']+'&zip='+$customer_info['zip']+'&card_number='+$customer_info['card_number']+'&month='+$customer_info['month']+'&year='+$customer_info['year']+'&name_on_card='+$customer_info['name_on_card']+'&cvv='+$customer_info['cvv']+'&email='+$customer_info['email'],
 				async: true,
-				data: {
-					data : jsonString
-				}
 			})
-				.done(function (respond) {
-					respond = jQuery.parseJSON(respond);
-					if(respond['stock_check'] == 'oos'){
-						out_of_stock_error(respond['oos_items']);
-					}
-				});
-
+			
 		})
 
 	}else{
