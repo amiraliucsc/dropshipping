@@ -162,7 +162,8 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
-    return dict(form=auth())
+    total = get_number_of_items_in_cart_no_json()
+    return dict(form=auth(),total=total)
 
 
 """
