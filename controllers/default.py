@@ -148,7 +148,7 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
     return customer_id
 
 def create_purchase_order(name, address_1, address_2):
-    
+    return ""
 
 
 def get_user_id():
