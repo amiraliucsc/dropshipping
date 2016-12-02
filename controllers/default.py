@@ -114,15 +114,20 @@ def create_purchase_order():
 
 
 
-def create_customer(name, address1, address2, city, zip, email):
+def get_customer_id(name, address1, address2, city, zip, email):
+    if auth.user_id:
+        query = "select "
+
     query = "select customer_id from customer where email = %s" % email
     result = db.executesql(query, as_dict=True)
     if result:
         customer_id = result[0]['email']
         print(customer_id)
+    else:
+        query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s)" % (
+        name, address1, address2, city, zip, email)
+        db.executesql(query)
 
-    query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s)"% (name, address1, address2, city, zip, email)
-    db.executesql(query)
 
 
 
