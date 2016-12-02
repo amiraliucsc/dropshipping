@@ -92,6 +92,7 @@ ENV/
 
 # User-specific stuff:
 web2py/.idea/workspace.xml
+.idea/workspace.xml
 web2py/.idea/tasks.xml
 
 # Sensitive or high-churn files:
