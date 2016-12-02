@@ -195,11 +195,22 @@ $('input#checkout_btn').on('click',function (e) {
 		return false;
 	}
 	if(count == 8){
+
+		$.ajax({
+			method: 'POST',
+			url: 'http://maps.googleapis.com/maps/api/geocode/json?address='+$('#zip').val()+'&sensor=true',
+			async: true,
+		}).done(function (respond) {
+			var city = respond['results'][0]['address_components'][1]['long_name']
+			var state = respond['results'][0]['address_components'][3]['short_name']
+		})
+
 		var $customer_info = {
 			'full_name': $('#full_name').val(),
 			'address1': $('#address1').val(),
 			'address2' : $('#address2').val(),
-			// 'city': $('#city').val(),
+			'city': city,
+			'state' : state,
 			'zip': $('#zip').val(),
 			'card_number': $('#cc_number').val(),
 			'month' : $('#cc_exp_month').has(':selected').val(),
@@ -210,6 +221,7 @@ $('input#checkout_btn').on('click',function (e) {
 			// 'cart_id' : cart_id
 
 		};
+
 		var jsonString = JSON.stringify($customer_info);
 		$.ajax({
 			method: 'POST',
@@ -230,6 +242,11 @@ $('input#checkout_btn').on('click',function (e) {
 		show_validation()
 	}
 });
+
+
+function show_invoice() {
+	console.log('show invoce is called')
+}
 
 function show_validation() {
 	var fields = ['full_name','address1','city','zip','cc_name','cc_number','cvv','email'];

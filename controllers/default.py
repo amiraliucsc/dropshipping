@@ -168,7 +168,8 @@ def download():
     return response.download(request, db)
 
 def po_page():
-    return dict()
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
 
 def call():
     """
