@@ -99,24 +99,27 @@ def remove_from_cart():
 
 # ----------Order History-------------------------
 def create_purchase_order():
-    name = request.vars.full_name
-    address1 = request.vars.address
-    address2 = request.vars.address2
-    zip = request.vars.zip
-    email = request.vars.email
-    name_on_card
-    card_number
-    exp_month
-    exp_year
-    cvv
-
+    data = request.vars.data
+    name = data['full_name']
+    address1 = data['address1']
+    address2 = data['address2']
+    zip = data['zip']
+    email = data['email']
+    name_on_card = data['cc_name']
+    card_number = data['cc_number']
+    exp_month = data['cc_exp_month']
+    exp_year = data['cc_exp_year']
+    cvv = data['cvv']
 
 
 
 
 def create_customer(name, address1, address2, city, zip, email):
-    query = "select * from customer where email = %s" % email
-    db.executesql(query)
+    query = "select customer_id from customer where email = %s" % email
+    result = db.executesql(query, as_dict=True)
+    if result:
+        customer_id = result[0]['email']
+        print(customer_id)
 
     query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s)"% (name, address1, address2, city, zip, email)
     db.executesql(query)
