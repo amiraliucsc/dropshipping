@@ -25,7 +25,7 @@ def add_to_cart():
     qty = str(request.vars.qty)
 
     cart_id = get_cart_id()
-    
+
     if order_item_exists_in_cart(product_id):
         query = "select qty from order_item where cart_id = %s and product_id = %s"% (str(cart_id), str(product_id))
         result = db.executesql(query)
@@ -41,9 +41,9 @@ def get_cart_id():
         session.customer_session = response.session_id
     user_id = get_user_id()
     query = "select * from cart where user_id = '" + str(user_id) + "' and status = 'active'"
-    
+
     result = db.executesql(query)
-    
+
     if not result:
         cart_id = create_cart()
     else:
@@ -53,7 +53,7 @@ def get_cart_id():
 
 def create_cart():
     user_id = get_user_id()
-    
+
     query = "insert into cart (user_id) values('" + user_id + "')"
     db.executesql(query)
     db.commit()
@@ -76,19 +76,19 @@ def get_number_of_items_in_cart_no_json():
     cart_id = get_cart_id()
     query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
     result = db.executesql(query)
-    
+
     if result[0][0]:
         return int(result[0][0])
     else:
-        
+
         return 0
 
 
 def order_item_exists_in_cart(product_id):
     cart_id = get_cart_id()
-    
+
     query = "select * from order_item where product_id = '"+str(product_id)+"' and cart_id = '"+str(cart_id)+"'"
-    
+
     result = db.executesql(query)
     if result:
         response = True
@@ -104,7 +104,7 @@ def remove_from_cart():
     if order_item_exists_in_cart(product_id):
         query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
         db.executesql(query)
-        # 
+        #
         response = 1
     else:
         response =0
@@ -132,9 +132,10 @@ def create_purchase_order():
     sale_price = get_sale_price()
     credit_card_last_4 = card_number[-4:]
 
+    purchase_order_no = insert_po(customer_id, sale_price, credit_card_last_4)
+    update_order_items(purchase_order_no)
 
-
-    # return dict()
+    return json.dumps(dict(purchase_order_no=purchase_order_no))
 
 
 
@@ -153,7 +154,7 @@ def check_saved_user_data(name, address1, address2, zip, email):
                     user_data_changed = True
         else:
             user_data_changed = True
-        
+
     return user_data_changed
 
 
@@ -167,7 +168,6 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
 
     query = "select top 1 customer_id from po_customer order by customer_id desc"
     customer_id = db.executesql(query)[0][0]
-    print customer_id
     return customer_id
 
 def get_sale_price():
@@ -176,6 +176,24 @@ def get_sale_price():
     sale_price = db.executesql(query)[0][0]
     return sale_price
 
+
+def insert_po(customer_id, sale_price, credit_card_last_4):
+
+    query = "insert into purchase_order (customer_id, sale_price, credit_card_last_4) VALUES ('%s', '%s', '%s')"% (customer_id, sale_price, credit_card_last_4)
+    print "INSERT_PO",query
+    db.executesql(query)
+    db.commit()
+
+    query = "select top 1 purchase_order_no from purchase_order order by purchase_order_no desc"
+    purchase_order_no = db.executesql(query)[0][0]
+    return purchase_order_no
+
+def update_order_items(purchase_order_no):
+    cart_id = get_cart_id()
+    query = "update order_item set purchase_order_no = '%s' where cart_id = '%s' and status = 'active'"% (purchase_order_no, cart_id)
+    print query
+    db.executesql(query)
+    db.commit()
 
 def get_user_id():
     user_id = session.customer_session
@@ -190,11 +208,11 @@ def product():
 
 def checkout():
     cart_id = get_cart_id()
-    
+
     query = "select * from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     total = get_number_of_items_in_cart_no_json()
-    
+
     return dict(location=T('Dropshiping - Checkout'),items=result,total=total)
 
 #/////////////////////
@@ -300,7 +318,7 @@ def add_to_cart():
     product_id = str(request.vars.product_id)
     qty = str(request.vars.qty)
     cart_id = get_cart_id()
-    
+
     if cart_id != 0:
         if order_item_exists_in_cart(product_id):
             response = 0
