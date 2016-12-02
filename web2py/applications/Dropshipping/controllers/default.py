@@ -96,6 +96,33 @@ def remove_from_cart():
     else:
         response =0
 
+
+# ----------Order History-------------------------
+def create_purchase_order():
+    name = request.vars.full_name
+    address1 = request.vars.address
+    address2 = request.vars.address2
+    zip = request.vars.zip
+    email = request.vars.email
+    name_on_card
+    card_number
+    exp_month
+    exp_year
+    cvv
+
+
+
+
+
+def create_customer(name, address1, address2, city, zip, email):
+    query = "select * from customer where email = %s" % email
+    db.executesql(query)
+
+    query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s)"% (name, address1, address2, city, zip, email)
+    db.executesql(query)
+
+
+
 def get_user_id():
     user_id = session.customer_session
     return user_id
