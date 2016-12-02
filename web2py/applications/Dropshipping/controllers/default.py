@@ -8,6 +8,7 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 import json
+
 #/////////////////////
 #INDEX PAGE
 #/////////////////////
@@ -70,7 +71,6 @@ def create_cart(user_id):
     cart_id = db.executesql(query)
     return str(cart_id[0][0])
 
-
 def order_item_exists_in_cart(product_id):
     cart_id = get_cart_id()
     print cart_id
@@ -82,7 +82,6 @@ def order_item_exists_in_cart(product_id):
     else:
         response = False
     return response
-
 
 def remove_from_cart():
     product_id = str(request.vars.product_id)
@@ -97,11 +96,7 @@ def remove_from_cart():
     else:
         response =0
 
-
-
-
 def get_user_id():
-
     user_id = session.customer_session
     return user_id
 
@@ -119,12 +114,12 @@ def checkout():
     total = get_number_of_items_in_cart_no_json()
     return dict(location=T('Dropshiping - Checkout'),items=result,total=total)
 
-
 #/////////////////////
 #CONTACT PAGE
 #/////////////////////
 def contact():
-    return dict()
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
 
 #/////////////////////
 #DEFAULT PY FUNCTIONS  ////////////////////////////////////////////////////////////////
@@ -164,7 +159,6 @@ def user():
     """
     total = get_number_of_items_in_cart_no_json()
     return dict(form=auth(),total=total)
-
 
 """
 def checkout():
@@ -244,6 +238,4 @@ def order_item_exists_in_cart(product_id):
     else:
         response = False
     return response
-
-
 """
