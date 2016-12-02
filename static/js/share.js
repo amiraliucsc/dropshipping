@@ -195,48 +195,47 @@ $('input#checkout_btn').on('click',function (e) {
 		return false;
 	}
 	if(count == 8){
-
+		var city = '';
+		var state = '';
 		$.ajax({
 			method: 'POST',
 			url: 'http://maps.googleapis.com/maps/api/geocode/json?address='+$('#zip').val()+'&sensor=true',
 			async: true,
 		}).done(function (respond) {
-			var city = respond['results'][0]['address_components'][1]['long_name']
-			var state = respond['results'][0]['address_components'][3]['short_name']
-		})
-
-		var $customer_info = {
-			'full_name': $('#full_name').val(),
-			'address1': $('#address1').val(),
-			'address2' : $('#address2').val(),
-			'city': city,
-			'state' : state,
-			'zip': $('#zip').val(),
-			'card_number': $('#cc_number').val(),
-			'month' : $('#cc_exp_month').has(':selected').val(),
-			'year' : $('#cc_exp_year').has(':selected').val(),
-			'name_on_card' : $('#cc_name').val(),
-			'cvv' : $('#cvv').val(),
-			'email' : $('#email').val(),
-			// 'cart_id' : cart_id
-
-		};
-
-		var jsonString = JSON.stringify($customer_info);
-		$.ajax({
-			method: 'POST',
-			url: '/Dropshipping/default/create_purchase_order',
-			async: true,
-			data: {
-				data : jsonString
+			city = respond['results'][0]['address_components'][1]['long_name']
+			state = respond['results'][0]['address_components'][3]['short_name']
+			var $customer_info = {
+				'full_name': $('#full_name').val(),
+				'address1': $('#address1').val(),
+				'address2' : $('#address2').val(),
+				'city': city,
+				'state' : state,
+				'zip': $('#zip').val(),
+				'card_number': $('#cc_number').val(),
+				'month' : $('#cc_exp_month').has(':selected').val(),
+				'year' : $('#cc_exp_year').has(':selected').val(),
+				'name_on_card' : $('#cc_name').val(),
+				'cvv' : $('#cvv').val(),
+				'email' : $('#email').val(),
 			}
-		})
-			.done(function (respond) {
-				respond = jQuery.parseJSON(respond);
-				if(respond['stock_check'] == 'oos'){
-					out_of_stock_error(respond['oos_items']);
+			console.log($customer_info);
+			var jsonString = JSON.stringify($customer_info);
+			$.ajax({
+				method: 'POST',
+				url: '/Dropshipping/default/create_purchase_order',
+				async: true,
+				data: {
+					data : jsonString
 				}
-			});
+			})
+				.done(function (respond) {
+					respond = jQuery.parseJSON(respond);
+					if(respond['stock_check'] == 'oos'){
+						out_of_stock_error(respond['oos_items']);
+					}
+				});
+
+		})
 
 	}else{
 		show_validation()
