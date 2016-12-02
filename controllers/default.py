@@ -103,6 +103,8 @@ def create_purchase_order():
     name = data['full_name']
     address1 = data['address1']
     address2 = data['address2']
+    state = data['state']
+    city = data['city']
     zip = data['zip']
     email = data['email']
     name_on_card = data['cc_name']
@@ -112,20 +114,33 @@ def create_purchase_order():
     cvv = data['cvv']
 
 
+def check_saved_user_data(name, address1, address2, zip, email):
+    user_data = (name, address1, address2, zip, email)
+    user_data_changed = False
+    query = "select full_name, address_1, address_2, zip_code, email from user_info where user_id = %s"% auth.user_id
+
+    result = db.executesql(query)
+    if result:
+        for i in range(len(user_data)):
+            if user_data[i] != result[0][i]:
+                user_data_changed = True
+    else:
+        user_data_changed = True
+        
+    return user_data_changed
 
 
-def get_customer_id(name, address1, address2, city, zip, email):
+
+def get_customer_id(name, address1, address2, city, state, zip, email):
     if auth.user_id:
-        query = "select "
+        query = "select * from"
 
-    query = "select customer_id from customer where email = %s" % email
-    result = db.executesql(query, as_dict=True)
     if result:
         customer_id = result[0]['email']
         print(customer_id)
     else:
-        query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s)" % (
-        name, address1, address2, city, zip, email)
+        query = "insert into customer (full_name, address_1, address_2, city, state, zip_code) VALUES (%s, %s, %s, %s, %s, %s, %s)" % (
+        name, address1, address2, city, state, zip, email)
         db.executesql(query)
 
 
