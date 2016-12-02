@@ -7,28 +7,28 @@
 {{else:}}
 <div id="check_product_review">
     <div class="checkout_title">Review Cart</div>
-    <div class="check_individual_product" id="order_id_260">
-        <div class="product_img">
-            <img id="260" src="http://dev.joygateway.com/assets/img/products/LELO_Gigi_2/98310-Lelo-Gigi2-Deeprose-MAIN.jpg">                        </div>
-        <div class="product_info" id="product_in_cart_15">
-        <div class="product_title">
-            <span class="info_title"> LELO Gigi 2</span>
-            <input type="text" class="hidden" id="p_id" value="15">
-            <input type="text" class="hidden" id="p_info_id" value="11">
-            <span id="139" class="info_price"> $139</span>
+    {{for item in items:}}
+        <div class="check_individual_product" id="order_id_{{=item['product_id']}}">
+            <div class="product_img">
+                <img id="260" src="/Dropshipping/static/images/Product/{{=item['image_path']}}.jpg">
+            </div>
+            <div class="product_info">
+                <div class="product_title">
+                    <span class="info_title"> {{=item['title']}}</span>
+                    <span class="info_price"> ${{=item['price']}}</span>
+                </div>
+
+                <div class="product_qty">
+                    Quantity: {{=item['qty']}}
+                <div onclick="remove_from_cart( {{=item['product_id']}} , {{=item['qty']}})" class="checkout_remove"></div>
+                </div>
+            </div>
         </div>
-        <div id="product_color_260" class="product_color">
-            <span onclick="change_color_checkout_page(this,15)" class="color_choose" id="Grey" style="vertical-align: middle;background-color:#9aa2af"></span><span onclick="change_color_checkout_page(this,15)" class="color_choose" id="Pink" style="vertical-align: middle;background-color:#ddabb6"></span><span onclick="change_color_checkout_page(this,15)" class="color_choose selected_img" id="Rose" style="vertical-align: middle;background-color:#992274"></span><span onclick="change_color_checkout_page(this,15)" class="color_choose" id="Turquoise" style="vertical-align: middle;background-color:#00a8c9"></span>
-        </div>
-        <div class="product_qty">
-            Quantity: 555
-        <div class="checkout_remove"></div>
-        </div>
+    {{pass}}
     </div>
-</div>
     <div id="promotion_row">
             <span class="data_entry">
-                <input style="width: 200px" type="text" placeholder="Promotion Code">
+                <input style="width: 200px;height: 36px" type="text" placeholder="Promotion Code">
                 <input type="button" value="Apply" style="width: 100px">
             </span>
     </div>
