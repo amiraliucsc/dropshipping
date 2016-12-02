@@ -112,69 +112,69 @@ def remove_from_cart():
 
 # ----------Order History-------------------------
 def create_purchase_order():
-    
-    data = json.loads(request.vars.data)
-    
 
-    name = data['full_name']
-    
-    address1 = data['address1']
-    
-    address2 = data['address2']
-    
-    state = data['state']
-    
-    city = data['city']
-    
-    zip = data['zip']
-    
-    email = data['email']
-    
-    name_on_card = data['name_on_card']
-    
-    card_number = data['card_number']
-    
-    exp_month = data['month']
-    
-    exp_year = data['year']
-    
-    cvv = data['cvv']
-    
+    name = request.vars.full_name
+    address1 = request.vars.address1
+    address2 = request.vars.address2
+    state = request.vars.state
+    city = request.vars.city
+    zip = request.vars.zip
+    email = request.vars.email
+    name_on_card = request.vars.name_on_card
+    card_number = request.vars.card_number
+    exp_month = request.vars.month
+    exp_year = request.vars.year
+    cvv = request.vars.cvv
 
-    # customer_id = get_customer_id(name, address1, address2, city, state, zip, email)
-    # user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
-    return dict()
+    user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
+
+    customer_id = get_customer_id(name, address1, address2, city, state, zip, email)
+    sale_price = get_sale_price()
+    credit_card_last_4 = card_number[-4:]
+
+
+
+    # return dict()
 
 
 
 
 def check_saved_user_data(name, address1, address2, zip, email):
-    # user_data = (name, address1, address2, zip, email)
+    user_data = (name, address1, address2, zip, email)
     user_data_changed = False
 
-    # if auth.user_id:
-    #     query = "select full_name, address_1, address_2, zip_code, email from user_info where user_id = %s"% auth.user_id
-    #     
-    #     result = db.executesql(query)
-    #     if result:
-    #         for i in range(len(user_data)):
-    #             if user_data[i] != result[0][i]:
-    #                 user_data_changed = True
-    #     else:
-    #         user_data_changed = True
+    if auth.user_id:
+        query = "select full_name, address_1, address_2, zip_code, email from user_info where user_id = %s"% auth.user_id
+
+        result = db.executesql(query)
+        if result:
+            for i in range(len(user_data)):
+                if user_data[i] != result[0][i]:
+                    user_data_changed = True
+        else:
+            user_data_changed = True
         
     return user_data_changed
 
 
 
-# def get_customer_id(name, address1, address2, city, state, zip, email):
-#
-#     query = "insert into customer (full_name, address_1, address_2, city, state, zip_code, email) VALUES (%s, %s, %s, %s, %s, %s, %s)" % (
-#     name, address1, address2, city, state, zip, email)
-#     customer_id = db.executesql(query)
-#     query = "select top 1 customer_id from customer order by customer_id desc"
-#     
-#     return 3
+def get_customer_id(name, address1, address2, city, state, zip, email):
+
+    query = "insert into po_customer (full_name, address_1, address_2, city, state, zip_code, email) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (
+    name, address1, address2, city, state, zip, email)
+    db.executesql(query)
+    db.commit()
+
+    query = "select top 1 customer_id from po_customer order by customer_id desc"
+    customer_id = db.executesql(query)[0][0]
+    print customer_id
+    return customer_id
+
+def get_sale_price():
+    cart_id = get_cart_id()
+    query = "select sum(price) from product_order_item where cart_id = %s"% cart_id
+    sale_price = db.executesql(query)[0][0]
+    return sale_price
 
 
 def get_user_id():
