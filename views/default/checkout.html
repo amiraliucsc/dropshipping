@@ -15,7 +15,7 @@
             <div class="product_info">
                 <div class="product_title">
                     <span class="info_title"> {{=item['title']}}</span>
-                    <span class="info_price"> ${{=item['price']}}</span>
+                    <span class="info_price"> ${{="{0:.2f}".format(item['sale_price'])}}</span>
                 </div>
 
                 <div class="product_qty">
