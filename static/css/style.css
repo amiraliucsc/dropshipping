@@ -366,19 +366,32 @@ body{
 #review-container{
 	padding:10px;
 	background: #eeeeee;
-	border-radius:5px;
-	margin-bottom:5px;
+	margin-bottom:1px;
 }
 
 #add_review_container{
-	width: 56%;
-	background:red;
-	border-radius:5px;
+	width: 100%;
+	max-width: 800px;
 }
 
 #customer_review_txt{
 	width:100%;
-	border-radius:5px;
+	height: 200px;
+}
+
+#add_review_name {
+	padding: 8px;
+	width: 100%;
+}
+
+.btn_save {
+	width: 175px;
+	border-radius: 5px;
+	padding: 10px 5px;
+	background: #ff5a5f;
+	color: white;
+	border: none;
+	margin-top: 10px;
 }
 
 /************cart css****************/
