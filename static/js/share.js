@@ -99,6 +99,10 @@ function load_cart_number() {
 	});
 }
 
+$('.logo-container').on('click',function (e) {
+	window.location.href = '/Dropshipping/default';
+})
+
 
 function remove_from_cart(pid,qty){
     var current_num = $('#cart_number').html();

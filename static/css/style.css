@@ -396,6 +396,10 @@ body{
 	width: 100%;
 }
 
+.logo-container{
+	cursor: pointer;
+}
+
 .innercart-description-container {
 	width: 65%;
 }
