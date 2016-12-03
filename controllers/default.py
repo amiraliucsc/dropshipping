@@ -26,13 +26,6 @@ def index():
     computers = get_all_products_by_tag_computer()
     televisions = get_all_products_by_tag_television()
     gaming = get_all_products_by_tag_gaming()
-    print("\n")
-    print(computers)
-    print("\n")
-    print(televisions)
-    print("\n")
-    print(gaming)
-    print("\n")
 
     return dict(message=T("Welcome to web2py!" + title),
                 total=total,computers=computers,
@@ -232,7 +225,6 @@ def insert_po(customer_id, subtotal, credit_card_last_4):
 def update_order_items(purchase_order_no):
     cart_id = get_cart_id()
     query = "update order_item set purchase_order_no = '%s' where cart_id = '%s' and status = 'active'"% (purchase_order_no, cart_id)
-    print query
     db.executesql(query)
     db.commit()
 
@@ -284,8 +276,6 @@ def order_history():
 
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
-    print data
-    print "\n"
     return dict(total=total, data=data)
     total = get_number_of_items_in_cart_no_json()
     return dict(location=T('Dropshiping - Checkout'), total=total, data=data)
