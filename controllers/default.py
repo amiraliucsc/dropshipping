@@ -216,7 +216,7 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
 
 def get_subtotal():
     cart_id = get_cart_id()
-    query = "select sum(price) from order_item where cart_id = %s"% cart_id
+    query = "select sum(sale_price) from order_item where cart_id = %s"% cart_id
     subtotal = db.executesql(query)[0][0]
     return subtotal
 
