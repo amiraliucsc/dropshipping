@@ -264,16 +264,16 @@ def add_review():
     name = request.vars.name
     review = request.vars.review
     stars = request.vars.stars
+    query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
+    db.executesql(query)
 
 
 
 def order_history():
     po_num = request.vars.purchase_order_no
-
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     data = db.executesql(query, as_dict=True)
     price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
-
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total, data=data)
