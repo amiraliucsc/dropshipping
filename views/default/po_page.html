@@ -4,97 +4,94 @@
 <div id="order_container">
     <div class="po">
         <div class="po_order">
-            <h1 class="po_title"> Final Details for Order purchase_order_no </h1>
-            <ul class="po_detail">
-                <li> <b> ORDER PLACED ON:</b> sale_date </li>
-                <li> <b> TOTAL: </b> total_price </li>
-                <li> <b> SHIP TO: </b> full_name </li>
-                <li> <b> INVOICE: </b> purchase_order_no </li>
+            <h1 class="po_title" style="text-align: center"> Final Details for Order {{=po_info[0]['purchase_order_no']}} </h1>
+            <ul class="po_detail" style="text-align: center">
+                <li> <b> ORDER PLACED ON:</b> {{=po_info[0]['sale_date']}} </li>
+                <li> <b> INVOICE: </b> {{=po_info[0]['purchase_order_no']}} </li>
+                <li> <b> ORDER TOTAL: </b> {{=po_info[0]['total_price']}} </li>
+                <li> <b> Shipped on {{=po_info[0]['sale_date']}} </b> </li>
             </ul>
-
-            <h2 class="po_title"> <b> Shipped on sale_date </b> </h2>
             <br>
-            <div class="po_order_list po_order_misc">
+            <h2 class="po_title"> <b> Purchased Product </b> </h2>
+            <div class="po_order_list ">
+
                 <table>
+                    <div style="margin-bottom: 50px;">
                     <tr>
-                        <th class="po_item_order"> <h3> <b> Item Order </b> </h3> </th>
-                        <th class="po_item_price"> <h3> <b> Price </b> </h3> </th>
+                        <th class="po_itemList"> <h3> <b> Item Order </b> </h3> </th>
+                        <th class="po_items"> <h3> <b> Price </b> </h3> </th>
+                        <th class="po_items"> <h3> <b> Quantity </b> </h3> </th>
                     </tr>
                         <tr>
-                            <td class="po_item_order"> Product Title </td>
-                            <td class="po_item_price"> Product Price </td>
+                        {{for i in range (0,len(product_list)):}}
+                            <td class="po_itemList"> {{=product_list[i]['title']}} </td>
+                            <td class="po_items"> {{=product_list[i]['sale_price']}} </td>
+                            <td class="po_items" style="text-align: center"> {{=product_list[i]['qty']}} </td>
                         </tr>
                         <tr class="po_order_item">
-                            <td colspan="2"> Apple </td>
+
+                            <td colspan="3"> {{=product_list[i]['manufacturer']}} </td>
                         </tr>
+                        {{pass}}
+                    </div>
+
                 </table>
+
             </div>
             <br>
-            <div class="po_order_list po_order_misc">
-                      <ul class="po_order_misc_info_1">
-                          <li> <b> Shipping Address </b> </li>
-                          <li> full_name </li>
-                          <li>  address_1 </li>
-                          <li> In Yo City, CA 00000</li>
-                          <li> United States</li>
-                          <li> <br></li>
-                          <li> <b> Shipping Speed: </b> </li>
-                          <li>  shipping_method </li>
-                      </ul>
-                        <ul class="po_order_misc_info_2">
-                            <li> Item(s) Subtotal: subtotal </li>
-                            <li> Shipping & Handling: shipping_price </li>
-                            <li class="po_misc"> - - - - </li>
-                            <li> Total before tax: <span class="po_before_tax"> $125.09 </span> </li>
-                            <li> Sales tax: tax </li>
-                            <li class="po_misc"> - - - - </li>
-                            <li> <br> </li>
-                            <li> <b> Total for This Shipment: total_price </b></li>
-                            <li class="po_misc"> - - - - </li>
-                        </ul>
+            <h2 class="po_title"> <b> Shipping </b> </h2>
+            <div class="po_order_list ">
+                <ul class="po_order_misc_info_1">
+                    <li> <b> Shipping Address </b> </li>
+                    <li> {{=po_info[0]['full_name']}} </li>
+                    <li>  {{=po_info[0]['address_1']}} </li>
+                    <li> {{=po_info[0]['city']}}, {{=po_info[0]['state']}} {{=po_info[0]['zip_code']}}</li>
+                    <li> <br> </li>
+                    <li> <br> </li>
+                    <li> <br> </li>
+                    <li> <b> Shipping Speed: </b> </li>
+                    <li>  {{=po_info[0]['shipping_method']}} </li>
+                </ul>
+                    <ul class="po_order_misc_info_2">
+                        <li> Item(s) Subtotal: {{=po_info[0]['subtotal']}} </li>
+                        <li> Shipping & Handling: {{=po_info[0]['shipping_price']}} </li>
+                        <li class="po_misc"> - - - - </li>
+                        <li> Total before tax: {{=po_info[0]['subtotal']}} </li>
+                        <li> Sales tax: {{=po_info[0]['tax']}} </li>
+                        <li class="po_misc"> - - - - </li>
+                        <li> <br> </li>
+                        <li> <b> Total for This Shipment: {{=po_info[0]['total_price']}} </b></li>
+                        <li class="po_misc"> - - - - </li>
+                    </ul>
             </div>
             <br>
-            <br>
-            <div class="po_payment_detail">
-                <h2 class="po_title"> <b> Payment Information </b> </h2>
+            <h2 class="po_title"> <b> Payment Information </b> </h2>
+            <div class="po_order_list">
                 <div class="po_order_misc">
                           <ul class="po_order_misc_info_1">
                               <li> <b> Payment Method: </b> </li>
-                              <li> Card ending:  credit_card_last_4 </li>
-
-                          </ul>
-                            <ul class="po_order_misc_info_2">
-                                <li> Item(s) Subtotal: subtotal </li>
-                                <li> Shipping & Handling:  shipping_price </li>
-                                <li class="po_misc"> - - - - </li>
-                                <li> Total before tax: <span class="po_before_tax"> $125.09 </span> </li>
-                                <li>Estimated tax to be collected:  tax </li>
-                                <li class="po_misc"> - - - - </li>
-                            </ul>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="po_order_misc">
-                          <ul class="po_order_misc_info_1">
+                              <li> Card ending:  {{=po_info[0]['credit_card_last_4']}} </li>
+                              <li> <br> </li>
                               <li> <b> Billing Address </b> </li>
-                              <li> full_name </li>
-                              <li> address_1 </li>
-                              <li> In Yo City, CA 00000</li>
-                          <li> United States</li>
+                              <li> {{=po_info[0]['full_name']}} </li>
+                              <li> {{=po_info[0]['address_1']}} </li>
+                              <li> {{=po_info[0]['city']}}, {{=po_info[0]['state']}} {{=po_info[0]['zip_code']}}</li>
                           </ul>
                             <ul class="po_order_misc_info_2">
-                                <li> <b> Grand Total: total_price </b> </li>
+                                <li> Item(s) Subtotal: {{=po_info[0]['subtotal']}} </li>
+                                <li> Shipping & Handling:  {{=po_info[0]['shipping_price']}} </li>
+                                <li class="po_misc"> - - - - </li>
+                                <li> Total before tax: {{=po_info[0]['subtotal']}} </li>
+                                <li>Estimated tax to be collected:  {{=po_info[0]['tax']}} </li>
+                                <li class="po_misc"> - - - - </li>
+                                 <li> <b> Grand Total: {{=po_info[0]['total_price']}} </b> </li>
                             </ul>
                     </div>
-                    <br>
-                    <br>
                     <br>
                     <div class="po_order_misc" style="text-align: center">
                         <ul>
-                            <li> <b> Credit Card Transactions </b> credit_card_last_4
-                                : sale_date : total_price </li>
+                            <li> <b> Credit Card Transactions </b> {{=po_info[0]['credit_card_last_4']}}
+                                : {{=po_info[0]['sale_date']}} : total_price </li>
                         </ul>
                     </div>
             </div>

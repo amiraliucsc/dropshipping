@@ -578,15 +578,10 @@ body{
 h1.po_title{
 	color: #9d1e15;
 }
-.po_title{
-
-}
 
 .po_order{
 	margin: 0 auto;
 	width: 60%;
-	padding-top: 50px;
-	padding-bottom: 50px;
 	padding: 5px;
 }
 
@@ -600,45 +595,38 @@ h1.po_title{
 	padding-bottom: 25px;
 }
 
+
 .po_order_list{
 	border: 1px solid grey;
-	padding: 15px;
+	padding: 50px;
 }
 
-.po_item_order{
-	width: 1000px;
-	padding-bottom: 5px;
+.po_itemList{
+	width: 500px;
 }
 
-.po_item_price{
-	padding-bottom: 5px;
+.po_items{
+	width: 200px;
 }
 
 .po_order_misc {
-	margin-top: 50px;
-	padding-bottom: 10px;
-	margin: 0 auto;
-	width: 70%;
+
 }
 
 ul.po_order_misc_info_1{
 	display: inline-block;
-	float: left;
 }
 
 ul.po_order_misc_info_2{
 	display: inline-block;
 	float: right;
+
 }
 
 .po_misc{
-	text-align: right;
+	text-align: center;
 }
 
-.po_payment_detail{
-	margin-top: 20px;
-	padding-botom: 10px;
-}
 
 /***********************Order History*********************/
 
