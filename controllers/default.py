@@ -109,7 +109,6 @@ def remove_from_cart():
     else:
         response =0
 
-
 # ----------Order History-------------------------
 def create_purchase_order():
 
@@ -233,6 +232,39 @@ def contact():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
 
+def contact_post():
+    _name = request.vars.name
+    _email = request.vars.email
+    _message = request.vars.message
+
+    query = "insert into contacts(name, email, message) VALUES('"+ str(_name) +"','"+ str(_email) +"','"+ str(_message) +"')"
+    db.executesql(query)
+
+    redirect(URL('index'))
+
+def contact_get():
+    return dict()
+
+
+#/////////////////////
+#SEARCH PY FUNCTIONS  ////////////////////////////////////////////////////////////////
+#/////////////////////
+def search():
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
+
+def get_products_view(find):
+    query=""
+    if find:
+        query = "select * from product_view where title='"+ find +"'"
+    else:
+        query = "select * from product_view"
+
+    find_results = db.executesql(query, as_dict=True)
+
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total,find_results=find_results)
+
 #/////////////////////
 #DEFAULT PY FUNCTIONS  ////////////////////////////////////////////////////////////////
 #/////////////////////
@@ -298,11 +330,7 @@ def get_products_by_location():
 def contact():
     return dict()
 
-def contact_post():
-    return dict()
 
-def contact_get():
-    return dict()
 
 #/////////////////////
 #CART FUNCTIONS

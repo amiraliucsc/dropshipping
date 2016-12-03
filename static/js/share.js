@@ -258,3 +258,14 @@ function check_email_validation($id){
 		return false;
 	}
 }
+
+$(document).mouseup(function (e)
+{
+    var container = $("#cart_alert");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        close_add_cart();
+    }
+});
