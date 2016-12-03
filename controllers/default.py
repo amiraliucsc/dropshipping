@@ -206,7 +206,8 @@ def product():
     return dict(total=total)
 
 def order_history():
-    return dict()
+    total = get_number_of_items_in_cart_no_json()
+    return dict(location=T('Dropshiping - Checkout'), total=total)
 
 def get_total_cart_price():
     cart_id = get_cart_id()
