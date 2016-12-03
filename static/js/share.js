@@ -72,11 +72,30 @@ function remove_from_cart(pid,qty){
 	$.ajax({
 		 type: "POST",
 		 url: "/Dropshipping/default/remove_from_cart?product_id="+pid
-	 })
-//	 .done(function (e) {
-//		 respond =  JSON.parse(e);
-//		 $('#cart_number').html(respond['total'])
-//	});
+	 }).done(function () {
+		$.ajax({
+		 type: "POST",
+		 url: "/Dropshipping/default/get_total_cart_price_json"
+	 }).done(function (respond) {
+			respond = JSON.parse(respond)
+			$('#total_price').html(respond['total_price'])
+		}).done(function () {
+			$.ajax({
+		 		type: "POST",
+		 		url: "/Dropshipping/default/get_number_of_items_in_cart"
+	 		}).done(function (respond) {
+
+				respond = JSON.parse(respond)
+				$('#number_of_items').html(respond['total'])
+
+			})
+			
+		})
+	})
+
+
+
+
 }
 
 $('#check_product_payment input.required_card_num').on('keyup',function (e) {

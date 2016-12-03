@@ -78,7 +78,7 @@ def get_number_of_items_in_cart():
     cart_id = get_cart_id()
     query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
     result = db.executesql(query)
-    if result:
+    if result[0][0] is not None:
         return json.dumps({'total': int(result[0][0])})
     else:
         return json.dumps(dict(total=0))
@@ -216,18 +216,39 @@ def product():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
 
+def order_history():
+    total = get_number_of_items_in_cart_no_json()
+    return dict(location=T('Dropshiping - Checkout'), total=total)
+
+def get_total_cart_price_json():
+    total = 0
+    cart_id = get_cart_id()
+    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    result = db.executesql(query, as_dict=True)
+    if result[0]['total_price'] is not None:
+        total = str(result[0]['total_price'])
+
+    return json.dumps(dict(total_price=total))
+
+
+def get_total_cart_price():
+    cart_id = get_cart_id()
+    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    result = db.executesql(query, as_dict=True)
+    if result:
+        return str(result[0]['total_price'])
+    else:
+        return 0
+
 def checkout():
     cart_id = get_cart_id()
-
     query = "select * from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     total = get_number_of_items_in_cart_no_json()
+    total_price = get_total_cart_price()
+    return dict(location=T('Dropshiping - Checkout'),items=result,total=total, total_price = total_price)
 
-    return dict(location=T('Dropshiping - Checkout'),items=result,total=total)
 
-#/////////////////////
-#CONTACT PAGE
-#/////////////////////
 def contact():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
