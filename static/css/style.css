@@ -538,10 +538,19 @@ h1.po_title{
 	padding: 5px;
 }
 
+.po_order_item{
+	border-bottom: dotted indianred;
+}
+
 .po_detail {
 	font-size: 25px;
 	padding-top: 25px;
 	padding-bottom: 25px;
+}
+
+.po_order_list{
+	border: 1px solid grey;
+	padding: 15px;
 }
 
 .po_item_order{
@@ -601,6 +610,48 @@ ul.po_order_misc_info_2{
 a.purchase_order {color:darkred; background-color:transparent; text-decoration:none}
 a.purchase_order:hover   {color:black; background-color:transparent; text-decoration:underline}
 
+/***********************CHECKOUT*******************/
+.checkout-page-products-list {
+	width: 100%;
+	background: dimgrey;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.checkout-page-products-list-container {
+	width: 1000px;
+	background: tomato;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+#check_product_review {
+	background: blue;
+	width: 50%;
+	padding: 20px;
+}
+
+.checkout-page-payment-and-address {
+	background: orange;
+	padding: 20px;
+	width: 50%;
+}
+
+.check_shipping {
+	background: red;
+}
+
+.check_payment {
+	background: teal;
+}
+
+.data_entry input {
+	width: 100%;
+	margin: 10px 0px;
+}
 
 /***********************SEARCH*********************/
 #search_icon{

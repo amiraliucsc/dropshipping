@@ -11,10 +11,20 @@ import json
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 
+#/////////////////////
+#PRODUCTS PAGE
+#/////////////////////
 def products():
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+    selective_products = get_selective_products(None)
+    return dict(total=total, selective_products=selective_products)
 
+def get_selective_products(p_list):
+    query="select * from product_view"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
+
+#/////////////////////
 #INDEX PAGE
 #/////////////////////
 def index():
@@ -273,7 +283,7 @@ def order_history():
     po_num = request.vars.purchase_order_no
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     data = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+    price_list = ("total_price", "subtotal", "subtotal", "tax", "shipping_price")
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total, data=data)
@@ -293,7 +303,7 @@ def get_total_cart_price_json():
 
 def get_total_cart_price():
     cart_id = get_cart_id()
-    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result:
         return str(result[0]['total_price'])
@@ -360,16 +370,27 @@ def po_page():
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     po_info = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+    price_list = ("total_price", "subtotal", "tax", "shipping_price")
 
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
+    product_list = get_order_items()
+    price_list = ("sale_price")
+    fix_price(product_list,price_list)
+
     print po_info
     print "\n"
-    return dict(total=total, po_info=po_info)
+    print product_list
+    print "\n"
+    return dict(total=total, po_info=po_info, product_list=product_list)
 
 
+def get_order_items():
+    cart_id = get_cart_id()
 
+    query = "select * from product_order_item where cart_id = '%s'"% cart_id
+    product_list = db.executesql(query)
+    return product_list
 
 def fix_price(results, fields):
     for i in range(len(results)):
