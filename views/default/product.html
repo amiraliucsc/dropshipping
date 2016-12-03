@@ -14,16 +14,16 @@
         <div class="product-outer-wrapper">
             <div class="product-container">
                 <div class="product-image-carousel">
-                    <img width="400"  src="/Dropshipping/static/images/Product/{{=product[0]['image_path']}}.jpg" alt="Owl Image">
+                    <img width="400"  src="/Dropshipping/static/images/Product/{{=product['image_path']}}.jpg" alt="Owl Image">
                 </div>
 
                 <div class="product-item-description-container">
-                    <div class="product-item-description-title"><h3>{{=product[0]['title']}}</h3></div>
+                    <div class="product-item-description-title"><h3>{{=product['title']}}</h3></div>
                     <div class="item-number"></div>
                     <div class="rating"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
                     <div class="in-stock"><img alt="approve, approved, check, good, ok, tick, yes icon" class="tiled-icon" style="max-width: 15px; max-height: 15px;" src="https://cdn0.iconfinder.com/data/icons/free-misc-icon-set-1/512/check-128.png"> In Stock</div>
-                    <div class="product-price"><strong>${{=product[0]['price']}}</strong></div>
-                    <div id="{{=product[0]['product_id']}}" class="add-to-cart" style="width: 175px;"><strong>Add to Cart</strong></div>
+                    <div class="product-price"><strong>${{=product['price']}}</strong></div>
+                    <div id="{{=product['product_id']}}" class="add-to-cart" style="width: 175px;"><strong>Add to Cart</strong></div>
                 </div>
 
             </div>
@@ -31,7 +31,7 @@
                 <div class="product-item-description-title">
                         <h3>Item Description</h3>
                     </div>
-                    {{=product[0]['description']}}
+                    {{=product['description']}}
             </div>
         </div>
 
