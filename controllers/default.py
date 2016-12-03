@@ -31,10 +31,10 @@ def products():
 def get_selective_products(p_list):
     print p_list
     if p_list:
-        query_end = " where product_id in %s"% p_list
+        query_end = " and product_id in %s"% p_list
     else:
         query_end = ""
-    query="select * from product_view" + query_end
+    query="select * from product_view where image_default = 1" + query_end
     print "QUERY", query
     all_products = db.executesql(query, as_dict=True)
     return all_products
@@ -45,6 +45,8 @@ def get_product_list(operation, search_string):
     return product_list
 
 
+def category_search(search_string):
+    return
 
 def product_search(search_string):
     query = "select product_id from product_tag_association where title LIKE '%" + search_string + "%' or description LIKE '%" + search_string + "%' or manufacturer LIKE '%" + search_string + "%' or tag_name LIKE '%" + search_string + "%'"
