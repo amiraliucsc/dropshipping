@@ -9,25 +9,51 @@
 # -------------------------------------------------------------------------
 import json
 import locale
+from urllib import unquote
 locale.setlocale( locale.LC_ALL, '' )
 
 #/////////////////////
 #PRODUCTS PAGE
 #/////////////////////
 def products():
-    search_string = request.vars.search_string
-    opt = request.vars.opt
 
-    print search_string
-    print opt
+    operation = request.vars.opt
+    search_string = request.vars.search_string
+    if operation:
+        product_list = get_product_list(operation, search_string)
+    else:
+        product_list = None
+
     total = get_number_of_items_in_cart_no_json()
-    selective_products = get_selective_products(None)
+    selective_products = get_selective_products(product_list)
     return dict(total=total, selective_products=selective_products)
 
 def get_selective_products(p_list):
-    query="select * from product_view"
+    print p_list
+    if p_list:
+        query_end = " where product_id in %s"% p_list
+    else:
+        query_end = ""
+    query="select * from product_view" + query_end
+    print "QUERY", query
     all_products = db.executesql(query, as_dict=True)
     return all_products
+
+def get_product_list(operation, search_string):
+    if operation == "search":
+        product_list = product_search(search_string)
+    return product_list
+
+
+
+def product_search(search_string):
+    query = "select product_id from product_tag_association where title LIKE '%" + search_string + "%' or description LIKE '%" + search_string + "%' or manufacturer LIKE '%" + search_string + "%' or tag_name LIKE '%" + search_string + "%'"
+    result = db.executesql(query)
+    p_list = []
+    for i in range(len(result)):
+        p_list.append(str(result[i][0]))
+    p_list = str(p_list).replace("[","(").replace("]",")")
+    return p_list
 
 #/////////////////////
 #INDEX PAGE
