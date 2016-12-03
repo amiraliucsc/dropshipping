@@ -40,6 +40,7 @@ def get_selective_products(p_list):
     return all_products
 
 def get_product_list(operation, search_string):
+    product_list = ""
     if operation == "search":
         product_list = product_search(search_string)
     return product_list
