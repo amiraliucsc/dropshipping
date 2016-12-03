@@ -257,7 +257,7 @@ def get_reviews(product_id):
     query = "select * from review where product_id = '%s'"% product_id
     reviews = db.executesql(query, as_dict=True)
 
-    query = "select AVG(stars) from review where product_id = '%s' group by product_id"% product_id
+    query = "select AVG(stars) as avg from review where product_id = '%s' group by product_id"% product_id
     average_stars = db.executesql(query, as_dict=True)
 
     return (reviews, average_stars)
@@ -271,8 +271,19 @@ def add_review():
 
 
 def order_history():
+    po_num = request.vars.purchase_order_no
+
+    query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
+    data = db.executesql(query, as_dict=True)
+    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+
+    fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
-    return dict(location=T('Dropshiping - Checkout'), total=total)
+    print data
+    print "\n"
+    return dict(total=total, data=data)
+    total = get_number_of_items_in_cart_no_json()
+    return dict(location=T('Dropshiping - Checkout'), total=total, data=data)
 
 def get_total_cart_price_json():
     total = 0
@@ -349,6 +360,8 @@ def po_page():
 
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
+    print data
+    print "\n"
     return dict(total=total, data=data)
 
 

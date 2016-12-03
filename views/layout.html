@@ -53,11 +53,7 @@
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <!-- Navbar ======================================= -->
-    <nav>
-        <div style="background:#2d2d2d; text-align:right;">
 
-        </div>
-    </nav>
     <!-- Masthead ===================================== -->
     {{block header}}
 		<!-- fixed add to cart alert -->
@@ -88,7 +84,16 @@
             </div>
 
             <div class="header-area" style="width: 100%; height: 125px; background-color: #2d2d2d; display:flex; align-items: center; padding: 20px;" >
-                <div class="logo-container"><a href="{{=URL('default','index')}}"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></a></div>
+                {{if auth.user:}}
+                    <div id="user_welcome">Welcome! </div>
+                {{else:}}
+                    <div id="signup_login">
+                        <button id="override-signup" onclick="location.href='http://localhost:8000/dropshipping/default/user/register?_next=/dropshipping/default/index'">Signup</button>
+                        <div id="login-signup-vertline"> | </div>
+                        <button id="override-login" onclick="location.href='http://localhost:8000/dropshipping/default/user/login?_next=/dropshipping/default/index'">Login</button>
+                    </div>
+                {{pass}}
+                <div class="logo-container"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
             </div>
 
 			<div class="xs-menu-cont">

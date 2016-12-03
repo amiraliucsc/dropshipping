@@ -468,6 +468,10 @@ body{
 }
 
 /***********************Product Order*********************/
+.po{
+	font-size: 20px;
+	padding: 25px;
+}
 h1.po_title{
 	color: #9d1e15;
 }
@@ -475,22 +479,18 @@ h1.po_title{
 	text-align:center
 }
 
-.po_detail{
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-
 .po_order{
 	margin: 0 auto;
-	width: 50%;
+	width: 60%;
 	padding-top: 50px;
 	padding-bottom: 50px;
-
+	padding: 5px;
 }
 
-
-
-.po_order_detail{
+.po_detail {
+	font-size: 25px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
 
 .po_item_order{
@@ -502,28 +502,52 @@ h1.po_title{
 	padding-bottom: 5px;
 }
 
-.po_item_order_detail{
-}
-
-.po_item_price{
-
-}
-
-.po_order_misc{
+.po_order_misc {
 	margin-top: 50px;
-	padding-bottom:10px;
+	padding-bottom: 10px;
 }
 
-
-
-ul.po_order_shipping{
+ul.po_order_misc_info_1{
 	display: inline-block;
 	float: left;
 }
-ul.po_order_total{
+
+ul.po_order_misc_info_2{
 	display: inline-block;
 	float: right;
 }
+
+.po_misc{
+	text-align: right;
+}
+
+.po_payment_detail{
+	margin-top: 20px;
+	padding-botom: 10px;
+}
+
+/***********************Order History*********************/
+
+.order_history{
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+}
+
+.oh{
+	text-align: left;
+}
+
+.oh_order{
+	width: 1000px;
+	text-align: center;
+}
+
+a.purchase_order {color:darkred; background-color:transparent; text-decoration:none}
+a.purchase_order:hover   {color:black; background-color:transparent; text-decoration:underline}
+
 
 /***********************SEARCH*********************/
 #search_icon{
@@ -595,4 +619,38 @@ ul.po_order_total{
 
 .divider{
 	display:none;
+}
+
+/******************** LOGIN / SIGNUP BUTTONS*********************/
+#signup_login{
+	position:absolute;
+	top:10px;
+	width:350px;
+	margin-left:85%;
+}
+
+#override-signup{
+	padding:0;
+	font-size:16px;
+	display:inline-block;
+	background:#2d2d2d;
+}
+
+#override-signup:hover{
+	box-shadow:none;
+	background:#2d2d2d;
+	color:#ff5a5f;
+}
+
+#override-login{
+	padding:0;
+	font-size:16px;
+	display:inline-block;
+	background:#2d2d2d;
+}
+
+#override-login:hover{
+	box-shadow:none;
+	background:#2d2d2d;
+	color:#ff5a5f;
 }
