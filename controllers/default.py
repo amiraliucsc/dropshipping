@@ -302,6 +302,7 @@ def get_product(product_id):
 
     query = "select * from product_view where product_id = '%s' and image_default = 1"% product_id
     product = db.executesql(query, as_dict=True)[0]
+    product['price'] = locale.currency(product['price'], grouping=True)
     return product
 
 def get_reviews(product_id):
