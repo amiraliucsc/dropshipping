@@ -1,0 +1,62 @@
+
+.valid{
+
+    background-image: url(./../images/icon/valid_icon_32.png);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 50% ;
+    background-size: 25px;
+    background-position: 98% 50%;
+}
+
+.invalid{
+    background-image: url(./../images/icon/invalid_icon_32.png);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 50% ;
+    background-size: 25px;
+    background-position: 98% 50%;
+    border-color: #e61b3b !important;
+}
+
+.data_entry input[type=text]{
+    transition: all linear .2s;
+}
+
+.data_entry input[type=text]:focus{
+    border-color: #e61b3b ;
+    color: #e61b3b;
+}
+
+#delete_cart_icon{
+    background: url(/assets/img/icon/32/trash_icon_32x32.png);
+    background-size: 32px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    width: 32px;
+    display: block;
+    height: 32px;
+    margin-left: 52px;
+}
+
+#delete_cart_icon:hover {
+    background: url('/assets/img/icon/32/trash_icon_open_32x32.png');
+}
+
+.checkout_remove{
+    float: right;
+    background: url(./../images/icon/trash_icon_32x32.png);
+    background-size: 32px;
+    background-repeat: no-repeat;
+    display: block;
+    width: 32px;
+    margin-right: 70px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.checkout_remove:hover{
+    background: url(./../images/icon/trash_icon_open_32x32.png);
+    background-size: 32px;
+    background-repeat: no-repeat;
+}

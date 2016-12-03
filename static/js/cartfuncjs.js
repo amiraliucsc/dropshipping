@@ -26,3 +26,10 @@ function enable_search_input(){
         search_on = true;
     }
 }
+
+function search_category(opt){
+    var search_term = (document.querySelector('[name="search_input"]').value).replace(/'/g, "");
+
+    console.log(search_term, opt);
+    window.location.href = '/Dropshipping/default/products?search_string='+search_term+'&opt='+opt;
+}

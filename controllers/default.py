@@ -15,6 +15,11 @@ locale.setlocale( locale.LC_ALL, '' )
 #PRODUCTS PAGE
 #/////////////////////
 def products():
+    search_string = request.vars.search_string
+    opt = request.vars.opt
+
+    print search_string
+    print opt
     total = get_number_of_items_in_cart_no_json()
     selective_products = get_selective_products(None)
     return dict(total=total, selective_products=selective_products)
@@ -216,7 +221,7 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
 
 def get_subtotal():
     cart_id = get_cart_id()
-    query = "select sum(price) from order_item where cart_id = %s"% cart_id
+    query = "select sum(sale_price) from order_item where cart_id = %s"% cart_id
     subtotal = db.executesql(query)[0][0]
     return subtotal
 
