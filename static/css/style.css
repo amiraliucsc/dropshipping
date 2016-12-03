@@ -143,7 +143,6 @@ body{
 }
 
 #product-image {
-	height: 300px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-end;

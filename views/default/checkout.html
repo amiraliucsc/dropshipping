@@ -20,11 +20,13 @@
                             <span class="info_price"> ${{=item['sale_price']}}</span>
                         </div>
 
-                        <div class="product_qty">
+                        <div class="product_qty" style="width: 100%;">
                             Quantity: {{=item['qty']}}
-
                         </div>
-                        <div onclick="remove_from_cart( {{=item['product_id']}} , {{=item['qty']}})" class="checkout_remove"></div>
+
+                        <div style="width: 100%; padding: 5px; float: left; display: flex; align-items: flex-start; justify-content: flex-start;">
+                            <div onclick="remove_from_cart( {{=item['product_id']}} , {{=item['qty']}})" class="checkout_remove" style="float: right;"></div>
+                        </div>
                     </div>
                 </div>
             {{pass}}
