@@ -40,12 +40,17 @@ jQuery(function(){
 $('.add-to-cart').on('click',function (e) {
 	alert_add_cart(); //linked from cartfuncjs.js
 	//***** NEED TO CHECK FOR DUPLICATE ITEMS IN CART
-	var product_id = e.target.id;
 
+	var product_id = e.target.id;
 	var cart_title = $("#p_title"+ product_id).html();
 	var cart_image = "http://localhost:8000/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
 	var cart_desc = $("#p_desc"+ product_id).html();
 	var cart_price = $("#p_price"+ product_id).html();
+	if(cart_desc == undefined){
+		cart_desc = ''
+		// return false
+	}
+
 	$("#pop_img").html('<img src="'+cart_image+'" alt="Owl Image" width="100%"/>');
 	$("#pop_title").html('<h2>'+cart_title+'</h2>');
 	$("#pop_desc").html('<h4>'+ cart_desc+'</h4>');

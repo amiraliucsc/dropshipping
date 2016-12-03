@@ -22,14 +22,15 @@
             {{pp['image_path']}}
             <div class="products-page-item-image">
                 <div id="product-image" style="cursor:pointer" onclick="location.href='http://localhost:8000/dropshipping/default/product?product_id={{=pp['product_id']}}'"><img width="100%" src="http://localhost:8000/dropshipping/static/images/Product/{{=pp['image_path']}}.jpg" alt="Owl Image"></div>
+                <div style="display: none" id="p_img{{=pp['product_id']}}">{{=pp['image_path']}}</div>
             </div>
 
             <div class="products-page-item-description">
                 <div class="products-page-item-title"><h2><strong>{{pp['title']}}</strong></h2></div>
-                <div class="products-page-item-description-under-title"><h4>{{=pp['title']}}</h4></div>
+                <div class="products-page-item-description-under-title"><h4 id="p_title{{=pp['product_id']}}">{{=pp['title']}}</h4></div>
                 <div class="products-page-item-rating"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                <div class="products-page-item-price"><h3><strong>{{=pp['price']}}</strong></h3></div>
-                <div class="add-to-cart" style="width: 175px; margin: 10px;"><strong>Add to Cart</strong></div>
+                <div class="products-page-item-price"><h3><strong id="p_price{{=pp['product_id']}}">${{="{0:.2f}".format(pp['price'])}}</strong></h3></div>
+                <div id="{{=pp['product_id']}}" class="add-to-cart" style="width: 175px; margin: 10px;"><strong>Add to Cart</strong></div>
                 <div class="products-page-item-view-item"><strong>View Item</strong></div>
             </div>
         </div>
