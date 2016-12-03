@@ -1,4 +1,5 @@
 sessions/
 errors/
 web2py/
+.idea/
 __init__.pyc
