@@ -283,3 +283,14 @@ $(document).mouseup(function (e)
         close_add_cart();
     }
 });
+
+function save_review(product_id) {
+	var name = $('#add_review_name').val();
+	var review = $('#customer_review_txt').val();
+	var stars = $('input[name="rank"]:checked').val();
+	$.ajax({
+			method: 'POST',
+			url: '/Dropshipping/default/add_review?product_id='+product_id+'&review='+review+'&stars='+stars+'&name='+name,
+			async: true,
+		})
+}

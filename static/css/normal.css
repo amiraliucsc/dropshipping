@@ -2092,3 +2092,27 @@ xpopup
     background-position: 98% 50%;
     border-color: #e61b3b !important;
 }
+
+#add_review_container{
+
+    width: 500px;
+    height: 100px;
+    display: block;
+}
+
+#customer_review_txt{
+    width: 400px;
+    height: 120px;
+}
+
+.btn_save{
+    width: 100px;
+    padding: 10px 20px;
+    background: #ff5a5f;
+    text-align: center;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
