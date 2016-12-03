@@ -11,6 +11,15 @@ body{
 	overflow-x:hidden;
 }
 
+.header-area {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background: red;
+}
+
 #feature-item {
 	max-height: 200px;
 	z-index: 1;
@@ -328,7 +337,7 @@ body{
 }
 
 #close_cart_alert:hover{
-	box-shadow: 2px 2px 6px #333;
+	box-shadow: 2px 2px 6px #2d2d2d;
 	background:#ccc;
 	color:white;
 }
@@ -495,7 +504,7 @@ ul.po_order_misc_info_2{
 }
 
 #search_icon:hover{
-	background: red;
+	background: #2d2d2d;
 	cursor: pointer;
 }
 
@@ -529,7 +538,7 @@ ul.po_order_misc_info_2{
 
 #search_submit_button:hover{
 	box-shadow: none;
-	color:red;
+	color:#2d2d2d;
 }
 
 /********override bootcrap***********/
