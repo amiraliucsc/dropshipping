@@ -11,13 +11,20 @@ body{
 	overflow-x:hidden;
 }
 
+#user_welcome {
+	display: none;
+}
+
 .header-area {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	background: red;
+}
+
+.logo-container {
+	width: 30%;
 }
 
 #feature-item {

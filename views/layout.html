@@ -78,17 +78,11 @@
                 </div>
             </div>
 
+
             <div class="header-area" style="width: 100%; height: 125px; background-color: #2d2d2d; display:flex; align-items: center; padding: 20px;" >
-                {{if auth.user:}}
-                    <div id="user_welcome">Welcome! </div>
-                {{else:}}
-                    <div id="signup_login">
-                        <button id="override-signup" onclick="location.href='/Dropshipping/default/user/register?_next=/dropshipping/default/index'">Signup</button>
-                        <div id="login-signup-vertline"> | </div>
-                        <button id="override-login" onclick="location.href='/Dropshipping/default/user/login?_next=/dropshipping/default/index'">Login</button>
-                    </div>
-                {{pass}}
-                <div class="logo-container"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
+
+                <div class="logo-container" style="width: 25%;"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
+
             </div>
 
 			<div class="xs-menu-cont">
