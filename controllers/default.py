@@ -375,7 +375,8 @@ def po_page():
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
     product_list = get_order_items()
-    price_list = ("sale_price")
+    price_list = ["sale_price"]
+    print price_list
     fix_price(product_list,price_list)
 
     print po_info
@@ -389,7 +390,7 @@ def get_order_items():
     cart_id = get_cart_id()
 
     query = "select * from product_order_item where cart_id = '%s'"% cart_id
-    product_list = db.executesql(query)
+    product_list = db.executesql(query, as_dict=True)
     return product_list
 
 def fix_price(results, fields):
