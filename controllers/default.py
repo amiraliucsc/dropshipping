@@ -273,7 +273,7 @@ def order_history():
     po_num = request.vars.purchase_order_no
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     data = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+    price_list = ("total_price", "subtotal", "subtotal", "tax", "shipping_price")
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total, data=data)
@@ -360,11 +360,14 @@ def po_page():
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     po_info = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+    price_list = ("total_price", "subtotal", "tax", "shipping_price")
 
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
     product_list = get_order_items()
+    price_list = ("sale_price")
+    fix_price(product_list,price_list)
+
     print po_info
     print "\n"
     return dict(total=total, po_info=po_info, product_list=product_list)
