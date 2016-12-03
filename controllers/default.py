@@ -8,6 +8,8 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 import json
+import locale
+locale.setlocale( locale.LC_ALL, '' )
 
 #/////////////////////
 #INDEX PAGE
@@ -25,16 +27,25 @@ def add_to_cart():
     qty = str(request.vars.qty)
 
     cart_id = get_cart_id()
+    product_price = get_price(product_id)
 
     if order_item_exists_in_cart(product_id):
         query = "select qty from order_item where cart_id = %s and product_id = %s"% (str(cart_id), str(product_id))
         result = db.executesql(query)
-        qty = result[0][0] + int(qty)
-        query = "update order_item set qty = %s where product_id = %s and cart_id = %s"% (qty, product_id, cart_id)
+        newqty = result[0][0] + int(qty)
+
+        newprice = newqty * product_price
+
+        query = "update order_item set qty = %s, sale_price = '%s' where product_id = %s and cart_id = %s"% (newqty, newprice, product_id, cart_id)
         db.executesql(query)
     else:
-        query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
+        query = "insert into order_item (cart_id, sale_price, product_id, qty) VALUES (" + cart_id + ", " + str(product_price) + ", " + product_id + ", " + qty + ")"
         db.executesql(query)
+
+def get_price(product_id):
+    query = "select price from product where product_id = '%s'"% product_id
+    price = db.executesql(query)[0][0]
+    return price
 
 def get_cart_id():
     if not session.customer_session:
@@ -171,7 +182,7 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
 
 def get_sale_price():
     cart_id = get_cart_id()
-    query = "select sum(price) from product_order_item where cart_id = %s"% cart_id
+    query = "select sum(price) from order_item where cart_id = %s"% cart_id
     sale_price = db.executesql(query)[0][0]
     return sale_price
 
@@ -254,6 +265,23 @@ def get_products_view(find):
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total,find_results=find_results)
 
+def po_page():
+    po_num = request.vars.purchase_order_no
+
+    query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
+    data = db.executesql(query, as_dict=True)
+
+    fix_price(data)
+    return json.dumps(data)
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
+
+
+def fix_price(results, fields):
+    for i in range(len(results)):
+        for field_name in fields:
+            results[i][field_name] = locale.currency(results[i][field_name], grouping=True)
+
 #/////////////////////
 #DEFAULT PY FUNCTIONS  ////////////////////////////////////////////////////////////////
 #/////////////////////
@@ -265,9 +293,7 @@ def download():
     """
     return response.download(request, db)
 
-def po_page():
-    total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+
 
 def call():
     """
