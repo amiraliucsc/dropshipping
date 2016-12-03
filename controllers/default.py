@@ -247,14 +247,28 @@ def product():
 
 def get_product(product_id):
 
-    query = "select * from product_view where product_id = '%s' where default = 1", product_id
-    product = db.executesql(query, as_dict=True)
+    query = "select * from product_view where product_id = '%s' where [default] = 1"% product_id
+    product = db.executesql(query, as_dict=True)[0]
     return product
 
 def get_reviews():
     product_id = request.vars.product_id
 
-    query = "select * from product"
+    query = "select * from review where product_id = '%s'"% product_id
+    reviews = db.executesql(query, as_dict=True)
+
+    query = "select AVG(stars) from review where product_id = '%s' group by product_id"% product_id
+    average_stars = db.executesql(query, as_dict=True)
+
+    return json.dumps(reviews, average_stars)
+
+def add_review():
+    product_id = request.vars.product_id
+    name = request.vars.name
+    review = request.vars.review
+    stars = request.vars.stars
+
+
 
 def order_history():
     total = get_number_of_items_in_cart_no_json()
