@@ -369,7 +369,7 @@ def po_page():
     return dict(total=total, po_info=po_info)
 
 
-def 
+
 
 def fix_price(results, fields):
     for i in range(len(results)):
