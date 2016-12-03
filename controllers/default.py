@@ -364,12 +364,18 @@ def po_page():
 
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
+    product_list = get_order_items()
     print po_info
     print "\n"
-    return dict(total=total, po_info=po_info)
+    return dict(total=total, po_info=po_info, product_list=product_list)
 
 
+def get_order_items():
+    cart_id = get_cart_id()
 
+    query = "select * from product_order_item where cart_id = '%s'"% cart_id
+    product_list = db.executesql(query)
+    return product_list
 
 def fix_price(results, fields):
     for i in range(len(results)):
