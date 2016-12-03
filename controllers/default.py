@@ -344,7 +344,7 @@ def po_page():
     po_num = request.vars.purchase_order_no
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
-    data = db.executesql(query, as_dict=True)[0]
+    data = db.executesql(query, as_dict=True)
     price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
 
     fix_price(data, price_list)
