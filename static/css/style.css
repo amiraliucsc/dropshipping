@@ -38,6 +38,7 @@ body{
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
+	flex-direction: row;
 	margin:10px;
 }
 
@@ -45,10 +46,11 @@ body{
 	background: #ffffff;
 	border-radius: 3px;
 	border: 1px solid #d3d3d3;
-	width: 100%;
+	width: 250px;
 	height: 35px;
 	font-family: inherit;
 	font-size: 20px;
+	margin-left: 15px;
 }
 
 .side-image {
@@ -108,8 +110,12 @@ body{
 }
 
 .category-title {
+	width: 100%;
 	color: #282828;
 	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .item-price-cart {
@@ -141,6 +147,10 @@ body{
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-end;
+}
+
+#product-image:hover{
+	background: #f8f8f8;
 }
 
 .owl-next img{
@@ -227,6 +237,47 @@ body{
 .category-row li:hover {
 	color: #ff5a5f;
 	cursor: pointer;
+}
+
+/********************* Product List Page **********************/
+
+.products-page-items-list {
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	border-bottom: 1px solid #cccccc;
+}
+
+.products-page-item-image {
+	width: 30%;
+	margin-right: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.products-page-item-description {
+	width: 70%;
+}
+
+.products-page-item-title {
+	margin: 10px;
+}
+
+.products-page-item-description-under-title {
+	margin: 10px;
+}
+
+.products-page-item-rating {
+	margin: 10px;
+}
+
+.products-page-item-price {
+	margin: 10px;
+}
+
+.products-page-item-view-item {
+	margin: 10px;
 }
 
 /********************* Product Page ***************************/
