@@ -13,7 +13,7 @@
           initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
           user-scalable = yes allows the user to zoom in -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{=response.title or request.application}}</title>
+    <title>Cloud Market</title>
     <!-- http://dev.w3.org/html5/markup/meta.name.html -->
     <meta name="application-name" content="{{=request.application}}">
     <!-- Speaking of Google, don't forget to set your site up:
@@ -22,8 +22,8 @@
     <!-- include stylesheets -->
     <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/>
-    <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+    <link rel="shortcut icon" href="{{=URL('static','images/cloud.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{=URL('static','images/cloud.png')}}">
     <!-- OWL CAROUSEL STYLESHEETS -->
     <link rel="stylesheet" href="{{=URL('static','css/owl.carousel.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
@@ -163,7 +163,7 @@
                         <div id="search_box">
                             <form>
                                 <input id="search_input" type="text" name="search_input" placeholder="search"/>
-                                <button id="search_submit_button">send</button>
+                                <button id="search_submit_button">search</button>
                             </form>
                         </div>
                     </li>
@@ -217,6 +217,9 @@
       {{pass}}
 
     </div>
+
+    {{block bottom_ad}}
+    {{end}}
 
 	{{block newsletter}} <!-- Join our Mailing list section -->
         <div class="newsletter-container">
