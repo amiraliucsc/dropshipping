@@ -252,6 +252,9 @@ body{
 .product-image-carousel {
 	width: 65%;
 	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 
@@ -320,7 +323,6 @@ body{
 	border:1px solid black;
 	z-index:10;
 	display:none;
-	box-shadow: 2px 2px 6px #333;
 	text-align:center;
 }
 
@@ -337,7 +339,6 @@ body{
 }
 
 #close_cart_alert:hover{
-	box-shadow: 2px 2px 6px #2d2d2d;
 	background:#ccc;
 	color:white;
 }
@@ -372,7 +373,7 @@ body{
 /********************Contact Page************************/
 #contact_form_container{
 	margin:0 auto;
-	height:400px;
+	height:auto;
 	width:100%;
 }
 
@@ -384,45 +385,49 @@ body{
 
 #contact_form_container input[type='text']{
 	width:100%;
-	padding:5px;
-	margin:5px;
-	box-shadow:inset 0 0 0px 0px #000;
+	margin: 10px;
 	border-radius:5px;
+	box-shadow: none;
+	border:1px solid #cccccc;
+	padding: 10px;
+	font-size: 18px;
 }
 
 #contact_form_container input[type='text']:focus{
 	outline: none !important;
-	border:1px solid red;
-	box-shadow: 0 0 10px;
 	border-radius:5px;
 }
 
 #contact_form_container button{
 	padding:5px;
-	margin:5px;
+	margin: 10px;
 	border-radius:5px;
+	padding: 15px 40px;
+	font-size: 18px;
+	background: #ff5a5f;
+
 }
 
 #contact_form_container button[type='submit']:focus{
 	outline: none !important;
-	border:1px solid red;
-	box-shadow: 0 0 10px;
 	border-radius:5px;
 }
 
 #contact_form_container textarea{
 	width:100%;
-	margin:5px;
+	margin: 10px;
 	padding:5px;
-	box-shadow:inset 0 0 2px 0px #000;
 	border-radius:5px;
+	border:1px solid #cccccc;
+	padding: 10px;
+	font-size: 18px;
 }
 
 #contact_form_container textarea:focus {
 	outline: none !important;
-	border: 1px solid red;
-	box-shadow: 0 0 10px;
+	border:1px solid #cccccc;
 	border-radius: 5px;
+	padding: 10px;
 }
 
 #contact_name_error{
@@ -543,9 +548,27 @@ ul.po_order_misc_info_2{
 
 /********override bootcrap***********/
 .dropdown{
-	padding:0px;
+	float:right;
 	height:auto;
-	color:white;
 	font-size:16px;
-	background:transparent;
+}
+
+.dropdown a:hover{
+	color:black;
+}
+
+.dropdown:hover{
+	background:#5a5a5a;
+}
+
+.dropdown-menu{
+	margin-top:0px;
+	background:#000;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border:none;
+}
+
+.divider{
+	display:none;
 }

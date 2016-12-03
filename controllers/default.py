@@ -239,8 +239,36 @@ def get_user_id():
 #PRODUCT PAGE
 #/////////////////////
 def product():
+    product_id = request.vars.product_id
+    product_details = get_product(product_id)
+
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+    reviews = get_reviews(product_id)
+    return dict(total=total, product=product_details, reviews=reviews)
+
+def get_product(product_id):
+
+    query = "select * from product_view where product_id = '%s' and [default] = 1"% product_id
+    product = db.executesql(query, as_dict=True)[0]
+    return product
+
+def get_reviews(product_id):
+
+    query = "select * from review where product_id = '%s'"% product_id
+    reviews = db.executesql(query, as_dict=True)
+
+    query = "select AVG(stars) from review where product_id = '%s' group by product_id"% product_id
+    average_stars = db.executesql(query, as_dict=True)
+
+    return (reviews, average_stars)
+
+def add_review():
+    product_id = request.vars.product_id
+    name = request.vars.name
+    review = request.vars.review
+    stars = request.vars.stars
+
+
 
 def order_history():
     total = get_number_of_items_in_cart_no_json()
@@ -300,7 +328,7 @@ def search():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
 
-def get_products_view(find):
+def get_products_view_search(find):
     query=""
     if find:
         query = "select * from product_view where title='"+ find +"'"
@@ -368,7 +396,7 @@ def user():
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
     total = get_number_of_items_in_cart_no_json()
-    return dict(form=auth(),total=total)
+    return dict(form=auth(), total=total)
 
 
 

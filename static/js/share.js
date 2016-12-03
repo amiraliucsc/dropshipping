@@ -33,6 +33,8 @@ jQuery(function(){
 		jQuery('#socialdrawer img').hide();
 		return false;
 	});
+
+	$("#dropdown-menu li a").css({'color':'#000'});
 });
 
 $('.add-to-cart').on('click',function (e) {
@@ -92,10 +94,6 @@ function remove_from_cart(pid,qty){
 			
 		})
 	})
-
-
-
-
 }
 
 $('#check_product_payment input.required_card_num').on('keyup',function (e) {
@@ -145,8 +143,6 @@ $('#check_product_payment input.required_card_num').on('keyup',function (e) {
 		$('#'+e.target.id).val( valid );
 	}
 });
-
-
 
 $('#check_product_payment input.required').focusout(function (e) {
 	$id = e.target.id;
@@ -252,7 +248,6 @@ $('input#checkout_btn').on('click',function (e) {
 		show_validation()
 	}
 });
-
 
 function show_invoice() {
 	console.log('show invoce is called')

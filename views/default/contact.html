@@ -2,15 +2,21 @@
 {{extend 'layout.html'}}
 {{block body}}
 <div id="contact_form_container">
+
     <form id="contact_form">
+        <div class="category-title" style="margin-top: 40px; margin-left: 10px;"><h2>Contact Us</h2></div>
         <div id="contact_name_error"></div>
-        <input type="text" name="contact_name" placeholder="Name"/>
+        <input class="contact-name" type="text" name="contact_name" placeholder="Name"/>
         <div id="contact_email_error"></div>
         <input type="text" name="contact_email" placeholder="E-Mail"/>
         <div id="contact_message_error"></div>
         <textarea name="contact_message" cols="47" rows="10" placeholder="Write us a message..."></textarea>
         <br>
-        <button onclick="send_contact_form()" type="button" value="send">send</button>
+        <button onclick="send_contact_form()" type="button" value="send">Send</button>
     </form>
+
+    <div class="product-advertisement">
+        <img src="{{=URL('static','images/studio.jpg')}}"/>
+    </div>
 </div>
 {{end}}
