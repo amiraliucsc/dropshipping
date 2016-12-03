@@ -70,7 +70,7 @@
                             <div id="pop_desc" class="innercart-item-description"></div>
                             <div id="pop_rating" class="innercart-item-review"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
                             <div id="pop_price" class="innercart-item-price"></div>
-                            <button style="border-radius:5px; background:green;" onclick="location.href='http://localhost:8000/dropshipping/default/checkout'">Checkout</button>
+                            <button style="border-radius:5px; background:green;" onclick="location.href='/Dropshipping/default/checkout'">Checkout</button>
                             <div onclick='close_add_cart()' id="close_cart_alert">Continue Shopping</div>
                         </div>
                     </div>
@@ -83,9 +83,9 @@
                     <div id="user_welcome">Welcome! </div>
                 {{else:}}
                     <div id="signup_login">
-                        <button id="override-signup" onclick="location.href='http://localhost:8000/dropshipping/default/user/register?_next=/dropshipping/default/index'">Signup</button>
+                        <button id="override-signup" onclick="location.href='/Dropshipping/default/user/register?_next=/dropshipping/default/index'">Signup</button>
                         <div id="login-signup-vertline"> | </div>
-                        <button id="override-login" onclick="location.href='http://localhost:8000/dropshipping/default/user/login?_next=/dropshipping/default/index'">Login</button>
+                        <button id="override-login" onclick="location.href='/Dropshipping/default/user/login?_next=/dropshipping/default/index'">Login</button>
                     </div>
                 {{pass}}
                 <div class="logo-container"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
@@ -124,10 +124,10 @@
 			<nav class="menu" style="">
 				<ul>
 					<li class="active">
-                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='index'">Home</div>
+                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='/Dropshipping/default/index'">Home</div>
                     </li>
 					<li class="drop-down">
-						<div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='products'">Products</div>
+						<div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='/Dropshipping/default/products'">Products</div>
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -158,7 +158,7 @@
 
 					</li>
 					<li>
-                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='contact'">Contact</div>
+                        <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='/Dropshipping/default/contact'">Contact</div>
                     </li>
                     <li style="float:right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
                         <div id="cart_icon">
@@ -173,7 +173,7 @@
                     </li>
                     <li onclick="enable_search_input()" style="float:right;">
                         <div id="search_icon">
-                            <img style="margin:0 auto; width:auto;" width="30px" height="30px" src="http://127.0.0.1:8000/Dropshipping/static/images/search_icon.png"/>
+                            <img style="margin:0 auto; width:auto;" width="30px" height="30px" src="/Dropshipping/static/images/search_icon.png"/>
                         </div>
                     </li>
                     <li style="float:right;">
