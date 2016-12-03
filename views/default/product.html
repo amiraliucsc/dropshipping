@@ -165,37 +165,22 @@
             </div>
 
             <div class="category-title"><h3 style="margin: 0; padding: 0px; margin-top: 40px;">Customer Reviews</h3></div>
-            <div class="inner" style="width: 100%; max-width: 900px; padding: 15px;">
-                <div class="reviewer-name"><h4>Jane Doe</h4></div>
-                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
+                <div class="inner" style="width: 100%; max-width: 900px; padding: 15px;">
+                    <div class="rating">
+                        
+                        {{for star in range(int(reviews[1][0]['avg'])):}}
+                            <img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png">
+                        {{pass}}
+                    </div>
+                    {{for review in reviews[0]:}}
+                    <div class="reviewer-name"><h4>{{=review['name']}}</h4></div>
 
-            </div>
+                    <div class="review-description">{{=review['review_text']}}</div>
+                    {{pass}}
 
-            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; background: #f9f9f9; padding: 15px;">
-                <div class="reviewer-name"><h4>Jane Doe</h4></div>
-                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
+                </div>
 
-            </div>
 
-            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; padding: 15px;">
-                <div class="reviewer-name"><h4>Jane Doe</h4></div>
-                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
-
-            </div>
-
-            <div class="inner" style="width: 100%; max-width: 900px; margin-top: 40px; background: #f9f9f9; padding: 15px;">
-                <div class="reviewer-name"><h4>Jane Doe</h4></div>
-                <div class="rating"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                <div class="review-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
-
-            </div>
         </div>
 
 
