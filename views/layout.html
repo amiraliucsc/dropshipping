@@ -127,25 +127,25 @@
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/tv_drop_down.jpg')}}" alt="Owl Image" >
-                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
+                                <div class="view-category" style="width: 175px;"><a href="/Dropshipping/default/products?search_string=TV&opt=category"><strong>View Category</strong></a></div>
                             </span>
                         </div>
                         <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/computer_drop_down.jpg')}}" alt="Owl Image" >
-                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
+                                <div class="view-category" style="width: 175px;"><a href="/Dropshipping/default/products?search_string=computers&opt=category"><strong>View Category</strong></a></div>
                             </span>
                         </div>
                         <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/tablets_drop_down.jpg')}}" alt="Owl Image" >
-                                <div onclick="alert_add_cart()" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                                <div class="view-category" style="width: 175px;"><a href="/Dropshipping/default/products?search_string=tablets&opt=category"><strong>View Category</strong></div>
                             </span>
                         </div>
                         <div class="mm-4column" style="margin-left: 25px;">
                             <span class="left-images">
                                 <img src="{{=URL('static', 'images/gaming_drop_down.jpg')}}" alt="Owl Image" >
-                                <div class="view-category" style="width: 175px;"><a href="{{=URL('default','product.html')}}"><strong>View Category</strong></a></div>
+                                <div class="view-category" style="width: 175px;"><a href="/Dropshipping/default/products?search_string=gaming&opt=category"><strong>View Category</strong></a></div>
                             </span>
                         </div>
 					</div>
@@ -172,10 +172,8 @@
                     </li>
                     <li style="float:right;">
                         <div id="search_box">
-                            <form>
-                                <input id="search_input" type="text" name="search_input" placeholder="search"/>
-                                <button id="search_submit_button">search</button>
-                            </form>
+                            <input id="search_input" type="text" name="search_input" placeholder="search"/>
+                            <button id="search_submit_button" onclick='search_category("search")'>search</button>
                         </div>
                     </li>
 				</ul>

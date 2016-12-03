@@ -117,6 +117,7 @@ body{
 }
 
 .category-title {
+	margin: 0 auto;
 	width: 100%;
 	color: #282828;
 	padding: 5px;
@@ -361,7 +362,26 @@ body{
 	color: #ff5a5f;
 }
 
-/*cart css*/
+/****** product review ??? location **/
+#review-container{
+	padding:10px;
+	background: #eeeeee;
+	border-radius:5px;
+	margin-bottom:5px;
+}
+
+#add_review_container{
+	width: 56%;
+	background:red;
+	border-radius:5px;
+}
+
+#customer_review_txt{
+	width:100%;
+	border-radius:5px;
+}
+
+/************cart css****************/
 #cart_alert{
 	display: flex;
 	justify-content: center;
