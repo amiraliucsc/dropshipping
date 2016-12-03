@@ -53,20 +53,10 @@
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <!-- Navbar ======================================= -->
-    <nav style="background:transparent">
-      <div style="background:transparent">
-        <div style="background:transparent">
+    <nav>
+        <div style="background:#2d2d2d; text-align:right;">
 
         </div>
-        <div style="background:transparent">
-          <ul class="nav navbar-nav navbar-right">
-            {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
-          </ul>
-          {{if response.menu:}}
-          {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
-          {{pass}}
-        </div>
-      </div>
     </nav>
     <!-- Masthead ===================================== -->
     {{block header}}
@@ -153,6 +143,12 @@
                         <div id="cart_icon">
                             <span id="cart_number">{{=total}}</span>
                         </div>
+                    </li>
+                    <li style="float:right;" >
+                        {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
+                        {{if response.menu:}}
+                          {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
+                        {{pass}}
                     </li>
                     <li onclick="enable_search_input()" style="float:right;">
                         <div id="search_icon">

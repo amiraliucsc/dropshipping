@@ -328,7 +328,7 @@ def search():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
 
-def get_products_view(find):
+def get_products_view_search(find):
     query=""
     if find:
         query = "select * from product_view where title='"+ find +"'"

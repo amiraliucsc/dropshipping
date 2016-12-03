@@ -547,9 +547,27 @@ ul.po_order_total{
 
 /********override bootcrap***********/
 .dropdown{
-	padding:0px;
+	float:right;
 	height:auto;
-	color:white;
 	font-size:16px;
-	background:transparent;
+}
+
+.dropdown a:hover{
+	color:black;
+}
+
+.dropdown:hover{
+	background:#5a5a5a;
+}
+
+.dropdown-menu{
+	margin-top:0px;
+	background:#000;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border:none;
+}
+
+.divider{
+	display:none;
 }
