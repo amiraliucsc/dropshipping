@@ -17,7 +17,7 @@
                 <div class="item">
                     <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=tv['image_path']}}.jpg" alt="Owl Image"></div>
                     <div class="item-text" style="margin: 0; padding: 5px;">
-                        <h5>{{=(tv['title'][:35] + '..') if len(tv['title']) > 35 else tv['title']}}</h5>
+                        <h5 style="overflow: hidden; white-space: nowrap;">{{=(tv['title'][:35] + '..') if len(tv['title']) > 35 else tv['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(tv['price'])}}</strong></div>
                             <div class="learn-more"><i>Learn More</i></div>
@@ -38,7 +38,8 @@
             {{for comp in computers:}}
                 <div class="item">
                     <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=comp['image_path']}}.jpg" alt="Owl Image"></div>
-                    <div class="item-text" style="margin: 0; padding: 5px;">
+                    <div class="item-text" style="margin: 0; padding: 5px; overflow: hidden;
+    white-space: nowrap;">
                         <h5>{{=(comp['title'][:35] + '..') if len(comp['title']) > 35 else comp['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(comp['price'])}}</strong></div>
@@ -56,7 +57,8 @@
             {{for game in gaming:}}
                 <div class="item">
                     <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=game['image_path']}}.jpg" alt="Owl Image"></div>
-                    <div class="item-text" style="margin: 0; padding: 5px;">
+                    <div class="item-text" style="margin: 0; padding: 5px; overflow: hidden;
+    white-space: nowrap;">
                         <h5>{{=(game['title'][:25] + '..') if len(game['title']) > 25 else game['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(game['price'])}}</strong></div>
