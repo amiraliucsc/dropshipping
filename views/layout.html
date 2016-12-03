@@ -62,12 +62,33 @@
     {{block header}}
 		<!-- fixed add to cart alert -->
             <div id="cart_alert">
-                <div onclick='close_add_cart()' id="close_cart_alert">X</div>
-                <div id="inner_cart_alert" style="font-size:32px;"></div>
+
+                <div id="inner_cart_alert">
+                    <div onclick='close_add_cart()' id="close_cart_alert"><img src="https://cdn4.iconfinder.com/data/icons/iconic/raster/32/x_alt.png" alt="Owl Image" width="15" height="15"></div>
+
+                    <div class="added-to-cart-notification" style="display: flex;"><img src="https://cdn0.iconfinder.com/data/icons/free-misc-icon-set-1/512/check-128.png" alt="Owl Image" width="25" height="25"><h3>Added to Cart!</h3></div>
+
+
+                    <div class="innercart-description-wrapper">
+                        <div class="innercart-image-container">
+                            <img src="//images.crutchfieldonline.com/ImageHandler/trim/620/378/products/2014/34/022/g022YAS203-f.jpg" alt="Owl Image" width="100%">
+                        </div>
+
+                        <div class="innercart-description-container">
+                            <div class="innercart-item-title"><h2>Yamaha YAS-203</h2></div>
+                            <div class="innercart-item-description"><h4>Powered home theater sound bar with wireless subwoofer and Bluetooth®</h4></div>
+                            <div class="innercart-item-review"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                            <div class="innercart-item-price"><h3>$399.00</h3></div>
+                            <div class="add-to-cart" style="width: 250px; margin: 10px 0px;"><strong>Add to Cart</strong></div>
+                            <div onclick='close_add_cart()' id="close_cart_alert">Continue Shopping</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <div class="header-area" style="width: 100%; height: 125px; background-color: #2d2d2d; display:flex; align-items: center; padding: 20px;" >
-                <div class="logo-container"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
+                <div class="logo-container"><a href="{{=URL('default','index')}}"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></a></div>
             </div>
 
 			<div class="xs-menu-cont">

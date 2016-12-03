@@ -3,10 +3,10 @@
  */
 function alert_add_cart(message){
     $("body").append(
-        "<div id='overlay' style='background-color:grey; position:absolute; top:0; left:0; height:100%; width:100%; z-index:9; opacity:0.7;'></div>"
+        "<div id='overlay' style='background-color: #000000; position:absolute; top:0; left:0; height:100%; width:100%; z-index:9; opacity:0.7;'></div>"
     );
     $("#inner_cart_alert").html(message);
-    $("#cart_alert").css({'z-index':'10','display':'inline'});
+    $("#cart_alert").css({'z-index':'10','display':'flex'});
     $("#cart_alert").fadeIn(1000);
 }
 
