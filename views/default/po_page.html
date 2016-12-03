@@ -6,10 +6,10 @@
         <div class="po_order">
             <h1 class="po_title"> Final Details for Order <span class="po_order_number">#654128</span></h1>
             <ul class="po_detail">
-                <li> <b> ORDER PLACED ON:</b> <span class="po_date">2016/01/10</span> </li>
-                <li> <b> TOTAL: </b> <span class="po_total">$450</span> </li>
-                <li> <b> SHIP TO: </b> <span class="po_purchaser">Amirali Shahinpour</span> </li>
-                <li> <b> INVOICE: </b> <span onclick="show_invoice()" class="po_order_number">#654128</span> </li>
+                <li> <b> ORDER PLACED ON:</b> {{=data[0]['sale_date']}}</li>
+                <li> <b> TOTAL: </b> {{=data[0]['total_price']}} </li>
+                <li> <b> SHIP TO: </b> {{=data[0]['full_name']}}</li>
+                <li> <b> INVOICE: </b> {{=data[0]['purchase_order_no']}} </span> </li>
             </ul>
 
             <h2 class="po_title"> <b> Shipped on <span class="po_date"> 2016/01/10 </span> </b> </h2>
@@ -21,8 +21,8 @@
                         <th class="po_item_price"> <h3> <b> Price </b> </h3> </th>
                     </tr>
                         <tr>
-                            <td class="po_item_order">Macbook Pro 15"</td>
-                            <td class="po_item_price">$2399</td>
+                            <td class="po_item_order"> {{=data[0]['title']}} </td>
+                            <td class="po_item_price"> {{=data[0]['sale_price']}} </td>
                         </tr>
                         <tr>
                             <td colspan="2"> Apple </td>
@@ -31,17 +31,17 @@
                 <div class="po_order_misc">
                       <ul class="po_order_misc_info_1">
                           <li> <b> Shipping Address </b> </li>
-                          <li> Kory Brown </li>
-                          <li> 1151 Yo Momma House</li>
+                          <li> {{=data[0]['full_name']}} </li>
+                          <li>  {{=data[0]['address_1']}} </li>
                           <li> In Yo City, CA 00000</li>
                           <li> United States</li>
                       </ul>
                         <ul class="po_order_misc_info_2">
-                            <li> Item(s) Subtotal: <span class="po_price_subtotal"> $125.96 </span> </li>
-                            <li> Shipping & Handling: <span class="po_shipping_handling"> $0.00</span> </li>
+                            <li> Item(s) Subtotal: {{=data[0]['subtotal']}} </li>
+                            <li> Shipping & Handling:  {{=data[0]['shipping_price']}} </li>
                             <li class="po_misc"> - - - - </li>
                             <li> Total before tax: <span class="po_before_tax"> $125.09 </span> </li>
-                            <li> Sales tax: <span class="po_sales_tax"> $12.09 </span> </li>
+                            <li> Sales tax:  {{=data[0]['tax']}} </li>
                             <li class="po_misc"> - - - - </li>
                         </ul>
                 </div>
@@ -52,10 +52,10 @@
                 <div class="po_order_misc">
                       <ul class="po_order_misc_info_1">
                           <li> <b> Shipping Speed: </b> </li>
-                          <li> <span class="po_ship_time"> Two-Day Shipping </span></li>
+                          <li>  {{=data[0]['shipping_method']}} </li>
                       </ul>
                         <ul class="po_order_misc_info_2">
-                            <li> <b> Total for This Shipment <span class="po_order_total"> $0.00</span></b></li>
+                            <li> <b> Total for This Shipment: {{=data[0]['total_price']}} </b></li>
                             <li class="po_misc"> - - - - </li>
                         </ul>
                 </div>
@@ -66,18 +66,16 @@
                 <h2 class="po_title"> <b> Payment Information </b> </h2>
                 <div class="po_order_misc">
                           <ul class="po_order_misc_info_1">
-                              <li> <b> Payment Method </b> </li>
-                              <li> <span class="po_creditCard"> Credit Card Info </span> </li>
-                              <li> 1151 Yo Momma House</li>
-                              <li> In Yo City, CA 00000</li>
-                              <li> United States</li>
+                              <li> <b> Payment Method: </b> </li>
+                              <li> Card ending:  {{=data[0]['credit_card_last_4']}} </li>
+
                           </ul>
                             <ul class="po_order_misc_info_2">
-                                <li> Item(s) Subtotal: <span class="po_price_subtotal"> $125.96 </span> </li>
-                                <li> Shipping & Handling: <span class="po_shipping_handling"> $0.00</span> </li>
+                                <li> Item(s) Subtotal: {{=data[0]['subtotal']}} </li>
+                                <li> Shipping & Handling:  {{=data[0]['shipping_price']}} </li>
                                 <li class="po_misc"> - - - - </li>
                                 <li> Total before tax: <span class="po_before_tax"> $125.09 </span> </li>
-                                <li> Estimated tax to be collected: <span class="po_sales_tax"> $12.09 </span> </li>
+                                <li>Estimated tax to be collected:  {{=data[0]['tax']}} </li>
                                 <li class="po_misc"> - - - - </li>
                             </ul>
                     </div>
@@ -88,13 +86,13 @@
                     <div class="po_order_misc">
                           <ul class="po_order_misc_info_1">
                               <li> <b> Billing Address </b> </li>
-                              <li> Kory Brown </li>
-                              <li> 1151 Yo Momma House</li>
+                              <li>{{=data[0]['full_name']}} </li>
+                              <li> {{=data[0]['address_1']}} </li>
                               <li> In Yo City, CA 00000</li>
                           <li> United States</li>
                           </ul>
                             <ul class="po_order_misc_info_2">
-                                <li> <b> Grand Total: <span class="po_order_total"> $0.00</span> </b> </li>
+                                <li> <b> Grand Total: {{=data[0]['total_price']}} </b> </li>
                             </ul>
                     </div>
                     <br>
@@ -102,8 +100,8 @@
                     <br>
                     <div class="po_order_misc" style="text-align: center">
                         <ul>
-                            <li> <b> Credit Card Transactions </b> <span class="po_creditCard"> Credit Card Info </span>
-                                : <span class="po_date">2016/01/10</span> :  <span class="po_order_total"> $0.00</span> </li>
+                            <li> <b> Credit Card Transactions </b> {{=data[0]['credit_card_last_4']}}
+                                : {{=data[0]['sale_date']}} : {{=data[0]['total_price']}} </li>
                         </ul>
                     </div>
             </div>
