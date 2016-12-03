@@ -11,7 +11,10 @@ import json
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 
-#/////////////////////
+def products():
+    total = get_number_of_items_in_cart_no_json()
+    return dict(total=total)
+
 #INDEX PAGE
 #/////////////////////
 def index():
