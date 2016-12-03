@@ -373,7 +373,7 @@ body{
 	background: rgba(64, 91, 255, 0.35);
 }
 
-..view-cart-dropdown-container{
+.view-cart-dropdown-container{
 	cursor: pointer;
 }
 
