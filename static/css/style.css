@@ -337,7 +337,7 @@ body{
 }
 
 #close_cart_alert:hover{
-	box-shadow: 2px 2px 6px #333;
+	box-shadow: 2px 2px 6px #2d2d2d;
 	background:#ccc;
 	color:white;
 }
@@ -503,7 +503,7 @@ ul.po_order_total{
 }
 
 #search_icon:hover{
-	background: #333333;
+	background: #2d2d2d;
 	cursor: pointer;
 }
 
