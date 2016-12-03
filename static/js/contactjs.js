@@ -6,10 +6,19 @@ function send_contact_form(){
     var email_check = false;
     var message_check = false;
 
-    contact_name = document.querySelector('[name="contact_name"]').value;
-    contact_email = document.querySelector('[name="contact_email"]').value;
-    contact_message = document.querySelector('[name="contact_message"]').value;
+    contact_name = (document.querySelector('[name="contact_name"]').value).replace(/'/g, "");
+    contact_email = (document.querySelector('[name="contact_email"]').value).replace(/'/g, "");
+    contact_message = (document.querySelector('[name="contact_message"]').value).replace(/'/g, "");
 
+    console.log(contact_name, contact_email, contact_message);
+    $.ajax({
+         type: 'POST',
+         url: '/Dropshipping/default/contact_post?name='+contact_name+'&email='+contact_email+'&message='+contact_message,
+         async: true
+     });
+
+    window.location.href = "http://localhost:8000/dropshipping/default/index";
+    /*
     if(contact_name.length < 4 || contact_name.length > 16 ){
         //set error message on name
     }else{
@@ -50,4 +59,5 @@ function send_contact_form(){
     }else{
         //return to contact page and display errors
     }
+    */
 }
