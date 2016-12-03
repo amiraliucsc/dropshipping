@@ -147,7 +147,7 @@
 					<li>
                         <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='contact'">Contact</div>
                     </li>
-                    <li style="float:right;">
+                    <li style="float:right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
                         <div id="cart_icon">
                             <span id="cart_number">{{=total}}</span>
                         </div>
@@ -169,8 +169,8 @@
 
 </div>
 			</nav>
-            <div id="div1" style="width: 100%; display: none; z-index: 5000; position: absolute; float: right;">
-                <div class="mycart" style="background: #ffffff; float: right; padding: 10px; color: #333333; margin-right: 10px; -webkit-border-radius: ;-moz-border-radius: ;border-radius: 5px; margin-top: 10px;">
+            <div id="div1" style="width: 100%; display: none; z-index: 5000; position: absolute; float: right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
+                <div class="mycart" style="background: #ffffff; float: right; padding: 10px; color: #333333; margin-right: 10px; -webkit-border-radius: ;-moz-border-radius: ;border-radius: 5px; margin-top: 0px;">
                     <div class="category-title" style="padding: 10px; border-bottom: 1px solid #ededed;"><h4><strong>Cart</strong></h4></div>
                     <ul>
                         <li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" src="https://static.bhphoto.com/images/images500x500/apple_mf839ll_a_13_3_macbook_pro_notebook_1425938838000_1128836.jpg"/>
