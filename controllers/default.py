@@ -29,13 +29,11 @@ def products():
     return dict(total=total, selective_products=selective_products)
 
 def get_selective_products(p_list):
-    print p_list
     if p_list:
         query_end = " and product_id in %s"% p_list
     else:
         query_end = ""
     query="select * from product_view where image_default = 1" + query_end
-    print "QUERY", query
     all_products = db.executesql(query, as_dict=True)
     return all_products
 
@@ -43,19 +41,28 @@ def get_product_list(operation, search_string):
     product_list = ""
     if operation == "search":
         product_list = product_search(search_string)
+    elif operation == "category":
+        product_list = category_search(search_string)
     return product_list
 
 
 def category_search(search_string):
-    return
+    query = "select product_id from product_tag_association where tag_name = '%s'"% search_string
+    result = db.executesql(query)
+    p_list = list_formatter(result)
+    return p_list
 
 def product_search(search_string):
     query = "select product_id from product_tag_association where title LIKE '%" + search_string + "%' or description LIKE '%" + search_string + "%' or manufacturer LIKE '%" + search_string + "%' or tag_name LIKE '%" + search_string + "%'"
     result = db.executesql(query)
+    p_list = list_formatter(result)
+    return p_list
+
+def list_formatter(input):
     p_list = []
-    for i in range(len(result)):
-        p_list.append(str(result[i][0]))
-    p_list = str(p_list).replace("[","(").replace("]",")")
+    for i in range(len(input)):
+        p_list.append(str(input[i][0]))
+    p_list = str(p_list).replace("[", "(").replace("]", ")")
     return p_list
 
 #/////////////////////
@@ -330,7 +337,7 @@ def get_total_cart_price_json():
     query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result[0]['total_price'] is not None:
-        total = str(result[0]['total_price'])
+        total = str(locale.currency(result[0]['total_price'], grouping=True))
 
     return json.dumps(dict(total_price=total))
 
@@ -340,9 +347,9 @@ def get_total_cart_price():
     query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result:
-        return str(result[0]['total_price'])
+        return str(locale.currency(result[0]['total_price'], grouping=True))
     else:
-        return 0
+        return locale.currency(0)
 
 def checkout():
     cart_id = get_cart_id()
@@ -356,6 +363,8 @@ def get_cart_content():
     cart_id = get_cart_id()
     query = "select * from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
+    price_list = ["sale_price"]
+    fix_price(result, price_list)
     html = ""
     for item in result:
         html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'><div style='padding:2px;'>"+ str(item['qty']) +"</div >"+ item['title'] +"</li>";
