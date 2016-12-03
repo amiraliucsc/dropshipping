@@ -571,3 +571,37 @@ ul.po_order_total{
 .divider{
 	display:none;
 }
+
+/******************** LOGIN / SIGNUP BUTTONS*********************/
+#signup_login{
+	position:absolute;
+	top:10px;
+	width:350px;
+	margin-left:85%;
+}
+
+#override-signup{
+	padding:0;
+	font-size:16px;
+	display:inline-block;
+	background:#2d2d2d;
+}
+
+#override-signup:hover{
+	box-shadow:none;
+	background:#2d2d2d;
+	color:#ff5a5f;
+}
+
+#override-login{
+	padding:0;
+	font-size:16px;
+	display:inline-block;
+	background:#2d2d2d;
+}
+
+#override-login:hover{
+	box-shadow:none;
+	background:#2d2d2d;
+	color:#ff5a5f;
+}
