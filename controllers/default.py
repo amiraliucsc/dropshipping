@@ -26,6 +26,8 @@ def products():
 
     total = get_number_of_items_in_cart_no_json()
     selective_products = get_selective_products(product_list)
+
+
     return dict(total=total, selective_products=selective_products)
 
 def get_selective_products(p_list):
@@ -35,6 +37,8 @@ def get_selective_products(p_list):
         query_end = ""
     query="select * from product_view where image_default = 1" + query_end
     all_products = db.executesql(query, as_dict=True)
+    price_list = ["price"]
+    fix_price(all_products, price_list)
     return all_products
 
 def get_product_list(operation, search_string):
@@ -265,7 +269,7 @@ def get_subtotal():
 def insert_po(customer_id, subtotal, credit_card_last_4):
 
     query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4) VALUES ('%s', '%s', '%s')"% (customer_id, subtotal, credit_card_last_4)
-    print "INSERT_PO",query
+
     db.executesql(query)
     db.commit()
 
@@ -346,7 +350,7 @@ def get_total_cart_price():
     cart_id = get_cart_id()
     query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
-    if result:
+    if result[0]['total_price']:
         return str(locale.currency(result[0]['total_price'], grouping=True))
     else:
         return locale.currency(0)
@@ -355,6 +359,8 @@ def checkout():
     cart_id = get_cart_id()
     query = "select * from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
+    price_list = ["sale_price"]
+    fix_price(result,price_list)
     total = get_number_of_items_in_cart_no_json()
     total_price = get_total_cart_price()
     return dict(location=T('Dropshipping - Checkout'),items=result,total=total, total_price = total_price)
@@ -419,13 +425,10 @@ def po_page():
     total = get_number_of_items_in_cart_no_json()
     product_list = get_order_items()
     price_list = ["sale_price"]
-    print price_list
+
     fix_price(product_list,price_list)
 
-    print po_info
-    print "\n"
-    print product_list
-    print "\n"
+
     return dict(total=total, po_info=po_info, product_list=product_list)
 
 
