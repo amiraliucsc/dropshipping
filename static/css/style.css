@@ -542,7 +542,7 @@ ul.po_order_total{
 
 #search_submit_button:hover{
 	box-shadow: none;
-	color:red;
+	color:#2d2d2d;
 }
 
 /********override bootcrap***********/

@@ -1,8 +1,6 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-
-
 {{block feature}}
     <div class="owl-carousel" id="feature-slider" >
         <div class="feature-item"><img src="{{=URL('static', 'images/shopmac.jpg')}}" alt="Owl Image"></div>
@@ -14,382 +12,62 @@
 {{block body}}
     <div class="smaller-wrapper">
         <div class="category-title"><h3>4K Ultra HD TVs</h3></div>
-        <div class="owl-carousel" id="product-carousel">
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5069/5069100_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$312.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
+            <div class="owl-carousel" id="product-carousel">
+            {{for tv in televisions:}}
+                <div class="item">
+                    <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=tv['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div class="item-text" style="margin: 0; padding: 5px;">
+                        <h5>{{=(tv['title'][:35] + '..') if len(tv['title']) > 35 else tv['title']}}</h5>
+                        <div class="item-price-cart">
+                            <div class="item-price"><strong>${{="{0:.2f}".format(tv['price'])}}</strong></div>
+                            <div class="learn-more"><i>Learn More</i></div>
+                        </div>
+                        <div id="{{=tv['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
-                    <div id="1" class="add-to-cart"><strong>Add to Cart</strong></div>
                 </div>
+            {{pass}}
             </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4801/4801704_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Sony | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$649.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div id="2" class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4988/4988400_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>VIZIO | 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$379.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div id="3" class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5112/5112802_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$1,099.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4973/4973347_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>LG | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$449.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5069/5069100_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$312.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4801/4801704_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Sony | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$649.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4988/4988400_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>VIZIO | 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$379.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5112/5112802_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Samsung | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$1,099.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4973/4973347_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>LG | Smart 4K Ultra HD TV</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$449.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-        </div>
 
         <div class="product-advertisement">
             <img src="{{=URL('static','images/studio.jpg')}}"/>
         </div>
 
+        <!-- computers and tablets -->
         <div class="category-title"><h3>Computers & Tablets</h3></div>
-        <div class="owl-carousel" id="product-carousel2">
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/6448/6448039_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Apple | MacBook Pro® 15"</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$2,399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
+            <div class="owl-carousel" id="product-carousel2">
+            {{for comp in computers:}}
+                <div class="item">
+                    <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=comp['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div class="item-text" style="margin: 0; padding: 5px;">
+                        <h5>{{=(comp['title'][:35] + '..') if len(comp['title']) > 35 else comp['title']}}</h5>
+                        <div class="item-price-cart">
+                            <div class="item-price"><strong>${{="{0:.2f}".format(comp['price'])}}</strong></div>
+                            <div class="learn-more"><i>Learn More</i></div>
+                        </div>
+                        <div id="{{=comp['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
                 </div>
+            {{pass}}
             </div>
 
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5229/5229800_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Apple | Macbook® 12"</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$1,599.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4523/4523500_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Microsoft | Surface Book</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$1,499.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5202/5202900_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Acer | R 11 2-in-1 Chromebook</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$279.00</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4262/4262900_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Acer | 15.6" Chromebook</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$249.00</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/6448/6448039_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Apple | MacBook Pro® 15" Intel i7</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$2,399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5229/5229800_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Apple | Macbook® 12" Intel Core M5</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$1,599.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4523/4523500_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Microsoft | Surface Book 13.5" Laptop</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong style="color: red;">SALE</strong> <strong>$1,499.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5202/5202900_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Acer | R 11 2-in-1 Chromebook</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$279.00</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4262/4262900_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Acer | 15.6" Chromebook Intel Celeron</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$249.00</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong id="add_cart_btn">Add to Cart</strong></div>
-                </div>
-            </div>
-
-        </div>
-
+        <!-- cat game -->
         <div class="category-title"><h3>Gaming</h3></div>
-        <div class="owl-carousel" id="product-carousel3">
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5117/5117500_ra.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Sony - PlayStation VR</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
+            <div class="owl-carousel" id="product-carousel3">
+            {{for game in gaming:}}
+                <div class="item">
+                    <div id="product-image"><img src="http://localhost:8000/dropshipping/static/images/Product/{{=game['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div class="item-text" style="margin: 0; padding: 5px;">
+                        <h5>{{=(game['title'][:25] + '..') if len(game['title']) > 25 else game['title']}}</h5>
+                        <div class="item-price-cart">
+                            <div class="item-price"><strong>${{="{0:.2f}".format(game['price'])}}</strong></div>
+                            <div class="learn-more"><i>Learn More</i></div>
+                        </div>
+                        <div id="{{=game['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
                 </div>
+            {{pass}}
             </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/BestBuy_US/store/ee/2016/com/pol/pol-EVN-7738-161002.jpg;maxHeight=198;maxWidth=291" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Oculus Rift EVE: Valkyrie</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$849.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5587/5587706_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Oculus | Touch</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$199.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5388/5388601_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Xbox One | Pro Combo Pack</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5389/5389000_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>PS4 | Pro Combo Pack</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5117/5117500_ra.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Sony - PlayStation VR</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/BestBuy_US/store/ee/2016/com/pol/pol-EVN-7738-161002.jpg;maxHeight=198;maxWidth=291" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Oculus Rift EVE: Valkyrie</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$849.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5587/5587706_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Oculus | Touch</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$199.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5388/5388601_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>Xbox One | Pro Combo Pack</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div id="product-image"><img src="http://pisces.bbystatic.com/image2/BestBuy_US/images/products/5389/5389000_sa.jpg;maxHeight=145;maxWidth=222" alt="Owl Image"></div>
-                <div class="item-text" style="margin: 0; padding: 5px;">
-                    <h5>PS4 | Pro Combo Pack</h5>
-                    <div class="item-price-cart">
-                        <div class="item-price"><strong>$399.99</strong></div>
-                        <div class="learn-more"><i>Learn More</i></div>
-                    </div>
-                    <div class="add-to-cart"><strong>Add to Cart</strong></div>
-                </div>
-            </div>
-
-        </div>
     </div>
-
 {{end}}
 
 {{block right_sidebar}}
