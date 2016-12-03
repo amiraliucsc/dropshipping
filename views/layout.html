@@ -61,21 +61,16 @@
 
                 <div id="inner_cart_alert">
                     <div onclick='close_add_cart()' id="close_cart_alert"><img src="https://cdn4.iconfinder.com/data/icons/iconic/raster/32/x_alt.png" alt="Owl Image" width="15" height="15"></div>
-
                     <div class="added-to-cart-notification" style="display: flex;"><img src="https://cdn0.iconfinder.com/data/icons/free-misc-icon-set-1/512/check-128.png" alt="Owl Image" width="25" height="25"><h3>Added to Cart!</h3></div>
-
-
                     <div class="innercart-description-wrapper">
-                        <div class="innercart-image-container">
-                            <img src="//images.crutchfieldonline.com/ImageHandler/trim/620/378/products/2014/34/022/g022YAS203-f.jpg" alt="Owl Image" width="100%">
-                        </div>
+                        <div id="pop_img" class="innercart-image-container"></div>
 
                         <div class="innercart-description-container">
-                            <div class="innercart-item-title"><h2>Yamaha YAS-203</h2></div>
-                            <div class="innercart-item-description"><h4>Powered home theater sound bar with wireless subwoofer and Bluetooth®</h4></div>
-                            <div class="innercart-item-review"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
-                            <div class="innercart-item-price"><h3>$399.00</h3></div>
-                            <div class="add-to-cart" style="width: 250px; margin: 10px 0px;"><strong>Add to Cart</strong></div>
+                            <div id="pop_title" class="innercart-item-title"></div>
+                            <div id="pop_desc" class="innercart-item-description"></div>
+                            <div id="pop_rating" class="innercart-item-review"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img alt="product['title']" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+                            <div id="pop_price" class="innercart-item-price"></div>
+                            <button style="border-radius:5px; background:green;" onclick="location.href='http://localhost:8000/dropshipping/default/checkout'">Checkout</button>
                             <div onclick='close_add_cart()' id="close_cart_alert">Continue Shopping</div>
                         </div>
                     </div>
@@ -132,7 +127,7 @@
                         <div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='index'">Home</div>
                     </li>
 					<li class="drop-down">
-						<div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='product'">Products</div>
+						<div style="padding-left:20px; padding-right:20px; cursor:pointer" onclick="location.href='products'">Products</div>
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -195,14 +190,6 @@
                 <div class="mycart" style="background: #ffffff; float: right; padding: 10px; color: #333333; margin-right: 10px; border-radius: 5px; margin-top: 0px;">
                     <div class="category-title" style="padding: 10px; border-bottom: 1px solid #ededed;"><h4><strong>Cart</strong></h4></div>
                     <ul id="cart_ul">
-                        <!--
-                        <li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" src=""/>
-                            15" Macbook Pro | Qty: 1</li>
-                        <li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" src=""/>
-                            15" Macbook Pro | Qty: 1</li>
-                        <li style="padding: 10px;"><img width="30px" height="30px" src=""/>
-                            15" Macbook Pro | Qty: 1</li>
-                        -->
                     </ul>
                     <div class="view-cart-dropdown-container" style="width: 100%; text-align: center; padding-top: 10px; color: #ff5a5f;">View Cart</div>
                 </div>

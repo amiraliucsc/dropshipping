@@ -42,6 +42,16 @@ $('.add-to-cart').on('click',function (e) {
 	//***** NEED TO CHECK FOR DUPLICATE ITEMS IN CART
 	var product_id = e.target.id;
 
+	var cart_title = $("#p_title"+ product_id).html();
+	var cart_image = "http://localhost:8000/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
+	var cart_desc = $("#p_desc"+ product_id).html();
+	var cart_price = $("#p_price"+ product_id).html();
+	$("#pop_img").html('<img src="'+cart_image+'" alt="Owl Image" width="100%"/>');
+	$("#pop_title").html('<h2>'+cart_title+'</h2>');
+	$("#pop_desc").html('<h4>'+ cart_desc+'</h4>');
+	//$("#pop_rating").html();
+	$("#pop_price").html('<h3>'+ cart_price+'</h3>');
+
 	var qty = 1  // Change it later
 	 $.ajax({
 		 type: "POST",
@@ -308,3 +318,14 @@ $(document).mouseup(function (e)
         close_add_cart();
     }
 });
+
+function save_review(product_id) {
+	var name = $('#add_review_name').val();
+	var review = $('#customer_review_txt').val();
+	var stars = $('input[name="rank"]:checked').val();
+	$.ajax({
+			method: 'POST',
+			url: '/Dropshipping/default/add_review?product_id='+product_id+'&review='+review+'&stars='+stars+'&name='+name,
+			async: true,
+		})
+}

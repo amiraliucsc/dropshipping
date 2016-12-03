@@ -11,10 +11,20 @@ import json
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 
+#/////////////////////
+#PRODUCTS PAGE
+#/////////////////////
 def products():
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+    selective_products = get_selective_products(None)
+    return dict(total=total, selective_products=selective_products)
 
+def get_selective_products(p_list):
+    query="select * from product_view"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
+
+#/////////////////////
 #INDEX PAGE
 #/////////////////////
 def index():
@@ -26,13 +36,6 @@ def index():
     computers = get_all_products_by_tag_computer()
     televisions = get_all_products_by_tag_television()
     gaming = get_all_products_by_tag_gaming()
-    print("\n")
-    print(computers)
-    print("\n")
-    print(televisions)
-    print("\n")
-    print(gaming)
-    print("\n")
 
     return dict(message=T("Welcome to web2py!" + title),
                 total=total,computers=computers,
@@ -171,10 +174,12 @@ def create_purchase_order():
     user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
 
     customer_id = get_customer_id(name, address1, address2, city, state, zip, email)
-    sale_price = get_sale_price()
+    subtotal = get_subtotal()
     credit_card_last_4 = card_number[-4:]
 
-    purchase_order_no = insert_po(customer_id, sale_price, credit_card_last_4)
+
+
+    purchase_order_no = insert_po(customer_id, subtotal, credit_card_last_4)
     update_order_items(purchase_order_no)
 
     return json.dumps(dict(purchase_order_no=purchase_order_no))
@@ -209,16 +214,16 @@ def get_customer_id(name, address1, address2, city, state, zip, email):
     customer_id = db.executesql(query)[0][0]
     return customer_id
 
-def get_sale_price():
+def get_subtotal():
     cart_id = get_cart_id()
     query = "select sum(price) from order_item where cart_id = %s"% cart_id
-    sale_price = db.executesql(query)[0][0]
-    return sale_price
+    subtotal = db.executesql(query)[0][0]
+    return subtotal
 
 
-def insert_po(customer_id, sale_price, credit_card_last_4):
+def insert_po(customer_id, subtotal, credit_card_last_4):
 
-    query = "insert into purchase_order (customer_id, sale_price, credit_card_last_4) VALUES ('%s', '%s', '%s')"% (customer_id, sale_price, credit_card_last_4)
+    query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4) VALUES ('%s', '%s', '%s')"% (customer_id, subtotal, credit_card_last_4)
     print "INSERT_PO",query
     db.executesql(query)
     db.commit()
@@ -230,7 +235,6 @@ def insert_po(customer_id, sale_price, credit_card_last_4):
 def update_order_items(purchase_order_no):
     cart_id = get_cart_id()
     query = "update order_item set purchase_order_no = '%s' where cart_id = '%s' and status = 'active'"% (purchase_order_no, cart_id)
-    print query
     db.executesql(query)
     db.commit()
 
@@ -270,20 +274,18 @@ def add_review():
     name = request.vars.name
     review = request.vars.review
     stars = request.vars.stars
+    query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
+    db.executesql(query)
 
 
 
 def order_history():
     po_num = request.vars.purchase_order_no
-
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     data = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
-
+    price_list = ("total_price", "subtotal", "subtotal", "tax", "shipping_price")
     fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
-    print data
-    print "\n"
     return dict(total=total, data=data)
     total = get_number_of_items_in_cart_no_json()
     return dict(location=T('Dropshiping - Checkout'), total=total, data=data)
@@ -301,7 +303,7 @@ def get_total_cart_price_json():
 
 def get_total_cart_price():
     cart_id = get_cart_id()
-    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result:
         return str(result[0]['total_price'])
@@ -367,24 +369,32 @@ def po_page():
     po_num = request.vars.purchase_order_no
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
-    data = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
+    po_info = db.executesql(query, as_dict=True)
+    price_list = ("total_price", "subtotal", "tax", "shipping_price")
 
-    fix_price(data, price_list)
+    fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
-    print data
-    print "\n"
-    return dict(total=total, data=data)
+    product_list = get_order_items()
+    price_list = ("sale_price")
+    fix_price(product_list,price_list)
 
+    print po_info
+    print "\n"
+    return dict(total=total, po_info=po_info, product_list=product_list)
+
+
+def get_order_items():
+    cart_id = get_cart_id()
+
+    query = "select * from product_order_item where cart_id = '%s'"% cart_id
+    product_list = db.executesql(query)
+    return product_list
 
 def fix_price(results, fields):
     for i in range(len(results)):
         for field_name in fields:
             results[i][field_name] = locale.currency(results[i][field_name], grouping=True)
 
-#/////////////////////
-#DEFAULT PY FUNCTIONS  ////////////////////////////////////////////////////////////////
-#/////////////////////
 @cache.action()
 def download():
     """

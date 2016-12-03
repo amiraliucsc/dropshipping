@@ -149,6 +149,10 @@ body{
 	justify-content: flex-end;
 }
 
+#product-image:hover{
+	background: #f8f8f8;
+}
+
 .owl-next img{
 	width: 30px;
 }
