@@ -314,8 +314,17 @@ def checkout():
     result = db.executesql(query, as_dict=True)
     total = get_number_of_items_in_cart_no_json()
     total_price = get_total_cart_price()
-    return dict(location=T('Dropshiping - Checkout'),items=result,total=total, total_price = total_price)
+    return dict(location=T('Dropshipping - Checkout'),items=result,total=total, total_price = total_price)
 
+def get_cart_content():
+    cart_id = get_cart_id()
+    query = "select * from product_order_item where cart_id = " + cart_id
+    result = db.executesql(query, as_dict=True)
+    html = ""
+    for item in result:
+        html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:30px; width:30px; padding:5px;' src='/dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'><div style='padding:2px;'>"+ str(item['qty']) +"</div >"+ item['title'] +"</li>";
+    # html = "<div>test</div>"
+    return( json.dumps(dict(html=html)))
 
 def contact():
     total = get_number_of_items_in_cart_no_json()

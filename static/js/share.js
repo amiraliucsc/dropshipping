@@ -39,16 +39,41 @@ jQuery(function(){
 
 $('.add-to-cart').on('click',function (e) {
 	alert_add_cart(); //linked from cartfuncjs.js
-
+	//***** NEED TO CHECK FOR DUPLICATE ITEMS IN CART
 	var product_id = e.target.id;
+
 	var qty = 1  // Change it later
 	 $.ajax({
 		 type: "POST",
 		 url: "/Dropshipping/default/add_to_cart?product_id="+product_id+"&qty="+qty,
-	 })
+	 });
 	var current_num = parseInt( $('#cart_number').html() );
 	$('#cart_number').html(current_num+1);
+	insert_cart_dropdown()
 });
+
+$('document').ready(function (e) {
+	insert_cart_dropdown()
+})
+
+function insert_cart_dropdown(){
+	$.ajax({
+		 type: "POST",
+		 url: "/Dropshipping/default/get_cart_content",
+	 }).done(function (html) {
+		html = JSON.parse(html)
+		html = html['html']
+		console.log(html['html'])
+		$("#cart_ul").html('');
+		$("#cart_ul").html(html);
+	})
+
+	// var cart_title = $("#p_title"+ product_id).html();
+	// var cart_image = "http://localhost:8000/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
+    //
+	// $("#cart_ul").prepend('<li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" style="padding:5px;" src='+cart_image+'/><div style="padding:2px;">1</div>'+cart_title+'</li>');
+
+}
 
 $('#cart_icon').on('click',function () {
 	window.location.href = './checkout'
@@ -156,7 +181,7 @@ $('#check_product_payment input.required').focusout(function (e) {
 				$('#'+$id).addClass('valid');
 				$('#err_zip').html('');
 			}else{
-				$('#err_zip').html('Not a valid ZIP code')
+				$('#err_zip').html('Not a valid ZIP code');
 				$('#'+$id).removeClass('valid');
 				$('#'+$id).addClass('invalid');
 			}

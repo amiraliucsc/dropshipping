@@ -25,6 +25,8 @@
                         <div id="{{=tv['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
                 </div>
+                <div style="display:none;" id="p_title{{=tv['product_id']}}">{{=tv['title']}}</div>
+                <div style="display:none;" id="p_img{{=tv['product_id']}}">{{=tv['image_path']}}</div>
             {{pass}}
             </div>
 
@@ -48,6 +50,8 @@
                         <div id="{{=comp['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
                 </div>
+                <div style="display:none;" id="p_title{{=comp['product_id']}}">{{=comp['title']}}</div>
+                <div style="display:none;" id="p_img{{=comp['product_id']}}">{{=comp['image_path']}}</div>
             {{pass}}
             </div>
 
@@ -67,6 +71,8 @@
                         <div id="{{=game['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
                 </div>
+                <div style="display:none;" id="p_title{{=game['product_id']}}">{{=game['title']}}</div>
+                <div style="display:none;" id="p_img{{=game['product_id']}}">{{=game['image_path']}}</div>
             {{pass}}
             </div>
     </div>
