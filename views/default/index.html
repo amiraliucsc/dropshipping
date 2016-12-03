@@ -22,7 +22,7 @@
                             <div class="item-price"><strong>${{="{0:.2f}".format(tv['price'])}}</strong></div>
                             <div class="learn-more"><i>Learn More</i></div>
                         </div>
-                        <div id="1" class="add-to-cart"><strong>Add to Cart</strong></div>
+                        <div id="{{=tv['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
                 </div>
             {{pass}}
@@ -44,7 +44,7 @@
                             <div class="item-price"><strong>${{="{0:.2f}".format(comp['price'])}}</strong></div>
                             <div class="learn-more"><i>Learn More</i></div>
                         </div>
-                        <div id="1" class="add-to-cart"><strong>Add to Cart</strong></div>
+                        <div id="{{=comp['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
                 </div>
             {{pass}}
@@ -62,7 +62,7 @@
                             <div class="item-price"><strong>${{="{0:.2f}".format(game['price'])}}</strong></div>
                             <div class="learn-more"><i>Learn More</i></div>
                         </div>
-                        <div id="1" class="add-to-cart"><strong>Add to Cart</strong></div>
+                        <div id="{{=game['product_id']}}" class="add-to-cart"><strong>Add to Cart</strong></div>
                     </div>
                 </div>
             {{pass}}
