@@ -13,12 +13,41 @@ import json
 #INDEX PAGE
 #/////////////////////
 def index():
-
     title = "Dropshipping"
     response.flash = T("Welcome to " + title)
     num_items_in_cart = get_number_of_items_in_cart_no_json()
     total = get_number_of_items_in_cart_no_json()
-    return dict(message=T("Welcome to web2py!" + title),total=total)
+
+    computers = get_all_products_by_tag_computer()
+    televisions = get_all_products_by_tag_television()
+    gaming = get_all_products_by_tag_gaming()
+    print("\n")
+    print(computers)
+    print("\n")
+    print(televisions)
+    print("\n")
+    print(gaming)
+    print("\n")
+
+    return dict(message=T("Welcome to web2py!" + title),
+                total=total,computers=computers,
+                televisions=televisions,
+                gaming=gaming)
+
+def get_all_products_by_tag_computer():
+    query = "select * from product_tag_association where tag_name='Computers'"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
+
+def get_all_products_by_tag_television():
+    query = "select * from product_tag_association where tag_name='Television'"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
+
+def get_all_products_by_tag_gaming():
+    query = "select * from product_tag_association where tag_name='Gaming'"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
 
 def add_to_cart():
     product_id = str(request.vars.product_id)
@@ -135,9 +164,6 @@ def create_purchase_order():
     update_order_items(purchase_order_no)
 
     return json.dumps(dict(purchase_order_no=purchase_order_no))
-
-
-
 
 def check_saved_user_data(name, address1, address2, zip, email):
     user_data = (name, address1, address2, zip, email)
@@ -297,78 +323,6 @@ def user():
     total = get_number_of_items_in_cart_no_json()
     return dict(form=auth(),total=total)
 
-"""
-def checkout():
-    return dict()
-
-#/////////////////////
-#PRODUCT PAGE
-#/////////////////////
-def product():
-    return dict()
-
-def get_products_by_location():
-    location = request.vars.location
-    query = "select * from product_location where product_location = " + location
-    data = db.executesql(query, as_dict=True)
-    return json.dumps(data)
-
-#/////////////////////
-#CONTACT PAGE
-#/////////////////////
-def contact():
-    return dict()
 
 
 
-#/////////////////////
-#CART FUNCTIONS
-#/////////////////////
-def create_cart():
-    user_id = get_user_id()
-    query = "insert into cart (user_id) VALUES ('" + str(user_id) + "')"
-    res = db.executesql(query)
-    response = 1
-    return response
-
-def get_cart_id():
-    user_id = get_user_id()
-    query = "select cart_id from cart where user_id = '" + str(user_id) + "' and status = 'active'"
-    result = db.executesql(query,as_dict=True)
-    if result:
-        return result[0]['cart_id']
-    else:
-        create_cart()
-        cart_id = get_cart_id()
-        return cart_id
-
-def add_to_cart():
-    product_id = str(request.vars.product_id)
-    qty = str(request.vars.qty)
-    cart_id = get_cart_id()
-
-    if cart_id != 0:
-        if order_item_exists_in_cart(product_id):
-            response = 0
-        else:
-            query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
-            db.executesql(query)
-            response = 1
-    return dict(response=response)
-
-def get_cart_items():
-    cart_id = get_cart_id()
-    query = "select * from order_items where cart_id = " + cart_id
-    data = db.executesql(query, as_dict=True)
-    return json.dumps(data)
-
-def order_item_exists_in_cart(product_id):
-    cart_id = get_cart_id()
-    query = "select * from order_item where product_id = " + str(product_id) + " and cart_id = " + str(cart_id)
-    result = db.executesql(query)
-    if result:
-        response = True
-    else:
-        response = False
-    return response
-"""
