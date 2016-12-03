@@ -94,6 +94,10 @@ $('#cart_icon').on('click',function () {
 	window.location.href = '/Dropshipping/default/checkout'
 });
 
+$('.view-cart-dropdown-container').on('click',function () {
+	window.location.href = '/Dropshipping/default/checkout'
+});
+
 function load_cart_number() {
 	$.ajax({
 		 type: "POST",

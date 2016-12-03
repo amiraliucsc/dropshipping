@@ -373,6 +373,10 @@ body{
 	background: rgba(64, 91, 255, 0.35);
 }
 
+..view-cart-dropdown-container{
+	cursor: pointer;
+}
+
 #add_review_container{
 	width: 100%;
 	max-width: 800px;
