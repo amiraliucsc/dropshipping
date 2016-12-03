@@ -8,7 +8,7 @@
 <div class="checkout-page-products-list">
     <div class="checkout-page-products-list-container">
         <div id="check_product_review">
-            <div class="category-title"><h2>Cart</h2></div>
+            <div class="category-title" style="border-bottom: 1px solid #888888; margin-bottom: 10px;"><h2>Cart</h2></div>
             {{for item in items:}}
                 <div class="check_individual_product" id="order_id_{{=item['product_id']}}">
                     <div class="product_img">
@@ -17,20 +17,21 @@
                     <div class="product_info">
                         <div class="product_title">
                             <span class="info_title"> {{=item['title']}}</span>
-                            <span class="info_price"> ${{=item['price']}}</span>
+                            <span class="info_price"> ${{=item['sale_price']}}</span>
                         </div>
 
                         <div class="product_qty">
                             Quantity: {{=item['qty']}}
-                        <div onclick="remove_from_cart( {{=item['product_id']}} , {{=item['qty']}})" class="checkout_remove"></div>
+
                         </div>
+                        <div onclick="remove_from_cart( {{=item['product_id']}} , {{=item['qty']}})" class="checkout_remove"></div>
                     </div>
                 </div>
             {{pass}}
             <div id="promotion_row">
                 <span class="data_entry">
                     <input style="width: 200px;height: 36px" type="text" placeholder="Promotion Code">
-                    <input type="button" value="Apply" style="width: 100px">
+                    <input type="button" value="Apply" style="width: 100px; background: #ff5a5f; color: white; border: none;">
                 </span>
             </div>
             <div id="total_row">
@@ -40,11 +41,11 @@
 
         <div class="checkout-page-payment-and-address">
             <div id="checkout_container">
-                <div class="category-title"><h2>Name & Address</h2></div>
+                <div class="category-title" style="border-bottom: 1px solid #888888; margin-bottom: 10px;"><h2>Name & Address</h2></div>
                 <div id="cart_items"></div>
                 <div id="payment_container">
                     <div id="check_product_payment" style="display: flex; flex-direction: column;">
-                        <div class="check_shipping" style="width: 100%;">
+                        <div class="check_shipping" style=" width: 100%;">
                             <span class="data_entry">
                                 <input type="text" id="full_name" placeholder="Full Name *" class="required">
                                 <span class="show_error" id="err_full_name"></span>
@@ -71,7 +72,7 @@
                         </div>
 
                         <div class="check_payment">
-                            <div class="category-title"><h2>Payment Information</h2></div>
+                            <div class="category-title" style="border-bottom: 1px solid #888888; margin-bottom: 10px;"><h2>Payment Information</h2></div>
                             <span class="data_entry">
                                 <input type="text" id="cc_name" placeholder="Name on the card *" class="required">
                                 <span class="show_error" id="err_cc_name"></span>
@@ -95,7 +96,7 @@
                                 <input type="text" id="email" placeholder="Email *" class="required">
                                 <span class="show_error" id="err_email"></span>
                             </span>
-                                <span class="data_entry"><input type="button" id="checkout_btn" value="Checkout"> </span>
+                                <span class="data_entry"><input type="button" id="checkout_btn" value="Checkout" style="background: #ff5a5f; color: white; border: none;"> </span>
                         </div>
                     </div>
                 </div>

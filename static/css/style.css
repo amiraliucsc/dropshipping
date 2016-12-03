@@ -604,7 +604,6 @@ a.purchase_order:hover   {color:black; background-color:transparent; text-decora
 /***********************CHECKOUT*******************/
 .checkout-page-products-list {
 	width: 100%;
-	background: dimgrey;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -613,35 +612,49 @@ a.purchase_order:hover   {color:black; background-color:transparent; text-decora
 
 .checkout-page-products-list-container {
 	width: 1000px;
-	background: tomato;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	flex-direction: row;
 }
 
 #check_product_review {
-	background: blue;
 	width: 50%;
 	padding: 20px;
 }
 
+.check_individual_product {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+}
+
+.product_img {
+	padding-right: 5px;
+}
+
 .checkout-page-payment-and-address {
-	background: orange;
 	padding: 20px;
 	width: 50%;
 }
 
 .check_shipping {
-	background: red;
+
 }
 
 .check_payment {
-	background: teal;
+
+}
+
+.show_error {
+	color: red;
 }
 
 .data_entry input {
 	width: 100%;
 	margin: 10px 0px;
+	padding: 10px;
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
 }
 
 /***********************SEARCH*********************/
