@@ -369,10 +369,15 @@ body{
 	margin-bottom:1px;
 }
 
+#review-container:hover{
+	background: rgba(64, 91, 255, 0.35);
+}
+
 #add_review_container{
 	width: 100%;
 	max-width: 800px;
 }
+
 
 #customer_review_txt{
 	width:100%;

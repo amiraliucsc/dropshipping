@@ -295,7 +295,7 @@ def get_product(product_id):
 
 def get_reviews(product_id):
 
-    query = "select * from review where product_id = '%s'"% product_id
+    query = "select * from review where product_id = '%s' order by review_id DESC"% product_id
     reviews = db.executesql(query, as_dict=True)
 
     query = "select AVG(stars) as avg from review where product_id = '%s' group by product_id"% product_id
@@ -304,10 +304,10 @@ def get_reviews(product_id):
     return (reviews, average_stars)
 
 def add_review():
-    product_id = request.vars.product_id
-    name = request.vars.name
-    review = request.vars.review
-    stars = request.vars.stars
+    product_id = str(request.vars.product_id)
+    name = str(request.vars.name)
+    review = str(request.vars.review)
+    stars = str(request.vars.stars)
     query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
     db.executesql(query)
 

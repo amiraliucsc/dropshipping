@@ -42,8 +42,10 @@
             </div>
 
 
-            <div class="category-title"><h3 style="margin: 0; padding: 0px; margin-top: 40px;">Customer Reviews</h3></div>
-            <div id="add_review_container">
+            <div class="category-title"><h3 style="margin: 0 auto; padding: 0px; margin-top: 40px;">Customer Reviews</h3></div>
+            <div id="error_show" style="margin: 0 auto;text-align: center;color: red;"></div>
+            <div style="text-align: center;margin: 0 auto;" id="add_review_container">
+
                 <input style="margin-bottom: 10px;padding-left: 5px" type="text" id="add_review_name" placeholder="Name">
                 <br>
                 <textarea id="customer_review_txt" placeholder="Leave a review..."></textarea><br>
@@ -58,7 +60,7 @@
                 <input class="btn_save" value="Save" type="button" onclick="save_review({{=product['product_id']}})">
             </div>
 
-            <div class="inner" style="width: 100%; max-width: 900px; padding:20px;">
+            <div class="inner" style="width: 100%; padding:20px;">
                 <div class="rating"></div>
 
                 {{for review in reviews[0]:}}

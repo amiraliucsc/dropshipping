@@ -328,10 +328,33 @@ $(document).mouseup(function (e)
 function save_review(product_id) {
 	var name = $('#add_review_name').val();
 	var review = $('#customer_review_txt').val();
-	var stars = $('input[name="rank"]:checked').val();
+	var stars = parseInt( $('input[name="rank"]:checked').val() );
+	if(isNaN(stars)){
+		$('#error_show').html('<h3>Make sure you enter a rank before submiting your review</h3>');
+		return false;
+	}
+	console.log(stars)
+	if(name == '' || review == ''){
+		$('#error_show').html('<h3>Make sure you enter your name and  your review before submit</h3>');
+		return false;
+	}else{
+		$('#error_show').html('');
+	}
 	$.ajax({
 			method: 'POST',
 			url: '/Dropshipping/default/add_review?product_id='+product_id+'&review='+review+'&stars='+stars+'&name='+name,
 			async: true,
-		})
+		}).done(function (e) {
+			$element = "<div id='review-container'>";
+			$element+= "<div class='reviewer-name'><h4>"+name+"</h4></div>";
+			for(i=0;i<stars;i++){
+				$element+= "<img alt='star, yellow icon' class='tiled-icon' style='max-width: 20px; max-height: 20px;' src='https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png'>";
+			}
+			$element+= "<div class='review-description'>"+review+"</div></div>";
+			$('#error_show').css('color','green');
+			$('#error_show').html('<h3>Your Review has been saved successfully</h3>');
+			$('#add_review_container').fadeOut('fast')
+			$('#review-container').before($element)
+
+	})
 }
