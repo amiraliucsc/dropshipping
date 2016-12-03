@@ -11,10 +11,20 @@ import json
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 
+#/////////////////////
+#PRODUCTS PAGE
+#/////////////////////
 def products():
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+    selective_products = get_selective_products(None)
+    return dict(total=total, selective_products=selective_products)
 
+def get_selective_products(p_list):
+    query="select * from product_view"
+    all_products = db.executesql(query, as_dict=True)
+    return all_products
+
+#/////////////////////
 #INDEX PAGE
 #/////////////////////
 def index():
@@ -293,7 +303,7 @@ def get_total_cart_price_json():
 
 def get_total_cart_price():
     cart_id = get_cart_id()
-    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result:
         return str(result[0]['total_price'])
