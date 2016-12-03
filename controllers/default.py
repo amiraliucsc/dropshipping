@@ -317,11 +317,11 @@ def po_page():
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     data = db.executesql(query, as_dict=True)
+    price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
 
-    fix_price(data)
-    return json.dumps(data)
+    fix_price(data, price_list)
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+    return dict(total=total, data=data)
 
 
 def fix_price(results, fields):
