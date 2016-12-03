@@ -370,6 +370,8 @@ def po_page():
 
     print po_info
     print "\n"
+    print product_list
+    print "\n"
     return dict(total=total, po_info=po_info, product_list=product_list)
 
 
