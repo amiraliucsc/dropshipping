@@ -121,7 +121,7 @@ function remove_from_cart(pid,qty){
 		 		type: "POST",
 		 		url: "/Dropshipping/default/get_number_of_items_in_cart"
 	 		}).done(function (respond) {
-
+				insert_cart_dropdown()
 				respond = JSON.parse(respond)
 				$('#number_of_items').html(respond['total'])
 

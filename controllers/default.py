@@ -324,7 +324,7 @@ def get_cart_content():
     result = db.executesql(query, as_dict=True)
     html = ""
     for item in result:
-        html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:30px; width:30px; padding:5px;' src='/dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'><div style='padding:2px;'>"+ str(item['qty']) +"</div >"+ item['title'] +"</li>";
+        html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'><div style='padding:2px;'>"+ str(item['qty']) +"</div >"+ item['title'] +"</li>";
     # html = "<div>test</div>"
     return( json.dumps(dict(html=html)))
 
@@ -375,10 +375,13 @@ def po_page():
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
     product_list = get_order_items()
-    price_list = ("sale_price")
+    price_list = ["sale_price"]
+    print price_list
     fix_price(product_list,price_list)
 
     print po_info
+    print "\n"
+    print product_list
     print "\n"
     return dict(total=total, po_info=po_info, product_list=product_list)
 
@@ -387,7 +390,7 @@ def get_order_items():
     cart_id = get_cart_id()
 
     query = "select * from product_order_item where cart_id = '%s'"% cart_id
-    product_list = db.executesql(query)
+    product_list = db.executesql(query, as_dict=True)
     return product_list
 
 def fix_price(results, fields):

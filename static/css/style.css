@@ -369,7 +369,7 @@ body{
 	background:white;
 	position:fixed;
 	z-index:11;
-	top: 30%;
+	top: 5%;
 	max-width: 800px;
 	border-radius: 5px;
 }
@@ -538,10 +538,19 @@ h1.po_title{
 	padding: 5px;
 }
 
+.po_order_item{
+	border-bottom: dotted indianred;
+}
+
 .po_detail {
 	font-size: 25px;
 	padding-top: 25px;
 	padding-bottom: 25px;
+}
+
+.po_order_list{
+	border: 1px solid grey;
+	padding: 15px;
 }
 
 .po_item_order{
