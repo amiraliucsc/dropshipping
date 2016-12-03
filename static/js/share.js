@@ -206,18 +206,18 @@ $('input#checkout_btn').on('click',function (e) {
 			city = respond['results'][0]['address_components'][1]['long_name']
 			state = respond['results'][0]['address_components'][3]['short_name']
 			var $customer_info = {
-				'full_name': $('#full_name').val(),
-				'address1': $('#address1').val(),
-				'address2' : $('#address2').val(),
+				'full_name': encodeURIComponent($('#full_name').val()),
+				'address1': encodeURIComponent($('#address1').val()),
+				'address2' : encodeURIComponent($('#address2').val()),
 				'city': city,
 				'state' : state,
-				'zip': $('#zip').val(),
-				'card_number': $('#cc_number').val(),
-				'month' : $('#cc_exp_month').has(':selected').val(),
-				'year' : $('#cc_exp_year').has(':selected').val(),
-				'name_on_card' : $('#cc_name').val(),
-				'cvv' : $('#cvv').val(),
-				'email' : $('#email').val(),
+				'zip': encodeURIComponent($('#zip').val()),
+				'card_number': encodeURIComponent($('#cc_number').val()),
+				'month' : encodeURIComponent($('#cc_exp_month').has(':selected').val()),
+				'year' : encodeURIComponent($('#cc_exp_year').has(':selected').val()),
+				'name_on_card' : encodeURIComponent($('#cc_name').val()),
+				'cvv' : encodeURIComponent($('#cvv').val()),
+				'email' : encodeURIComponent($('#email').val()),
 			}
 			console.log($customer_info);
 			var jsonString = JSON.stringify($customer_info);
