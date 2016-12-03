@@ -362,9 +362,9 @@ def po_page():
     po_info = db.executesql(query, as_dict=True)
     price_list = ("total_price", "sale_price", "subtotal", "tax", "shipping_price")
 
-    fix_price(data, price_list)
+    fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
-    print data
+    print po_info
     print "\n"
     return dict(total=total, po_info=po_info)
 
