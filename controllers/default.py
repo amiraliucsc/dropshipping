@@ -327,7 +327,7 @@ def order_history():
 def get_total_cart_price_json():
     total = 0
     cart_id = get_cart_id()
-    query = "select sum(qty*price) as total_price from product_order_item where cart_id = " + cart_id
+    query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
     result = db.executesql(query, as_dict=True)
     if result[0]['total_price'] is not None:
         total = str(result[0]['total_price'])

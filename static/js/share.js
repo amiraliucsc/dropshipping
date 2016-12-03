@@ -118,6 +118,7 @@ function remove_from_cart(pid,qty){
 		 type: "POST",
 		 url: "/Dropshipping/default/get_total_cart_price_json"
 	 }).done(function (respond) {
+			console.log(respond)
 			respond = JSON.parse(respond)
 			$('#total_price').html(respond['total_price'])
 		}).done(function () {
@@ -127,6 +128,7 @@ function remove_from_cart(pid,qty){
 	 		}).done(function (respond) {
 				insert_cart_dropdown()
 				respond = JSON.parse(respond)
+				console.log(respond)
 				$('#number_of_items').html(respond['total'])
 
 			})
