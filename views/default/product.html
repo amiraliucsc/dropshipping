@@ -164,17 +164,16 @@
 
             </div>
 
+
             <div class="category-title"><h3 style="margin: 0; padding: 0px; margin-top: 40px;">Customer Reviews</h3></div>
                 <div class="inner" style="width: 100%; max-width: 900px; padding: 15px;">
                     <div class="rating">
-                        
-                        {{for star in range(int(reviews[1][0]['avg'])):}}
-                            <img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png">
-                        {{pass}}
                     </div>
                     {{for review in reviews[0]:}}
                     <div class="reviewer-name"><h4>{{=review['name']}}</h4></div>
-
+                    {{for star in range(int(review['stars'])):}}
+                        <img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png">
+                    {{pass}}
                     <div class="review-description">{{=review['review_text']}}</div>
                     {{pass}}
 
