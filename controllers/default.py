@@ -247,8 +247,8 @@ def product():
 
 def get_product(product_id):
 
-    query = "select * from product_view where product_id = '%s' where default = 1", product_id
-    product = db.executesql(query, as_dict=True)
+    query = "select * from product_view where product_id = '%s' where [default] = 1"% product_id
+    product = db.executesql(query, as_dict=True)[0]
     return product
 
 def get_reviews():
