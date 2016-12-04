@@ -148,7 +148,7 @@ def create_cart():
     query = "insert into cart (user_id) values('" + user_id + "')"
     db.executesql(query)
     db.commit()
-    query = "select cart_id from cart where user_id = '" + user_id + "'"
+    query = "select cart_id from cart where user_id = '" + user_id + "' and status = 'active'"
     cart_id = db.executesql(query)
 
     return str(cart_id[0][0])
@@ -229,7 +229,14 @@ def create_purchase_order():
 
     purchase_order_no = insert_po(customer_id, subtotal, credit_card_last_4, user_id)
     update_order_items(purchase_order_no)
+
+    clear_cart()
     return json.dumps(dict(purchase_order_no=purchase_order_no))
+
+def clear_cart():
+    cart_id = get_cart_id()
+    query = "update cart set status='purchased' where cart_id=%s"%(cart_id)
+    db.executesql(query)
 
 def check_saved_user_data(name, address1, address2, zip, email):
     user_data = (name, address1, address2, zip, email)
@@ -345,6 +352,8 @@ def order_history():
 def get_purchase_order_history(user_id):
     query = "select * from purchase_order_view where user_id=%s" % (user_id)
     purchase_history = db.executesql(query, as_dict=True)
+    price_list = ["total_price"]
+    fix_price(purchase_history, price_list)
     return purchase_history
 
 def get_total_cart_price_json():
@@ -442,17 +451,16 @@ def po_page():
 
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
-    product_list = get_order_items()
+    product_list = get_order_items(po_num)
     price_list = ["sale_price"]
 
-    fix_price(product_list,price_list)
+    fix_price(product_list, price_list)
 
     return dict(total=total, po_info=po_info, product_list=product_list)
 
-def get_order_items():
-    cart_id = get_cart_id()
+def get_order_items(purchase_order_no):
 
-    query = "select * from product_order_item where cart_id = '%s'"% cart_id
+    query = "select * from product_order_item where purchase_order_no= '%s'"% purchase_order_no
     product_list = db.executesql(query, as_dict=True)
     return product_list
 

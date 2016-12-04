@@ -317,9 +317,11 @@ $('input#checkout_btn').on('click',function (e) {
 				var obj = JSON.parse(e)
 				console.log(obj)
 				console.log(obj.purchase_order_no)
-				if (obj.purchase_order_no > 0)
-					window.location.href='/Dropshipping/default/po_page?purchase_order_no='+obj.purchase_order_no
-				else
+				if (obj.purchase_order_no > 0) {
+					$('#cart_ul').html('');
+					$('#cart_items').html('0')
+					window.location.href = '/Dropshipping/default/po_page?purchase_order_no=' + obj.purchase_order_no
+				}else
 					console.log("purchase order is less than 0. Something went wrong")
 
 
