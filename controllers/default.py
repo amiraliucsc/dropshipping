@@ -217,7 +217,7 @@ def create_purchase_order():
     exp_year = request.vars.year
     cvv = request.vars.cvv
 
-    user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
+    #user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
 
     customer_id = get_customer_id(name, address1, address2, city, state, zip, email)
     subtotal = get_subtotal()

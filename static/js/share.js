@@ -210,6 +210,22 @@ $('#check_product_payment input.required').focusout(function (e) {
 			if($zip_validation){
 				$('#'+$id).removeClass('invalid');
 				$('#'+$id).addClass('valid');
+				$.ajax({
+					method: 'POST',
+					url: 'http://maps.googleapis.com/maps/api/geocode/json?address='+$('#zip').val()+'&sensor=true',
+					async: true,
+				}).done(function (respond) {
+					city = respond['results'][0]['address_components'][1]['long_name']
+					state = respond['results'][0]['address_components'][3]['short_name']
+					$element = "<input type='text' id='city' placeholder='City *' class='required valid' value='"+city+"'>";
+					$element += "<input type='text' id='state' placeholder='state *' class='required valid' value='"+state+"'>";
+
+					//zip code generator
+					$('#state').remove();
+					$('#city').remove();
+					$('#zip').after($element);
+				});
+
 				$('#err_zip').html('');
 			}else{
 				$('#err_zip').html('Not a valid ZIP code');
