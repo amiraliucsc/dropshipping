@@ -56,15 +56,13 @@
 
     <!-- Masthead ===================================== -->
     {{block header}}
-		<!-- fixed add to cart alert -->
+		<!-- ADD TO CART -->
             <div id="cart_alert">
-
                 <div id="inner_cart_alert">
                     <div onclick='close_add_cart()' id="close_cart_alert"><img src="https://cdn4.iconfinder.com/data/icons/iconic/raster/32/x_alt.png" alt="Owl Image" width="15" height="15"></div>
                     <div class="added-to-cart-notification" style="display: flex;"><img src="https://cdn0.iconfinder.com/data/icons/free-misc-icon-set-1/512/check-128.png" alt="Owl Image" width="25" height="25"><h3>Added to Cart!</h3></div>
                     <div class="innercart-description-wrapper">
                         <div id="pop_img" class="innercart-image-container"></div>
-
                         <div class="innercart-description-container">
                             <div id="pop_title" class="innercart-item-title"></div>
                             <div id="pop_desc" class="innercart-item-description"></div>
@@ -74,17 +72,13 @@
                             <div onclick='close_add_cart()' id="close_cart_alert">Continue Shopping</div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
+        <!-- TITLE LOGO BAR -->
             <div class="header-area" style="width: 100%; height: 125px; background-color: #2d2d2d; display:flex; align-items: center; padding: 20px;" >
-
                 <div class="logo-container" style="width: 25%;"><img src="{{=URL('static', 'images/logo.png')}}" alt="Owl Image" width="250"></div>
-
             </div>
-
+        <!-- MOBILE HEADER -->
 			<div class="xs-menu-cont">
 			<a id="menutoggle"><i>Toggle</i> </a>
 				<nav class="xs-menu displaynone">
@@ -181,12 +175,16 @@
                     </li>
 				</ul>
 			</nav>
+        <!-- INSIDE THE DROPDOWN CART -->
             <div id="div1" style="width: 100%; display: none; z-index: 5000; position: absolute; float: right;" onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';">
                 <div class="mycart" style="background: #ffffff; float: right; padding: 10px; color: #333333; margin-right: 10px; border-radius: 5px; margin-top: 0px;">
-                    <div class="category-title" style="padding: 10px; border-bottom: 1px solid #ededed;"><h4><strong>Cart</strong></h4></div>
+                    <img id="empty_cart_image" width="50px" height="50px" style="position:absolute; margin-left:15px; margin-top:-5px; z-index:1" src='/dropshipping/static/images/cart_cloud_empty_icon.png'/>
+                    <div id="empty_cart_text" class="category-title" style="padding-left: 10px; border-bottom: 1px solid #ededed; z-index:3">
+                        <h4 style="z-index:2"><strong>Empty :/</strong></h4>
+                    </div>
                     <ul id="cart_ul">
                     </ul>
-                    <div class="view-cart-dropdown-container" style="width: 100%; text-align: center; padding-top: 10px; color: #ff5a5f;">View Cart</div>
+                    <div id="cart_view_cart" class="view-cart-dropdown-container" style="width: 100%; text-align: center; padding-top: 10px; color: #ff5a5f;">View Cart</div>
                 </div>
             </div>
 		</div>

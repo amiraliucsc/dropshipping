@@ -324,16 +324,21 @@ def add_review():
     query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
     db.executesql(query)
 
-
-
+#///////////////////
+#ORDER HISTORY PAGE
+#///////////////////
 def order_history():
+
     po_num = request.vars.purchase_order_no
+    if auth.user_id:
+        print auth.user_id
+        po_num = auth.user_id
 
     query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
     po_info = db.executesql(query, as_dict=True)
     price_list = ("total_price", "subtotal", "tax", "shipping_price")
-    print "\n"
-    print po_info
+    #print "\n"
+    #print po_info
 
     fix_price(po_info, price_list)
     total = get_number_of_items_in_cart_no_json()
@@ -354,7 +359,6 @@ def get_total_cart_price_json():
 
     return json.dumps(dict(total_price=total))
 
-
 def get_total_cart_price():
     cart_id = get_cart_id()
     query = "select sum(sale_price) as total_price from product_order_item where cart_id = " + cart_id
@@ -364,6 +368,9 @@ def get_total_cart_price():
     else:
         return locale.currency(0)
 
+#///////////////////
+#CHECKOUT PAGE
+#///////////////////
 def checkout():
     cart_id = get_cart_id()
     query = "select * from product_order_item where cart_id = " + cart_id
@@ -386,6 +393,9 @@ def get_cart_content():
     # html = "<div>test</div>"
     return( json.dumps(dict(html=html)))
 
+#///////////////////
+#CONTACT PAGE
+#///////////////////
 def contact():
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total)
@@ -402,7 +412,6 @@ def contact_post():
 
 def contact_get():
     return dict()
-
 
 #/////////////////////
 #SEARCH PY FUNCTIONS  ////////////////////////////////////////////////////////////////
@@ -423,6 +432,9 @@ def get_products_view_search(find):
     total = get_number_of_items_in_cart_no_json()
     return dict(total=total,find_results=find_results)
 
+#//////////////////////
+#PO_PAGE page
+#//////////////////////
 def po_page():
     po_num = request.vars.purchase_order_no
 
@@ -439,7 +451,6 @@ def po_page():
 
     return dict(total=total, po_info=po_info, product_list=product_list)
 
-
 def get_order_items():
     cart_id = get_cart_id()
 
@@ -448,9 +459,13 @@ def get_order_items():
     return product_list
 
 def fix_price(results, fields):
-    for i in range(len(results)):
-        for field_name in fields:
-            results[i][field_name] = locale.currency(results[i][field_name], grouping=True)
+    print results
+    print fields
+    if results and fields:
+        for i in range(len(results)):
+            for field_name in fields:
+                if results[i][field_name]:
+                    results[i][field_name] = locale.currency(results[i][field_name], grouping=True)
 
 @cache.action()
 def download():
@@ -459,8 +474,6 @@ def download():
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
-
-
 
 def call():
     """

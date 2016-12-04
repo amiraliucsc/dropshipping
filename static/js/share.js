@@ -43,7 +43,7 @@ $('.add-to-cart').on('click',function (e) {
 
 	var product_id = e.target.id;
 	var cart_title = $("#p_title"+ product_id).html();
-	var cart_image = "http://localhost:8000/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
+	var cart_image = "/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
 	var cart_desc = $("#p_desc"+ product_id).html();
 	var cart_price = $("#p_price"+ product_id).html();
 	if(cart_desc == undefined){
@@ -64,10 +64,14 @@ $('.add-to-cart').on('click',function (e) {
 	 });
 	var current_num = parseInt( $('#cart_number').html() );
 	$('#cart_number').html(current_num+1);
+	$("#empty_cart_image").hide();
+	$("#empty_cart_text").hide();
+	$("#cart_view_cart").show();
 	insert_cart_dropdown()
 });
 
 $('document').ready(function (e) {
+	$("#cart_view_cart").hide();
 	insert_cart_dropdown()
 })
 
@@ -76,18 +80,20 @@ function insert_cart_dropdown(){
 		 type: "POST",
 		 url: "/Dropshipping/default/get_cart_content",
 	 }).done(function (html) {
-		html = JSON.parse(html)
-		html = html['html']
-		console.log(html['html'])
+		html = JSON.parse(html);
+		html = html['html'];
+		if(html.length > 0){
+			$("#empty_cart_image").hide();
+			$("#empty_cart_text").hide();
+			$("#cart_view_cart").show();
+		}else{
+			$("#empty_cart_image").show();
+			$("#empty_cart_text").show();
+		}
+		console.log(html['html']);
 		$("#cart_ul").html('');
 		$("#cart_ul").html(html);
 	})
-
-	// var cart_title = $("#p_title"+ product_id).html();
-	// var cart_image = "http://localhost:8000/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
-    //
-	// $("#cart_ul").prepend('<li style="padding: 10px; border-bottom: 1px solid #ededed;"><img width="30px" height="30px" style="padding:5px;" src='+cart_image+'/><div style="padding:2px;">1</div>'+cart_title+'</li>');
-
 }
 
 $('#cart_icon').on('click',function () {
@@ -290,6 +296,8 @@ $('input#checkout_btn').on('click',function (e) {
 				method: 'POST',
 				url: '/Dropshipping/default/create_purchase_order?full_name='+$customer_info['full_name']+'&address1='+$customer_info['address1']+'&address2='+$customer_info['address2']+'&city='+$customer_info['city']+'&state='+$customer_info['state']+'&zip='+$customer_info['zip']+'&card_number='+$customer_info['card_number']+'&month='+$customer_info['month']+'&year='+$customer_info['year']+'&name_on_card='+$customer_info['name_on_card']+'&cvv='+$customer_info['cvv']+'&email='+$customer_info['email'],
 				async: true,
+			}).done(function(e){
+				console.log(e);
 			})
 
 		})
@@ -363,7 +371,12 @@ function save_review(product_id) {
 			$('#error_show').css('color','green');
 			$('#error_show').html('<h3>Your Review has been saved successfully</h3>');
 			$('#add_review_container').fadeOut('fast')
-			$('#review-container').before($element)
+			if( typeof $('#review-container').html() == 'undefined' ){
+				$('#error_show').after($element)
+			}else{
+				$('#review-container').before($element)
+			}
+
 
 	})
 }

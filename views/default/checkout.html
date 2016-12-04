@@ -3,17 +3,35 @@
 
 
 {{block body}}
-{{if total == 0:}}Your Shopping cart is empty
+{{if total == 0:}}
+    <div style="position: absolute; left: 50%; margin-top:5px;">
+        <div style="position: relative; left: -50%;">
+            <img id="empty_cart_image" width="50px" height="50px" style="position:absolute; left:275px; z-index:1" src='/dropshipping/static/images/cart_cloud_empty_icon.png'/>
+            <div id="empty_cart_text" class="category-title" style="padding-left: 10px; z-index:3">
+                <h4 style="z-index:2">
+                    <strong>
+                        Your Shopping cart is empty :/
+                        <span id="cont_shop_checkout" onclick="location.href='/dropshipping/default/index'">Click Here</span>
+                         to continue shopping.
+                    </strong>
+                </h4>
+            </div>
+        </div>
+    </div>
 {{else:}}
 <div class="checkout-page-products-list">
     <div class="checkout-page-products-list-container">
         <div id="check_product_review">
-            <div class="category-title" style="border-bottom: 1px solid #888888; margin-bottom: 10px;"><h2>Cart</h2></div>
+            <div class="category-title" style="border-bottom: 1px solid #888888; margin-bottom: 10px;">
+                <h2>Cart</h2>
+            </div>
+
             {{for item in items:}}
                 <div class="check_individual_product" id="order_id_{{=item['product_id']}}">
                     <div class="product_img">
                         <img id="260" src="/Dropshipping/static/images/Product/{{=item['image_path']}}.jpg" width="100">
                     </div>
+
                     <div class="product_info">
                         <div class="product_title">
                             <span class="info_title"> {{=item['title']}}</span>
@@ -30,12 +48,14 @@
                     </div>
                 </div>
             {{pass}}
+
             <div id="promotion_row">
                 <span class="data_entry">
                     <input style="width: 200px;height: 36px" type="text" placeholder="Promotion Code">
                     <input type="button" value="Apply" style="width: 100px; background: #ff5a5f; color: white; border: none;">
                 </span>
             </div>
+
             <div id="total_row">
                 Subtotal (<span id="number_of_items">{{=total}}</span> items): <span id="total_price">{{=total_price}}</span>
             </div>
