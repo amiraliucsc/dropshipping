@@ -288,6 +288,8 @@ def get_user_id():
     user_id = session.customer_session
     return user_id
 
+
+
 #/////////////////////
 #PRODUCT PAGE
 #/////////////////////

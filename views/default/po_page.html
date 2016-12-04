@@ -45,7 +45,7 @@
                     <li> <b> Shipping Address </b> </li>
                     <li> {{=po_info[0]['full_name']}} </li>
                     <li>  {{=po_info[0]['address_1']}} </li>
-                    <li> {{=po_info[0]['city']}}, {{=po_info[0]['state']}} {{=po_info[0]['zip_code']}}</li>
+                    <li> {{=po_info[0]['city']}}, {{=po_info[0]['state']}} {{=po_info[0]['zip_code']}} </li>
                     <li> <br> </li>
                     <li> <br> </li>
                     <li> <br> </li>
@@ -91,7 +91,7 @@
                     <div class="po_order_misc" style="text-align: center">
                         <ul>
                             <li> <b> Credit Card Transactions </b> {{=po_info[0]['credit_card_last_4']}}
-                                : {{=po_info[0]['sale_date']}} : total_price </li>
+                                : {{=po_info[0]['sale_date']}} : {{=po_info[0]['total_price']}} </li>
                         </ul>
                     </div>
             </div>

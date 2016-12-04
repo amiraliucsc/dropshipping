@@ -290,6 +290,18 @@ $('input#checkout_btn').on('click',function (e) {
 				method: 'POST',
 				url: '/Dropshipping/default/create_purchase_order?full_name='+$customer_info['full_name']+'&address1='+$customer_info['address1']+'&address2='+$customer_info['address2']+'&city='+$customer_info['city']+'&state='+$customer_info['state']+'&zip='+$customer_info['zip']+'&card_number='+$customer_info['card_number']+'&month='+$customer_info['month']+'&year='+$customer_info['year']+'&name_on_card='+$customer_info['name_on_card']+'&cvv='+$customer_info['cvv']+'&email='+$customer_info['email'],
 				async: true,
+			}).done(function (e) {
+				console.log(e)
+				var obj = JSON.parse(e)
+				console.log(obj)
+				console.log(obj.purchase_order_no)
+				if (obj.purchase_order_no > 0)
+					window.location.href='/Dropshipping/default/po_page?purchase_order_no='+obj.purchase_order_no
+				else
+					console.log("purchase order is less than 0. Something went wrong")
+
+
+
 			})
 
 		})
