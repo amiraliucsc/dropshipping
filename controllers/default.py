@@ -272,8 +272,6 @@ def insert_po(customer_id, subtotal, credit_card_last_4, user_id):
     if auth.user_id:
         query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4, user_id) VALUES ('%s', '%s', '%s','%s')" \
                 % (customer_id, subtotal, credit_card_last_4, user_id)
-        print "\n"
-        print query
     else:
         query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4) VALUES ('%s', '%s', '%s')" \
                 % (customer_id, subtotal, credit_card_last_4)

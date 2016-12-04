@@ -282,7 +282,7 @@ $('input#checkout_btn').on('click',function (e) {
 		$('#err_email').html('Your shopping cart is empty');
 		return false;
 	}
-	if(count == 8){
+	if(count == 9){
 		var city = '';
 		var state = '';
 		$.ajax({
