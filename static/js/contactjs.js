@@ -17,7 +17,7 @@ function send_contact_form(){
          async: true
      });
 
-    window.location.href = "http://localhost:8000/dropshipping/default/index";
+    window.location.href = "/dropshipping/default/index";
     /*
     if(contact_name.length < 4 || contact_name.length > 16 ){
         //set error message on name
