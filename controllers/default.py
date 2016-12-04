@@ -216,6 +216,8 @@ def create_purchase_order():
     exp_month = request.vars.month
     exp_year = request.vars.year
     cvv = request.vars.cvv
+    user_id = auth.user_id
+
 
     #user_data_changed = check_saved_user_data(name, address1, address2, zip, email)
 
@@ -225,9 +227,8 @@ def create_purchase_order():
 
 
 
-    purchase_order_no = insert_po(customer_id, subtotal, credit_card_last_4)
+    purchase_order_no = insert_po(customer_id, subtotal, credit_card_last_4, user_id)
     update_order_items(purchase_order_no)
-
     return json.dumps(dict(purchase_order_no=purchase_order_no))
 
 def check_saved_user_data(name, address1, address2, zip, email):
@@ -267,9 +268,15 @@ def get_subtotal():
     return subtotal
 
 
-def insert_po(customer_id, subtotal, credit_card_last_4):
-
-    query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4) VALUES ('%s', '%s', '%s')"% (customer_id, subtotal, credit_card_last_4)
+def insert_po(customer_id, subtotal, credit_card_last_4, user_id):
+    if auth.user_id:
+        query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4, user_id) VALUES ('%s', '%s', '%s','%s')" \
+                % (customer_id, subtotal, credit_card_last_4, user_id)
+        print "\n"
+        print query
+    else:
+        query = "insert into purchase_order (customer_id, subtotal, credit_card_last_4) VALUES ('%s', '%s', '%s')" \
+                % (customer_id, subtotal, credit_card_last_4)
 
     db.executesql(query)
     db.commit()
@@ -329,27 +336,20 @@ def add_review():
 #///////////////////
 #ORDER HISTORY PAGE
 #///////////////////
+@auth.requires_login()
 def order_history():
+    user_id = auth.user_id
+    query = "select * from purchase_order_view where user_id=%s" % (user_id)
+    print "\n"
+    print query
+    print "\n"
 
-    po_num = request.vars.purchase_order_no
-    if auth.user_id:
-        print auth.user_id
-        po_num = auth.user_id
-
-    query = "select * from purchase_order_view where purchase_order_no = '%s'" % po_num
-    po_info = db.executesql(query, as_dict=True)
-    price_list = ("total_price", "subtotal", "tax", "shipping_price")
-    #print "\n"
-    #print po_info
-
-    fix_price(po_info, price_list)
+    result = db.executesql(query, as_dict=True)
+    print "\n"
+    print result
+    print "\n"
     total = get_number_of_items_in_cart_no_json()
-    product_list = get_order_items()
-    price_list = ["sale_price"]
-
-    fix_price(product_list, price_list)
-    return dict(total=total, po_info=po_info, product_list=product_list)
-    #return dict(location=T('Dropshiping - Checkout'), total=total, data=data)
+    return dict(total=total)
 
 def get_total_cart_price_json():
     total = 0
