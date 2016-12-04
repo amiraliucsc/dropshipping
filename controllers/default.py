@@ -337,17 +337,15 @@ def add_review():
 @auth.requires_login()
 def order_history():
     user_id = auth.user_id
-    query = "select * from purchase_order_view where user_id=%s" % (user_id)
-    print "\n"
-    print query
-    print "\n"
-
-    result = db.executesql(query, as_dict=True)
-    print "\n"
-    print result
-    print "\n"
+    purchase_history = get_purchase_order_history(user_id)
     total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
+
+    return dict(total=total, purchase_history=purchase_history)
+
+def get_purchase_order_history(user_id):
+    query = "select * from purchase_order_view where user_id=%s" % (user_id)
+    purchase_history = db.executesql(query, as_dict=True)
+    return purchase_history
 
 def get_total_cart_price_json():
     total = 0
