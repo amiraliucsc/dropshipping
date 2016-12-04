@@ -13,11 +13,13 @@
                      <th class="oh_order"> <b> Ship To </b> </th>
                  </tr>
                  <tr>
-                     <td class="oh_order"> <a class="purchase_order" href='http://localhost:8000/Dropshipping/default/po_page?purchase_order_no={{=po_info[0]['purchase_order_no']}}'>
-                                            {{=po_info[0]['purchase_order_no']}} </a> </td>
-                     <td class="oh_order"> {{=po_info[0]['sale_date']}} </td>
-                     <td class="oh_order"> {{=po_info[0]['total_price']}} </td>
-                     <td class="oh_order"> {{=po_info[0]['full_name']}} </td>
+                     {{for i in range(0, len(po_info)):}}
+                     <td class="oh_order"> <a class="purchase_order" href='http://localhost:8000/Dropshipping/default/po_page?purchase_order_no={{=po_info[i]['purchase_order_no']}}'>
+                                            {{=po_info[i]['purchase_order_no']}} </a> </td>
+                     <td class="oh_order"> {{=po_info[i]['sale_date']}} </td>
+                     <td class="oh_order"> {{=po_info[i]['total_price']}} </td>
+                     <td class="oh_order"> {{=po_info[i]['full_name']}} </td>
+                     {{pass}}
                  </tr>
              </table>
         </div>
