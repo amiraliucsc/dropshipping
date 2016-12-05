@@ -22,7 +22,7 @@ def products():
     if operation:
         product_list = get_product_list(operation, search_string)
     else:
-        product_list = None
+        product_list = "ALL"
 
     total = get_number_of_items_in_cart_no_json()
     selective_products = get_selective_products(product_list)
@@ -31,14 +31,21 @@ def products():
     return dict(total=total, selective_products=selective_products)
 
 def get_selective_products(p_list):
-    if p_list:
+
+    if p_list == "ALL":
+        query = "select * from product_view where image_default = 1"
+        all_products = db.executesql(query, as_dict=True)
+        price_list = ["price"]
+        fix_price(all_products, price_list)
+    elif p_list:
         query_end = " and product_id in %s"% p_list
+        query = "select * from product_view where image_default = 1" + query_end
+        all_products = db.executesql(query, as_dict=True)
+        price_list = ["price"]
+        fix_price(all_products, price_list)
     else:
-        query_end = ""
-    query="select * from product_view where image_default = 1" + query_end
-    all_products = db.executesql(query, as_dict=True)
-    price_list = ["price"]
-    fix_price(all_products, price_list)
+        all_products = []
+
     return all_products
 
 def get_product_list(operation, search_string):
@@ -53,13 +60,19 @@ def get_product_list(operation, search_string):
 def category_search(search_string):
     query = "select product_id from product_tag_association where tag_name = '%s'"% search_string
     result = db.executesql(query)
-    p_list = list_formatter(result)
+    if len(result) > 0:
+        p_list = list_formatter(result)
+    else:
+        p_list = None
     return p_list
 
 def product_search(search_string):
     query = "select product_id from product_tag_association where title LIKE '%" + search_string + "%' or description LIKE '%" + search_string + "%' or manufacturer LIKE '%" + search_string + "%' or tag_name LIKE '%" + search_string + "%'"
     result = db.executesql(query)
-    p_list = list_formatter(result)
+    if len(result) > 0:
+        p_list = list_formatter(result)
+    else:
+        p_list = None
     return p_list
 
 def list_formatter(input):
@@ -420,24 +433,6 @@ def contact_post():
 def contact_get():
     return dict()
 
-#/////////////////////
-#SEARCH PY FUNCTIONS  ////////////////////////////////////////////////////////////////
-#/////////////////////
-def search():
-    total = get_number_of_items_in_cart_no_json()
-    return dict(total=total)
-
-def get_products_view_search(find):
-    query=""
-    if find:
-        query = "select * from product_view where title='"+ find +"'"
-    else:
-        query = "select * from product_view"
-
-    find_results = db.executesql(query, as_dict=True)
-
-    total = get_number_of_items_in_cart_no_json()
-    return dict(total=total,find_results=find_results)
 
 #//////////////////////
 #PO_PAGE page
