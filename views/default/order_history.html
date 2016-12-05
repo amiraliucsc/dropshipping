@@ -14,7 +14,7 @@
                  </tr>
                  <tr>
                      {{for i in range(0, len(purchase_history)):}}
-                     <td class="oh_order"> <a class="purchase_order" href=/Dropshipping/default/po_page?purchase_order_no={{=purchase_history[i]['purchase_order_no']}}'>
+                     <td class="oh_order"> <a class="purchase_order" href='/Dropshipping/default/po_page?purchase_order_no={{=purchase_history[i]['purchase_order_no']}}'>
                                             {{=purchase_history[i]['purchase_order_no']}} </a> </td>
                      <td class="oh_order"> {{=purchase_history[i]['sale_date']}} </td>
                      <td class="oh_order"> {{=purchase_history[i]['total_price']}} </td>
