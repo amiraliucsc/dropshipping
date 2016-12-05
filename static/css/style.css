@@ -633,20 +633,12 @@ ul.po_order_misc_info_2{
 /***********************Order History*********************/
 
 .order_history{
-	font-size: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 40px;
 }
 
 .oh{
-	text-align: left;
 }
 
 .oh_order{
-	width: 1000px;
-	text-align: center;
 }
 
 a.purchase_order{color:darkred; background-color:transparent; text-decoration:none}

@@ -4,24 +4,23 @@
 
 <div id="order_history">
     <div class="order_history">
-        <div class="oh">
-             <table class="oh_table">
+             <table>
                  <tr>
                      <th class="oh_order"> <b>  Purchase Order # </b> </th>
                      <th class="oh_order"> <b> Order Placed</b> </th>
                      <th class="oh_order"> <b> Total </b> </th>
                      <th class="oh_order"> <b> Ship To </b> </th>
                  </tr>
+                 {{for i in range(0, len(purchase_history)):}}
                  <tr>
-                     {{for i in range(0, len(purchase_history)):}}
                      <td class="oh_order"> <a class="purchase_order" href='/Dropshipping/default/po_page?purchase_order_no={{=purchase_history[i]['purchase_order_no']}}'>
                                             {{=purchase_history[i]['purchase_order_no']}} </a> </td>
                      <td class="oh_order"> {{=purchase_history[i]['sale_date']}} </td>
                      <td class="oh_order"> {{=purchase_history[i]['total_price']}} </td>
                      <td class="oh_order"> {{=purchase_history[i]['full_name']}} </td>
-                     {{pass}}
+
                  </tr>
+                 {{pass}}
              </table>
-        </div>
     </div>
 </div>
