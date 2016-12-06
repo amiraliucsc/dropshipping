@@ -17,20 +17,19 @@
 
                 <table>
                     <div style="margin-bottom: 50px;">
-                    <tr>
-                        <th class="po_itemList"> <h3> <b> Item Order </b> </h3> </th>
-                        <th class="po_items"> <h3> <b> Price </b> </h3> </th>
-                        <th class="po_items"> <h3> <b> Quantity </b> </h3> </th>
-                    </tr>
-                        <tr>
+                        <tr style="margin-left:30%;">
+                            <th class="po_itemList"> <h3> <b> Item Order </b> </h3> </th>
+                            <th class="po_items"> <h3> <b> Price </b> </h3> </th>
+                            <th class="po_items" width="50%;"> <h3> <b> Quantity </b> </h3> </th>
+                        </tr>
                         {{for i in range (0,len(product_list)):}}
-                            <td class="po_itemList"> {{=product_list[i]['title']}} </td>
-                            <td class="po_items"> {{=product_list[i]['sale_price']}} </td>
-                            <td class="po_items" style="text-align: center"> {{=product_list[i]['qty']}} </td>
+                        <tr>
+                            <td width='25%' class="po_itemList"> {{=product_list[i]['title']}} </td>
+                            <td width='25%' class="po_items"> {{=product_list[i]['sale_price']}} </td>
+                            <td width='25%' class="po_items" style="text-align: center"> {{=product_list[i]['qty']}} </td>
                         </tr>
                         <tr class="po_order_item">
-
-                            <td colspan="3"> {{=product_list[i]['manufacturer']}} </td>
+                            <td width='25%' colspan="3"> {{=product_list[i]['manufacturer']}} </td>
                         </tr>
                         {{pass}}
                     </div>

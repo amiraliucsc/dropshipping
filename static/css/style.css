@@ -233,7 +233,6 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 }
 
 .category-row li {
@@ -253,6 +252,15 @@ body{
 	padding: 20px;
 	display: flex;
 	border-bottom: 1px solid #cccccc;
+}
+
+.products-page-item-view-item{
+	font-weight: bold;
+}
+
+.products-page-item-view-item:hover{
+	cursor:pointer;
+	color: #ff5a5f;
 }
 
 .products-page-item-image {
@@ -500,6 +508,15 @@ body{
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-end;
+}
+
+.learn-more{
+	font-style: italic;
+}
+
+.learn-more:hover{
+	cursor:pointer;
+	color: #ff5a5f;
 }
 
 /********************Contact Page************************/

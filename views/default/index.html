@@ -20,7 +20,7 @@
                         <h5 style="overflow: hidden; white-space: nowrap;">{{=(tv['title'][:35] + '..') if len(tv['title']) > 35 else tv['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(tv['price'])}}</strong></div>
-                            <div class="learn-more"><i>Learn More</i></div>
+                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=tv['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=tv['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
@@ -32,9 +32,9 @@
             {{pass}}
             </div>
 
-        <div class="product-advertisement">
-            <img src="{{=URL('static','images/studio.jpg')}}"/>
-        </div>
+            <div class="product-advertisement">
+                <img src="{{=URL('static','images/studio.jpg')}}"/>
+            </div>
 
         <!-- computers and tablets -->
         <div class="category-title" style="justify-content: flex-start"><h3>Computers & Tablets</h3></div>
@@ -46,7 +46,7 @@
                         <h5>{{=(comp['title'][:35] + '..') if len(comp['title']) > 35 else comp['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(comp['price'])}}</strong></div>
-                            <div class="learn-more"><i>Learn More</i></div>
+                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=comp['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=comp['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
@@ -68,7 +68,7 @@
                         <h5>{{=(game['title'][:25] + '..') if len(game['title']) > 25 else game['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(game['price'])}}</strong></div>
-                            <div class="learn-more"><i>Learn More</i></div>
+                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=game['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=game['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>

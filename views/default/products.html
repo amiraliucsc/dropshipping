@@ -17,7 +17,7 @@
             <div class="products-page-item-rating"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
             <div class="products-page-item-price"><h3><strong id="p_price{{=pp['product_id']}}">{{=pp['price']}}</strong></h3></div>
             <div id="{{=pp['product_id']}}" class="add-to-cart" style="width: 175px; margin: 10px;">Add to Cart</div>
-            <div class="products-page-item-view-item"><strong>View Item</strong></div>
+            <div class="products-page-item-view-item" onclick="location.href='/dropshipping/default/product?product_id={{=pp['product_id']}}'">View Item</div>
         </div>
     </div>
     {{pass}}
