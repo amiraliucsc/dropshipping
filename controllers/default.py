@@ -347,6 +347,7 @@ def add_review():
     product_id = str(request.vars.product_id)
     name = str(request.vars.name)
     review = str(request.vars.review)
+    review = review.replace("'","''")
     stars = str(request.vars.stars)
     query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
     db.executesql(query)

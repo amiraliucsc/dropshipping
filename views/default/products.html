@@ -12,9 +12,11 @@
         </div>
 
         <div class="products-page-item-description">
-            <div class="products-page-item-title"><h2><strong>{{pp['title']}}</strong></h2></div>
+            <div class="products-page-item-title"><h3><strong>{{pp['avg_stars']}}</strong></h3></div>
             <div class="products-page-item-description-under-title"><h4 id="p_title{{=pp['product_id']}}">{{=pp['title']}}</h4></div>
-            <div class="products-page-item-rating"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"><img style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png"></div>
+            {{for star in range(int(pp['avg_stars'])):}}
+                <img alt="star, yellow icon" class="tiled-icon" style="max-width: 20px; max-height: 20px;" src="https://cdn0.iconfinder.com/data/icons/super-mono-reflection/yellow/star_yellow.png">
+            {{pass}}
             <div class="products-page-item-price"><h3><strong id="p_price{{=pp['product_id']}}">{{=pp['price']}}</strong></h3></div>
             <div id="{{=pp['product_id']}}" class="add-to-cart" style="width: 175px; margin: 10px;">Add to Cart</div>
             <div class="products-page-item-view-item" onclick="location.href='/dropshipping/default/product?product_id={{=pp['product_id']}}'">View Item</div>

@@ -378,6 +378,7 @@ $(document).mouseup(function (e)
 function save_review(product_id) {
 	var name = $('#add_review_name').val();
 	var review = $('#customer_review_txt').val();
+	
 	var stars = parseInt( $('input[name="rank"]:checked').val() );
 	if(isNaN(stars)){
 		$('#error_show').html('<h3>Make sure you enter a rank before submiting your review</h3>');
