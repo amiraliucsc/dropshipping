@@ -27,8 +27,13 @@ function enable_search_input(){
     }
 }
 
-function search_category(opt){
-    var search_term = (document.querySelector('[name="search_input"]').value).replace(/'/g, "");
+function search_category(opt, force){
+    var search_term;
+    if(force){
+        search_term = force.replace(/'/g, "");
+    }else{
+        search_term = (document.querySelector('[name="search_input"]').value).replace(/'/g, "");
+    }
 
     console.log(search_term, opt);
     window.location.href = '/Dropshipping/default/products?search_string='+search_term+'&opt='+opt;

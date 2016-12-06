@@ -3,9 +3,9 @@
 
 {{block feature}}
     <div class="owl-carousel" id="feature-slider" >
-        <div class="feature-item"><img src="{{=URL('static', 'images/shopmac.jpg')}}" alt="Owl Image"></div>
-        <div class="feature-item"><img src="{{=URL('static', 'images/PSVR.jpg')}}" alt="Owl Image"></div>
-        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img onclick='search_category("search", "mac")' src="{{=URL('static', 'images/shopmac.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img onclick='search_category("search", "playstation")' src="{{=URL('static', 'images/PSVR.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img onclick='search_category("search", "tv")' src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
     </div>
 {{end}}
 
