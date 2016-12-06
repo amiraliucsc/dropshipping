@@ -632,12 +632,13 @@ body{
 
 ul.po_order_misc_info_1{
 	display: inline-block;
+	width:300px;
 }
 
 ul.po_order_misc_info_2{
 	display: inline-block;
 	float: right;
-	width:30%;
+	width: 600px;
 }
 
 .po_misc{
@@ -652,6 +653,13 @@ ul.po_order_misc_info_2{
 
 .po_float_right{
 	float:right;
+}
+
+.li-order_po{
+	display: inline;
+	margin: 0 auto;
+	margin-left:0%;
+	margin-right:3%;
 }
 
 /***********************CHECKOUT*******************/
