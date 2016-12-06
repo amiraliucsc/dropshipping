@@ -324,6 +324,8 @@ def product():
 
     total = get_number_of_items_in_cart_no_json()
     (reviews, avg_stars) = get_reviews(product_id)
+    if not avg_stars:
+        avg_stars = 0
     return dict(total=total, product=product_details, reviews=reviews, avg_stars=avg_stars)
 
 def get_product(product_id):
