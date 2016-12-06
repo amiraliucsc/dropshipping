@@ -595,7 +595,8 @@ body{
 	font-size: 20px;
 	padding: 25px;
 }
-h1.po_title{
+
+.po_title{
 	color: #9d1e15;
 }
 
@@ -605,7 +606,7 @@ h1.po_title{
 }
 
 .po_order_item{
-	border-bottom: dotted indianred;
+	border-bottom:2px dotted #ff5a5f;;
 }
 
 .po_detail {
@@ -614,10 +615,10 @@ h1.po_title{
 	padding-bottom: 25px;
 }
 
-
 .po_order_list{
 	border: 1px solid grey;
-	padding: 50px;
+	height:auto;
+	padding: 5px;
 }
 
 .po_itemList{
@@ -625,11 +626,8 @@ h1.po_title{
 }
 
 .po_items{
-	width: 200px;
-}
-
-.po_order_misc {
-
+	display:inline-block;
+	width: 33%;
 }
 
 ul.po_order_misc_info_1{
@@ -639,33 +637,22 @@ ul.po_order_misc_info_1{
 ul.po_order_misc_info_2{
 	display: inline-block;
 	float: right;
-
+	width:30%;
 }
 
 .po_misc{
 	text-align: center;
+	color: #ff5a5f;
 }
 
-
-/***********************Order History*********************/
-
-.order_history{
-	margin: auto 0;
-	padding: 20px;
+#purchased_product_list{
+	margin: 0 auto;
+	width: 100%;
 }
 
-.oh_column{
-	padding: 10px 0px;
-	width: 1000px;
+.po_float_right{
+	float:right;
 }
-
-.oh_order{
-	padding: 10px 0px;
-	text-align: center;
-}
-
-a.purchase_order{color:darkred; background-color:transparent; text-decoration:none}
-a.purchase_order:hover{color:black; background-color:transparent; text-decoration:underline}
 
 /***********************CHECKOUT*******************/
 
@@ -842,4 +829,41 @@ a.purchase_order:hover{color:black; background-color:transparent; text-decoratio
 	box-shadow:none;
 	background:#2d2d2d;
 	color:#ff5a5f;
+}
+
+/***********************Order History*********************/
+
+#order_history{
+	width:100%;
+	margin: 0 auto;
+	font-size:18px;
+}
+
+.order_history{
+	margin: auto 0;
+	width:100%;
+	padding: 20px;
+}
+
+.ul-order_history{
+	margin: 0 auto;
+	width: 100%;
+	background:#ff5a5f;
+}
+
+.li-order_history{
+	text-align: center;
+	margin: 0 auto;
+	display:inline-block;
+	width:24%;
+}
+
+.llk:hover{
+	color:#ff5a5f;
+	cursor:pointer;
+}
+
+.on{
+	text-align:left;
+	text-decoration:underline;
 }
