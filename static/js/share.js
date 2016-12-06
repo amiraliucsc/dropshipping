@@ -72,7 +72,12 @@ $('.add-to-cart').on('click',function (e) {
 
 $('document').ready(function (e) {
 	$("#cart_view_cart").hide();
-	insert_cart_dropdown()
+	insert_cart_dropdown();
+	$("#search_input").keydown(function(e){
+		if(e.keyCode == 13){
+			search_category("search");
+		}
+	})
 })
 
 function insert_cart_dropdown(){

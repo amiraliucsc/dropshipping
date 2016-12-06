@@ -719,12 +719,12 @@ a.purchase_order:hover{color:black; background-color:transparent; text-decoratio
 /***********************SEARCH*********************/
 #search_icon{
  	text-align:center;
-	width:40px;
+	width:50px;
 	color:black;
 }
 
 #search_icon:hover{
-	background: #2d2d2d;
+	background:#2d2d2d;
 	cursor: pointer;
 }
 
@@ -738,6 +738,7 @@ a.purchase_order:hover{color:black; background-color:transparent; text-decoratio
 
 #search_box input[type="text"]:focus{
 	outline:none;
+	color:#ff5a5f;
 }
 
 #search_box{
@@ -750,15 +751,19 @@ a.purchase_order:hover{color:black; background-color:transparent; text-decoratio
 
 #search_submit_button{
 	padding:0px;
-	width:40px;
+	width:50px;
 	height:30px;
 	background:black;
 	border-radius:5px;
 }
 
 #search_submit_button:hover{
+	background:#2d2d2d;
 	box-shadow: none;
-	color:#2d2d2d;
+}
+
+#sb:hover{
+	background:black;
 }
 
 /********override bootcrap***********/
