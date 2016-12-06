@@ -46,6 +46,10 @@ def get_selective_products(p_list):
     else:
         all_products = []
 
+    for i in range(len(all_products)):
+        if not all_products[i]['avg_stars']:
+            all_products[i]['avg_stars'] = 0
+
     return all_products
 
 def get_product_list(operation, search_string):
@@ -341,7 +345,9 @@ def get_reviews(product_id):
     reviews = db.executesql(query, as_dict=True)
 
     query = "select AVG(stars) as avg_stars from review where product_id = '%s' group by product_id"% product_id
-    average_stars = db.executesql(query)[0][0]
+    average_stars = db.executesql(query)
+    if len(average_stars) > 0:
+        average_stars = average_stars[0][0]
 
     return (reviews, average_stars)
 
