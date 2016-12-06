@@ -338,8 +338,8 @@ def get_reviews(product_id):
     query = "select * from review where product_id = '%s' order by review_id DESC"% product_id
     reviews = db.executesql(query, as_dict=True)
 
-    query = "select AVG(stars) as avg from review where product_id = '%s' group by product_id"% product_id
-    average_stars = db.executesql(query, as_dict=True)
+    query = "select AVG(stars) as avg_stars from review where product_id = '%s' group by product_id"% product_id
+    average_stars = db.executesql(query)[0][0]
 
     return (reviews, average_stars)
 
