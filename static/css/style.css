@@ -603,6 +603,7 @@ body{
 .po_order{
 	margin: 0 auto;
 	padding: 5px;
+	font-size: 17px;
 }
 
 .po_order_item{
@@ -610,7 +611,7 @@ body{
 }
 
 .po_detail {
-	font-size: 25px;
+	font-size: 14px;
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
