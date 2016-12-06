@@ -28,6 +28,14 @@
     color: #e61b3b;
 }
 
+.select_date{
+    height: 44px;
+    border-radius: 4px;
+    min-width: 80px;
+    padding-left: 10px;
+    color: #aaaaaa;
+}
+
 #delete_cart_icon{
     background: url(/assets/img/icon/32/trash_icon_32x32.png);
     background-size: 32px;
