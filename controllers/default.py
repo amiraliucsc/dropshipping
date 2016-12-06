@@ -323,8 +323,8 @@ def product():
     product_details = get_product(product_id)
 
     total = get_number_of_items_in_cart_no_json()
-    reviews = get_reviews(product_id)
-    return dict(total=total, product=product_details, reviews=reviews)
+    (reviews, avg_stars) = get_reviews(product_id)
+    return dict(total=total, product=product_details, reviews=reviews, avg_stars=avg_stars)
 
 def get_product(product_id):
 
@@ -348,6 +348,7 @@ def add_review():
     name = str(request.vars.name)
     review = str(request.vars.review)
     stars = str(request.vars.stars)
+
     query = "insert into review (product_id,review_text,stars,name) values ('%s','%s','%s','%s')"% (product_id,review,stars,name)
     db.executesql(query)
 
