@@ -15,12 +15,12 @@
             <div class="owl-carousel" id="product-carousel">
             {{for tv in televisions:}}
                 <div class="item">
-                    <div id="product-image" style="cursor:pointer" onclick="location.href='/dropshipping/default/product?product_id={{=tv['product_id']}}'"><img src="/dropshipping/static/images/Product/{{=tv['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div id="product-image" style="cursor:pointer" onclick="location.href='/Dropshipping/default/product?product_id={{=tv['product_id']}}'"><img src="/Dropshipping/static/images/Product/{{=tv['image_path']}}.jpg" alt="Owl Image"></div>
                     <div class="item-text" style="margin: 0; padding: 5px;">
                         <h5 style="overflow: hidden; white-space: nowrap;">{{=(tv['title'][:35] + '..') if len(tv['title']) > 35 else tv['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(tv['price'])}}</strong></div>
-                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=tv['product_id']}}'">Learn More</div>
+                            <div class="learn-more" onclick="location.href='/Dropshipping/default/product?product_id={{=tv['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=tv['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
@@ -41,12 +41,12 @@
             <div class="owl-carousel" id="product-carousel2">
             {{for comp in computers:}}
                 <div class="item">
-                    <div id="product-image" style="cursor:pointer" onclick="location.href='/dropshipping/default/product?product_id={{=comp['product_id']}}'"><img src="/dropshipping/static/images/Product/{{=comp['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div id="product-image" style="cursor:pointer" onclick="location.href='/Dropshipping/default/product?product_id={{=comp['product_id']}}'"><img src="/Dropshipping/static/images/Product/{{=comp['image_path']}}.jpg" alt="Owl Image"></div>
                     <div class="item-text" style="margin: 0; padding: 5px; overflow: hidden; white-space: nowrap;">
                         <h5>{{=(comp['title'][:35] + '..') if len(comp['title']) > 35 else comp['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(comp['price'])}}</strong></div>
-                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=comp['product_id']}}'">Learn More</div>
+                            <div class="learn-more" onclick="location.href='/Dropshipping/default/product?product_id={{=comp['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=comp['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>
@@ -63,12 +63,12 @@
             <div class="owl-carousel" id="product-carousel3">
             {{for game in gaming:}}
                 <div class="item">
-                    <div id="product-image" style="cursor:pointer" onclick="location.href='/dropshipping/default/product?product_id={{=game['product_id']}}'"><img src="/dropshipping/static/images/Product/{{=game['image_path']}}.jpg" alt="Owl Image"></div>
+                    <div id="product-image" style="cursor:pointer" onclick="location.href='/Dropshipping/default/product?product_id={{=game['product_id']}}'"><img src="/Dropshipping/static/images/Product/{{=game['image_path']}}.jpg" alt="Owl Image"></div>
                     <div class="item-text" style="margin: 0; padding: 5px; overflow: hidden; white-space: nowrap;">
                         <h5>{{=(game['title'][:25] + '..') if len(game['title']) > 25 else game['title']}}</h5>
                         <div class="item-price-cart">
                             <div class="item-price"><strong>${{="{0:.2f}".format(game['price'])}}</strong></div>
-                            <div class="learn-more" onclick="location.href='/dropshipping/default/product?product_id={{=game['product_id']}}'">Learn More</div>
+                            <div class="learn-more" onclick="location.href='/Dropshipping/default/product?product_id={{=game['product_id']}}'">Learn More</div>
                         </div>
                         <div id="{{=game['product_id']}}" class="add-to-cart">Add to Cart</div>
                     </div>

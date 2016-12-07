@@ -43,7 +43,7 @@ $('.add-to-cart').on('click',function (e) {
 
 	var product_id = e.target.id;
 	var cart_title = $("#p_title"+ product_id).html();
-	var cart_image = "/dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
+	var cart_image = "/Dropshipping/static/images/Product/" + $("#p_img"+ product_id).html() + ".jpg";
 	var cart_desc = $("#p_desc"+ product_id).html();
 	var cart_price = $("#p_price"+ product_id).html();
 	if(cart_desc == undefined){
