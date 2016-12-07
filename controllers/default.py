@@ -419,7 +419,7 @@ def get_cart_content():
     fix_price(result, price_list)
     html = ""
     for item in result:
-        html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'>"+ "<b>"+item['title']+"</b>" +"</li>";
+        html += "<li style='padding: 10px; border-bottom: 1px solid #ededed;'><img style='height:64px; padding:5px;' src='/Dropshipping/static/images/Product/"+ str(item['image_path']) +".jpg'>"+ "<b>"+item['title']+"</b>" +"</li>";
     # html = "<div>test</div>"
     return( json.dumps(dict(html=html)))
 
